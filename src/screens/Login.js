@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native' 
+import { Text, KeyboardAvoidingView } from 'react-native'
 
 import { Container } from './styles/MainStyled'
-import { Header, Main, Label, InputText, Button, Footer } from './styles/LoginStyled'
+import { Header, Label, InputText, Button, Footer } from './styles/LoginStyled'
 
 export default class Login extends Component {
 
@@ -13,22 +13,25 @@ export default class Login extends Component {
     render() {
         return (
             <Container>
-                <Header />
+                <KeyboardAvoidingView behavior="position" enabled>
 
-                <Main>
+                    <Header />
 
                     <Label>E-mail</Label>
                     <InputText />
 
                     <Label>Senha</Label>
-                    <InputText />
+                    <InputText secureTextEntry />
 
                     <Button onPress={() => this.props.navigation.navigate('App')} >
                         <Text style={{ fontSize: 20 }}>LOGIN</Text>
                     </Button>
-                </Main>
 
-                <Footer />
+                    <Footer>
+                        <Text style={{ fontSize: 18 }}>Esqueceu a Senha?</Text>
+                    </Footer>
+
+                </KeyboardAvoidingView>
             </Container>
         );
     }

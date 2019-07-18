@@ -2,19 +2,11 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 export const Header = styled.View`
-    display: flex;
-    flex: 8;
-`
-
-export const Main = styled.View`
-    display: flex;
-    flex: 8;
+    height: 200px;
 `
 
 export const Label = styled.Text`
-    display: flex;
-    flex: 2;
-    margin: 10px 40px 0px 40px;
+    margin: 10px 40px;
     font-size: 15px;
     text-transform: uppercase;
     color: #707070;
@@ -22,25 +14,26 @@ export const Label = styled.Text`
 `
 
 export const InputText = styled.TextInput`
-    display: flex;
-    flex: 2;
     margin: 0px 40px;
+    padding: 8px;
     border: solid 1px #9c9c9c;
     border-radius: 5px;
-    font-size: 25px;
+    font-size: 20px;
 `
 
 export const Button = styled.TouchableOpacity`
     display: flex;
-    flex: 3;
     justify-content: center;
     align-items: center;
-    margin: 15px 40px 0px 40px;
+    height: 45px;
+    margin: 15px 40px;
     border-radius: 5px;
     background-color: yellow;
 `
 
 export const Footer = styled.View`
     display: flex;
-    flex: 3;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8px;
 `

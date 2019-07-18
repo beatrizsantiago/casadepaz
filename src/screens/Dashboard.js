@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
 import { View, Text } from "react-native";
+import Icon from 'react-native-vector-icons/Ionicons'
+
+import { Container, Row, BigBox, Circle, MediumBox } from './styles/DashboardStyled';
 
 export default class Dashboard extends Component {
 
 	render() {
 		return (
-			<View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-				<Text>Dashboard</Text>
-			</View>
+			<Container>
+				<Row>
+					<BigBox>
+						<Circle>
+							<Icon name="ios-home" color="#fff" size={60} />
+						</Circle>
+					</BigBox>
+				</Row>
+				<Row>
+					<MediumBox />
+					<MediumBox />
+				</Row>
+			</Container>
 		);
 	}
 }

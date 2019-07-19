@@ -1,9 +1,17 @@
 import React from 'react'
+import { Alert } from 'react-native'
+
+import UserService from '../services/UserService'
 
 import { Container, Header, Item, Title } from './styles/DrawerContainerStyled'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 export default DrawerContainer = ({ navigation }) => {
+
+    logout = async () => {
+        await UserService.logout()
+            .then(() => navigation.navigate('Login'))
+    }
 
     return (
         <Container>
@@ -23,6 +31,10 @@ export default DrawerContainer = ({ navigation }) => {
             <Item onPress={() => navigation.navigate('Feedback')}>
                 <Icon name="ballot-recount-outline" size={32} color="#000" />
                 <Title>Feedback</Title>
+            </Item>
+            <Item onPress={this.logout}>
+                <Icon name="logout" size={32} color="#000" />
+                <Title>Sair</Title>
             </Item>
         </Container>
     )

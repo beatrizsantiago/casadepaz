@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, KeyboardAvoidingView, Alert } from 'react-native'
 
+import UserService from '../services/UserService'
 import firebase from 'react-native-firebase'
 
 import { Container } from './styles/MainStyled'
@@ -10,8 +11,7 @@ export default class Login extends Component {
 
     state = {
         login: '',
-        password: '',
-        errorMessage: null
+        password: ''
     }
 
     static navigationOptions = {
@@ -27,7 +27,7 @@ export default class Login extends Component {
         )
     )
 
-    handleLogin = () => {
+    handleLogin = async () => {
         const { email, password } = this.state;
 
         try {
@@ -35,16 +35,14 @@ export default class Login extends Component {
             if (!email || !password) {
                 this.validateLogin()
             } else {
-                firebase.auth()
-                    .signInWithEmailAndPassword(email, password)
+                await UserService.login(email, password)
                     .then(() => this.props.navigation.navigate('App'))
-                    .catch(() => this.validateLogin())
+                    .catch(() => this.validateLogin)
             }
 
         } catch (e) {
             console.warn("Erro login: ", e);
         }
-
     }
 
     render() {

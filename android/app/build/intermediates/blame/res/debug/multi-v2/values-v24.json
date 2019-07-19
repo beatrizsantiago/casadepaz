@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\ana.santiago.REDEINOVA\\Documents\\casadepaz\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ana.santiago.REDEINOVA\\.gradle\\caches\\transforms-2\\files-2.1\\8f71e13be990cbb90c384ac832ce5f06\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\ana.santiago.REDEINOVA\\.gradle\\caches\\transforms-2\\files-2.1\\75bf2b9f4bd3387ca26b6aa523443ef7\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\ana.santiago.REDEINOVA\\.gradle\\caches\\transforms-2\\files-2.1\\6217508f8cf395a9679631eea94b9f97\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\ana.santiago.REDEINOVA\\.gradle\\caches\\transforms-2\\files-2.1\\c7e9749aafa62751f9a76bf13d33014d\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

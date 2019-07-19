@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import com.casadepaz.BuildConfig;
 import com.casadepaz.R;
 
+// react-native-firebase
+import io.invertase.firebase.RNFirebasePackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 // react-native-maps
@@ -52,6 +54,7 @@ public class PackageList {
   public ArrayList<ReactPackage> getPackages() {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
       new MainReactPackage(),
+      new RNFirebasePackage(),
       new RNGestureHandlerPackage(),
       new MapsPackage(),
       new VectorIconsPackage()

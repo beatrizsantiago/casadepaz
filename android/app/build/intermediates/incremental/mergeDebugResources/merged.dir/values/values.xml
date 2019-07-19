@@ -318,6 +318,13 @@
     <string name="common_open_on_phone">Open on phone</string>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
+    <string name="default_web_client_id" translatable="false">797848451218-295vptbf8e7188ki6e3l2vc8qm60922l.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://casa-de-paz-ca8ff.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">797848451218</string>
+    <string name="google_api_key" translatable="false">AIzaSyAzHA8dEgd1CArI5H9obz3lGavwQOoDsAw</string>
+    <string name="google_app_id" translatable="false">1:797848451218:android:6ef67e8dbc685970</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAzHA8dEgd1CArI5H9obz3lGavwQOoDsAw</string>
+    <string name="google_storage_bucket" translatable="false">casa-de-paz-ca8ff.appspot.com</string>
     <string name="header_description" translatable="false">Heading</string>
     <string name="image_description" translatable="false">Image</string>
     <string name="imagebutton_description" translatable="false">Button, Image</string>
@@ -326,6 +333,7 @@
     <string name="menubar_description" translatable="false">Menu Bar</string>
     <string name="menuitem_description" translatable="false">Menu Item</string>
     <string name="progressbar_description" translatable="false">Progress Bar</string>
+    <string name="project_id" translatable="false">casa-de-paz-ca8ff</string>
     <string name="radiogroup_description" translatable="false">Radio Group</string>
     <string name="rn_tab_description" translatable="false">Tab</string>
     <string name="scrollbar_description" translatable="false">Scroll Bar</string>

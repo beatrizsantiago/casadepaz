@@ -1,13 +1,50 @@
 import React, { Component } from 'react';
-import { Text, KeyboardAvoidingView } from 'react-native'
+import { Text, KeyboardAvoidingView, Alert } from 'react-native'
+
+import firebase from 'react-native-firebase'
 
 import { Container } from './styles/MainStyled'
 import { Header, Label, InputText, Button, Footer } from './styles/LoginStyled'
 
 export default class Login extends Component {
 
+    state = {
+        login: '',
+        password: '',
+        errorMessage: null
+    }
+
     static navigationOptions = {
         header: null,
+    }
+
+    validateLogin = () => (
+        Alert.alert(
+            'Atenção!',
+            'E-mail e/ou senha inválidos',
+            [{ text: 'OK', onPress: () => this.props.navigation.pop() }],
+            { cancelable: false }
+        )
+    )
+
+    handleLogin = () => {
+        const { email, password } = this.state;
+
+        try {
+
+            if (!email || !password) {
+                this.validateLogin()
+            } else {
+                firebase.auth()
+                    .signInWithEmailAndPassword(email, password)
+                    .then(() => this.props.navigation.navigate('App'))
+                    .catch(() => this.validateLogin())
+            }
+
+        } catch (e) {
+            console.warn("Erro login: ", e);
+        }
+
     }
 
     render() {
@@ -18,12 +55,12 @@ export default class Login extends Component {
                     <Header />
 
                     <Label>E-mail</Label>
-                    <InputText />
+                    <InputText onChangeText={email => this.setState({ email })} value={this.state.email} />
 
                     <Label>Senha</Label>
-                    <InputText secureTextEntry />
+                    <InputText secureTextEntry onChangeText={password => this.setState({ password })} value={this.state.password} />
 
-                    <Button onPress={() => this.props.navigation.navigate('App')} >
+                    <Button onPress={this.handleLogin} >
                         <Text style={{ fontSize: 20 }}>LOGIN</Text>
                     </Button>
 

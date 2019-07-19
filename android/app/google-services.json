@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "797848451218",
+    "firebase_url": "https://casa-de-paz-ca8ff.firebaseio.com",
+    "project_id": "casa-de-paz-ca8ff",
+    "storage_bucket": "casa-de-paz-ca8ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797848451218:android:6ef67e8dbc685970",
+        "android_client_info": {
+          "package_name": "com.casadepaz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "797848451218-295vptbf8e7188ki6e3l2vc8qm60922l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzHA8dEgd1CArI5H9obz3lGavwQOoDsAw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "797848451218-295vptbf8e7188ki6e3l2vc8qm60922l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797848451218:android:e3e26b0e2be07c54",
+        "android_client_info": {
+          "package_name": "com.ndv.appcasadepaz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "797848451218-295vptbf8e7188ki6e3l2vc8qm60922l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzHA8dEgd1CArI5H9obz3lGavwQOoDsAw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "797848451218-295vptbf8e7188ki6e3l2vc8qm60922l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

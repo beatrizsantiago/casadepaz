@@ -19,8 +19,9 @@ export const BigBox = styled.View`
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 96%;
+    width: 95%;
     height: 140px;
+    padding: 10px;
     background-color: #fff;
 `
 
@@ -40,6 +41,16 @@ export const MediumBox = styled.View`
     align-items: center;
     width: 46%;
     height: 100px;
-    margin: 0px 5px;
+    margin: 0px 6px;
+    background-color: #fff;
+`
+
+export const LargeBox = styled.View`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 95%;
+    height: 100px;
+    margin: 0px 6px;
     background-color: #fff;
 `

@@ -13,6 +13,18 @@ export default DrawerContainer = ({ navigation }) => {
             .then(() => navigation.navigate('Login'))
     }
 
+    handlePress = () => {
+        Alert.alert(
+            'Atenção!',
+            'Realmente deseja sair do aplicativo?',
+            [
+                { text: 'Cancelar', onPress: () => navigation.navigate('Dashboard') },
+                { text: 'OK', onPress: () => this.logout() },
+            ],
+            { cancelable: true }
+        )
+    }
+
     return (
         <Container>
             <Header />
@@ -32,7 +44,7 @@ export default DrawerContainer = ({ navigation }) => {
                 <Icon name="ballot-recount-outline" size={32} color="#000" />
                 <Title>Feedback</Title>
             </Item>
-            <Item onPress={this.logout}>
+            <Item onPress={this.handlePress}>
                 <Icon name="logout" size={32} color="#000" />
                 <Title>Sair</Title>
             </Item>

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Text, KeyboardAvoidingView, Alert } from 'react-native'
 
 import UserService from '../services/UserService'
-import firebase from 'react-native-firebase'
 
 import { Container } from './styles/MainStyled'
 import { Header, Label, InputText, Button, Footer } from './styles/LoginStyled'
+import Loading from '../components/Loading'
 
 export default class Login extends Component {
 
@@ -18,11 +18,17 @@ export default class Login extends Component {
         header: null,
     }
 
-    validateLogin = () => (
+    errorLogin = () => (
         Alert.alert(
             'Atenção!',
             'E-mail e/ou senha inválidos',
-            [{ text: 'OK', onPress: () => this.props.navigation.pop() }],
+            [{ 
+                text: 'OK',
+                onPress: () => setTimeout(() => {
+                    this.props.navigation.pop()
+                    this.loading.setModalVisible(false)
+                }, 500)
+            }],
             { cancelable: false }
         )
     )
@@ -33,15 +39,18 @@ export default class Login extends Component {
         try {
 
             if (!email || !password) {
-                this.validateLogin()
+                this.errorLogin()
             } else {
+                this.loading.setModalVisible(true)
                 await UserService.login(email, password)
                     .then(() => this.props.navigation.navigate('App'))
-                    .catch(() => this.validateLogin)
+                    .catch(() => this.errorLogin())
             }
 
         } catch (e) {
             console.warn("Erro login: ", e);
+        } finally {
+            this.loading.setModalVisible(false)
         }
     }
 
@@ -49,6 +58,8 @@ export default class Login extends Component {
         return (
             <Container>
                 <KeyboardAvoidingView behavior="position" enabled>
+
+                    <Loading ref={e => this.loading = e} text="Autenticando" />
 
                     <Header />
 

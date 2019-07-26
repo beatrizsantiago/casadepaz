@@ -1,53 +1,97 @@
-import React from 'react'
-import { Picker, ScrollView } from "react-native"
+import React, { Component } from 'react'
+import { Picker, TimePickerAndroid, ScrollView } from "react-native"
+
+import CapService from '../services/CapService'
 
 import { Container } from './styles/MainStyled'
 import { Label, InputText, MediumInput, ColMediumInput, Button, TextButton } from './styles/RegisterCapStyled'
 
-export default RegisterCap = () => (
-	<Container>
-		<ScrollView>
-			<Label>Local</Label>
-			<InputText />
+export default class RegisterCap extends Component {
 
-			<MediumInput>
-				<ColMediumInput>
-					<Label>Dia</Label>
-					<Picker style={{ marginLeft: 12 }}>
-						<Picker.Item label="Segunda" value="Segunda" />
-						<Picker.Item label="Terça" value="Terca" />
-						<Picker.Item label="Quarta" value="Quarta" />
-						<Picker.Item label="Quinta" value="Quinta" />
-						<Picker.Item label="Sexta" value="Sexta" />
-						<Picker.Item label="Sábado" value="Sabado" />
-						<Picker.Item label="Domingo" value="Domingo" />
-					</Picker>
-				</ColMediumInput>
+	state = {
+		local: '',
+		day: '',
+		hour: '',
+		minute: 0,
+		telephone: '',
+		leader: '',
+		subLeader: '',
+		houseOwner: '',
+		supervisor: '',
+	}
 
-				<ColMediumInput>
-					<Label>Hora</Label>
-					<InputText />
-				</ColMediumInput>
-			</MediumInput>
+	setHour = async () => {
 
-			<Label>Telefone</Label>
-			<InputText />
+		const { hour, minute } = this.state;
+		try {
+			await TimePickerAndroid.open({
+				hour: hour,
+				minute: minute,
+				is24Hour: true
+			})
 
-			<Label>Líder</Label>
-			<InputText />
+			console.warn(hour);
+			
+		} catch (e) {
+			console.warn('Erro TimePicker: ', e)
+		}
+	}
 
-			<Label>Sublíder</Label>
-			<InputText />
+	handlePressRegister = async () => {
 
-			<Label>Anfitrião</Label>
-			<InputText />
+		const { local, day, hour, telephone, leader, subLeader, houseOwner, supervisor } = this.state
 
-			<Label>Supervisor</Label>
-			<InputText />
+		await CapService.register(local, day, hour, telephone, leader, subLeader, houseOwner, supervisor)
+	}
 
-			<Button>
-				<TextButton>Cadastrar</TextButton>
-			</Button>
-		</ScrollView>
-	</Container>
-);
+	render() {
+		return (
+			<Container>
+				<ScrollView>
+					<Label>Local</Label>
+					<InputText onChangeText={local => this.setState({ local })} value={this.state.local} />
+
+					<MediumInput>
+						<ColMediumInput>
+							<Label>Dia</Label>
+							<Picker onValueChange={day => this.setState({ day })} selectedValue={this.state.day} style={{ marginLeft: 12 }}>
+								<Picker.Item label="Segunda" value="Segunda" />
+								<Picker.Item label="Terça" value="Terca" />
+								<Picker.Item label="Quarta" value="Quarta" />
+								<Picker.Item label="Quinta" value="Quinta" />
+								<Picker.Item label="Sexta" value="Sexta" />
+								<Picker.Item label="Sábado" value="Sabado" />
+								<Picker.Item label="Domingo" value="Domingo" />
+							</Picker>
+						</ColMediumInput>
+
+						<ColMediumInput>
+							<Label>Hora</Label>
+							<InputText onChangeText={hour => this.setState({ hour })} value={this.state.hour} />
+						</ColMediumInput>
+					</MediumInput>
+
+					<Label>Telefone</Label>
+					<InputText onChangeText={telephone => this.setState({ telephone })} value={this.state.telephone} />
+
+					<Label>Líder</Label>
+					<InputText onChangeText={leader => this.setState({ leader })} value={this.state.leader} />
+
+					<Label>Sublíder</Label>
+					<InputText onChangeText={subLeader => this.setState({ subLeader })} value={this.state.subLeader} />
+
+					<Label>Anfitrião</Label>
+					<InputText onChangeText={houseOwner => this.setState({ houseOwner })} value={this.state.houseOwner} />
+
+					<Label>Supervisor</Label>
+					<InputText onChangeText={supervisor => this.setState({ supervisor })} value={this.state.supervisor} />
+
+					<Button onPress={() => this.handlePressRegister()}>
+						<TextButton>Cadastrar</TextButton>
+					</Button>
+				</ScrollView>
+			</Container>
+		)
+	}
+
+};

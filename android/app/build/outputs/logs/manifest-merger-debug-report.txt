@@ -6,9 +6,11 @@ INJECTED from C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\android\app\sr
 INJECTED from C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\android\app\src\main\AndroidManifest.xml:1:1-31:12
 MERGED from C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\android\app\src\main\AndroidManifest.xml:1:1-31:12
 MERGED from [:react-native-firebase] C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\node_modules\react-native-firebase\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-23:12
+MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\ebb0e51e27f74fecd6a8954ab494429b\AndroidManifest.xml:17:1-22:12
 MERGED from [:react-native-maps] C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-12:12
 MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\1810c45e867baa6a4771cdc86b08c3f3\AndroidManifest.xml:17:1-32:12
 MERGED from [com.google.firebase:firebase-auth:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\97ecfec8403a98262febe63e38d6cd39\AndroidManifest.xml:17:1-42:12
+MERGED from [com.google.firebase:firebase-firestore:19.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\a4289e6f7beb4c53f09dd6c3ba2d10df\AndroidManifest.xml:2:1-24:12
 MERGED from [com.google.android.gms:play-services-flags:16.0.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\478ee068a4d8536f2ea02a5831eb2f72\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-auth-interop:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\faeb172b4fce20b23972b601bb2aca75\AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.firebase:firebase-core:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\e61943a0604581c598ba24b484ef9580\AndroidManifest.xml:2:1-9:12
@@ -22,7 +24,6 @@ MERGED from [:react-native-gesture-handler] C:\Users\ana.santiago.REDEINOVA\Docu
 MERGED from [com.facebook.react:react-native:0.60.3] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\fe9d48297d0fb88a49418dbfbc4085ba\AndroidManifest.xml:2:1-13:12
 MERGED from [org.webkit:android-jsc:r245459] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\3420c63779daf2f6655826d8316500f5\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\56974b8b194257ac53c318ca5a731304\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\ebb0e51e27f74fecd6a8954ab494429b\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\c7e9749aafa62751f9a76bf13d33014d\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.maps.android:android-maps-utils:0.5] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\c95bbc6ba85fd1c22de15312c1bb6d35\AndroidManifest.xml:2:1-13:12
 MERGED from [com.google.android.gms:play-services-measurement:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\a46dafcd852cf065dd2e07541cc5e843\AndroidManifest.xml:17:1-55:12
@@ -36,6 +37,9 @@ MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\ana.san
 MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\8922933a514d7b9320c4ee14f43fa562\AndroidManifest.xml:17:1-25:12
 MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\899e5d48e16e56a0f4a4f5528d2d803d\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\ce46c0095870225eb314902a3873ee9f\AndroidManifest.xml:17:1-28:12
+MERGED from [com.google.firebase:firebase-database-collection:16.0.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\857435a5c987d9627011116723b5b5c1\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.firebase:protolite-well-known-types:16.0.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\3bcad9b731733269e708374740e51b27\AndroidManifest.xml:2:1-11:12
+MERGED from [io.grpc:grpc-android:1.16.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\e24e9ed435a648ea30bf6aa9a4945e6f\AndroidManifest.xml:2:1-13:12
 MERGED from [com.facebook.fresco:fresco:2.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\9c6b9707d87b35078abbf508f55c3fbd\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\d04be663e8c9695607403de1177eadcb\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:drawee:2.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\425437cc3c97e6b68b36504e117e8038\AndroidManifest.xml:2:1-9:12
@@ -99,6 +103,8 @@ MERGED from [:react-native-maps] C:\Users\ana.santiago.REDEINOVA\Documents\casad
 MERGED from [:react-native-maps] C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-67
 MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\1810c45e867baa6a4771cdc86b08c3f3\AndroidManifest.xml:24:5-67
 MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\1810c45e867baa6a4771cdc86b08c3f3\AndroidManifest.xml:24:5-67
+MERGED from [com.google.firebase:firebase-firestore:19.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\a4289e6f7beb4c53f09dd6c3ba2d10df\AndroidManifest.xml:14:5-67
+MERGED from [com.google.firebase:firebase-firestore:19.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\a4289e6f7beb4c53f09dd6c3ba2d10df\AndroidManifest.xml:14:5-67
 MERGED from [com.google.android.gms:play-services-measurement-api:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\3388090c673f6434aa48bbdfbeca8470\AndroidManifest.xml:22:5-67
 MERGED from [com.google.android.gms:play-services-measurement-api:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\3388090c673f6434aa48bbdfbeca8470\AndroidManifest.xml:22:5-67
 MERGED from [com.google.firebase:firebase-iid:19.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\8f4114cf6d57ef54a28b58e47730a0db\AndroidManifest.xml:23:5-67
@@ -121,6 +127,8 @@ MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\ana.sant
 MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\1810c45e867baa6a4771cdc86b08c3f3\AndroidManifest.xml:30:5-20
 MERGED from [com.google.firebase:firebase-auth:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\97ecfec8403a98262febe63e38d6cd39\AndroidManifest.xml:23:5-40:19
 MERGED from [com.google.firebase:firebase-auth:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\97ecfec8403a98262febe63e38d6cd39\AndroidManifest.xml:23:5-40:19
+MERGED from [com.google.firebase:firebase-firestore:19.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\a4289e6f7beb4c53f09dd6c3ba2d10df\AndroidManifest.xml:16:5-22:19
+MERGED from [com.google.firebase:firebase-firestore:19.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\a4289e6f7beb4c53f09dd6c3ba2d10df\AndroidManifest.xml:16:5-22:19
 MERGED from [com.google.firebase:firebase-auth-interop:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\faeb172b4fce20b23972b601bb2aca75\AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-auth-interop:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\faeb172b4fce20b23972b601bb2aca75\AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-core:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\e61943a0604581c598ba24b484ef9580\AndroidManifest.xml:7:5-20
@@ -229,12 +237,16 @@ INJECTED from C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\android\app\sr
 INJECTED from C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\android\app\src\main\AndroidManifest.xml
 MERGED from [:react-native-firebase] C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\node_modules\react-native-firebase\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-firebase] C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\node_modules\react-native-firebase\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\ebb0e51e27f74fecd6a8954ab494429b\AndroidManifest.xml:20:5-43
+MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\ebb0e51e27f74fecd6a8954ab494429b\AndroidManifest.xml:20:5-43
 MERGED from [:react-native-maps] C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-maps] C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\1810c45e867baa6a4771cdc86b08c3f3\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\1810c45e867baa6a4771cdc86b08c3f3\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-auth:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\97ecfec8403a98262febe63e38d6cd39\AndroidManifest.xml:21:5-44
 MERGED from [com.google.firebase:firebase-auth:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\97ecfec8403a98262febe63e38d6cd39\AndroidManifest.xml:21:5-44
+MERGED from [com.google.firebase:firebase-firestore:19.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\a4289e6f7beb4c53f09dd6c3ba2d10df\AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-firestore:19.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\a4289e6f7beb4c53f09dd6c3ba2d10df\AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.android.gms:play-services-flags:16.0.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\478ee068a4d8536f2ea02a5831eb2f72\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-flags:16.0.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\478ee068a4d8536f2ea02a5831eb2f72\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-auth-interop:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\faeb172b4fce20b23972b601bb2aca75\AndroidManifest.xml:5:5-44
@@ -261,8 +273,6 @@ MERGED from [org.webkit:android-jsc:r245459] C:\Users\ana.santiago.REDEINOVA\.gr
 MERGED from [org.webkit:android-jsc:r245459] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\3420c63779daf2f6655826d8316500f5\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\56974b8b194257ac53c318ca5a731304\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\56974b8b194257ac53c318ca5a731304\AndroidManifest.xml:20:5-44
-MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\ebb0e51e27f74fecd6a8954ab494429b\AndroidManifest.xml:20:5-43
-MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\ebb0e51e27f74fecd6a8954ab494429b\AndroidManifest.xml:20:5-43
 MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\c7e9749aafa62751f9a76bf13d33014d\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\c7e9749aafa62751f9a76bf13d33014d\AndroidManifest.xml:20:5-44
 MERGED from [com.google.maps.android:android-maps-utils:0.5] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\c95bbc6ba85fd1c22de15312c1bb6d35\AndroidManifest.xml:5:5-43
@@ -289,6 +299,12 @@ MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\User
 MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\899e5d48e16e56a0f4a4f5528d2d803d\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\ce46c0095870225eb314902a3873ee9f\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\ce46c0095870225eb314902a3873ee9f\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-database-collection:16.0.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\857435a5c987d9627011116723b5b5c1\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-database-collection:16.0.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\857435a5c987d9627011116723b5b5c1\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:protolite-well-known-types:16.0.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\3bcad9b731733269e708374740e51b27\AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:protolite-well-known-types:16.0.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\3bcad9b731733269e708374740e51b27\AndroidManifest.xml:7:5-9:41
+MERGED from [io.grpc:grpc-android:1.16.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\e24e9ed435a648ea30bf6aa9a4945e6f\AndroidManifest.xml:7:5-9:41
+MERGED from [io.grpc:grpc-android:1.16.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\e24e9ed435a648ea30bf6aa9a4945e6f\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.fresco:fresco:2.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\9c6b9707d87b35078abbf508f55c3fbd\AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:fresco:2.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\9c6b9707d87b35078abbf508f55c3fbd\AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\d04be663e8c9695607403de1177eadcb\AndroidManifest.xml:5:5-7:41
@@ -389,6 +405,8 @@ uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [:react-native-firebase] C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\node_modules\react-native-firebase\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:5-79
 MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\1810c45e867baa6a4771cdc86b08c3f3\AndroidManifest.xml:23:5-79
 MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\1810c45e867baa6a4771cdc86b08c3f3\AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-firestore:19.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\a4289e6f7beb4c53f09dd6c3ba2d10df\AndroidManifest.xml:13:5-79
+MERGED from [com.google.firebase:firebase-firestore:19.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\a4289e6f7beb4c53f09dd6c3ba2d10df\AndroidManifest.xml:13:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\3388090c673f6434aa48bbdfbeca8470\AndroidManifest.xml:23:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\3388090c673f6434aa48bbdfbeca8470\AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-iid:19.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\8f4114cf6d57ef54a28b58e47730a0db\AndroidManifest.xml:22:5-79
@@ -399,12 +417,16 @@ MERGED from [com.google.android.gms:play-services-measurement-impl:17.0.0] C:\Us
 MERGED from [com.google.android.gms:play-services-measurement-impl:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\31565ae2acf0c0a6fc7f199e1b7e6293\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\8efef717f6297b2dd01c54fa52bdfabd\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\8efef717f6297b2dd01c54fa52bdfabd\AndroidManifest.xml:24:5-79
+MERGED from [io.grpc:grpc-android:1.16.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\e24e9ed435a648ea30bf6aa9a4945e6f\AndroidManifest.xml:11:5-79
+MERGED from [io.grpc:grpc-android:1.16.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\e24e9ed435a648ea30bf6aa9a4945e6f\AndroidManifest.xml:11:5-79
 	android:name
 		ADDED from [:react-native-firebase] C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\node_modules\react-native-firebase\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:22-76
 service#com.google.firebase.components.ComponentDiscoveryService
 ADDED from [:react-native-firebase] C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\node_modules\react-native-firebase\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:9-20:19
 MERGED from [com.google.firebase:firebase-auth:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\97ecfec8403a98262febe63e38d6cd39\AndroidManifest.xml:33:9-39:19
 MERGED from [com.google.firebase:firebase-auth:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\97ecfec8403a98262febe63e38d6cd39\AndroidManifest.xml:33:9-39:19
+MERGED from [com.google.firebase:firebase-firestore:19.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\a4289e6f7beb4c53f09dd6c3ba2d10df\AndroidManifest.xml:17:9-21:19
+MERGED from [com.google.firebase:firebase-firestore:19.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\a4289e6f7beb4c53f09dd6c3ba2d10df\AndroidManifest.xml:17:9-21:19
 MERGED from [com.google.android.gms:play-services-measurement-api:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\3388090c673f6434aa48bbdfbeca8470\AndroidManifest.xml:27:9-33:19
 MERGED from [com.google.android.gms:play-services-measurement-api:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\3388090c673f6434aa48bbdfbeca8470\AndroidManifest.xml:27:9-33:19
 MERGED from [com.google.firebase:firebase-iid:19.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\8f4114cf6d57ef54a28b58e47730a0db\AndroidManifest.xml:29:9-35:19
@@ -451,6 +473,12 @@ ADDED from [com.google.firebase:firebase-auth:17.0.0] C:\Users\ana.santiago.REDE
 		ADDED from [com.google.firebase:firebase-auth:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\97ecfec8403a98262febe63e38d6cd39\AndroidManifest.xml:38:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-auth:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\97ecfec8403a98262febe63e38d6cd39\AndroidManifest.xml:37:17-109
+meta-data#com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar
+ADDED from [com.google.firebase:firebase-firestore:19.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\a4289e6f7beb4c53f09dd6c3ba2d10df\AndroidManifest.xml:18:13-20:85
+	android:value
+		ADDED from [com.google.firebase:firebase-firestore:19.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\a4289e6f7beb4c53f09dd6c3ba2d10df\AndroidManifest.xml:20:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-firestore:19.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\a4289e6f7beb4c53f09dd6c3ba2d10df\AndroidManifest.xml:19:17-111
 meta-data#com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar
 ADDED from [com.google.android.gms:play-services-measurement-api:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\3388090c673f6434aa48bbdfbeca8470\AndroidManifest.xml:30:13-32:85
 	android:value

@@ -15,12 +15,18 @@ export const Row = styled.View`
     margin: 5px 0px;
 `
 
+export const Column = styled.View`
+    display: flex;
+    flex-direction: column;
+`
+
 export const BigBox = styled.View`
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-around;
     width: 95%;
-    height: 140px;
+    height: 130px;
     padding: 10px;
     background-color: #fff;
 `
@@ -37,8 +43,7 @@ export const Circle = styled.View`
 
 export const MediumBox = styled.View`
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
     width: 46%;
     height: 100px;
     margin: 0px 6px;

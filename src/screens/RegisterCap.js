@@ -10,6 +10,8 @@ export default class RegisterCap extends Component {
 
 	state = {
 		local: '',
+		latitude: null,
+		longitude: null,
 		day: '',
 		hour: '',
 		minute: 0,
@@ -31,17 +33,33 @@ export default class RegisterCap extends Component {
 			})
 
 			console.warn(hour);
-			
+
 		} catch (e) {
 			console.warn('Erro TimePicker: ', e)
 		}
 	}
 
+	clearData = () => {
+		this.setState({
+			local: '',
+			latitude: '',
+			longitude: '',
+			day: '',
+			hour: '',
+			minute: 0,
+			telephone: '',
+			leader: '',
+			subLeader: '',
+			houseOwner: '',
+			supervisor: '',
+		})
+	}
+
 	handlePressRegister = async () => {
+		const { local, latitude, longitude, day, hour, telephone, leader, subLeader, houseOwner, supervisor } = this.state
 
-		const { local, day, hour, telephone, leader, subLeader, houseOwner, supervisor } = this.state
-
-		await CapService.register(local, day, hour, telephone, leader, subLeader, houseOwner, supervisor)
+		await CapService.register(local, latitude, longitude, day, hour, telephone, leader, subLeader, houseOwner, supervisor)
+		this.clearData()
 	}
 
 	render() {
@@ -53,8 +71,21 @@ export default class RegisterCap extends Component {
 
 					<MediumInput>
 						<ColMediumInput>
+							<Label>Latitude</Label>
+							<InputText onChangeText={latitude => this.setState({ latitude })} value={this.state.latitude} />
+						</ColMediumInput>
+
+						<ColMediumInput>
+							<Label>Longitude</Label>
+							<InputText onChangeText={longitude => this.setState({ longitude })} value={this.state.longitude} />
+						</ColMediumInput>
+					</MediumInput>
+
+					<MediumInput>
+						<ColMediumInput>
 							<Label>Dia</Label>
 							<Picker onValueChange={day => this.setState({ day })} selectedValue={this.state.day} style={{ marginLeft: 12 }}>
+								<Picker.Item label="Selecione" value="" />
 								<Picker.Item label="Segunda" value="Segunda" />
 								<Picker.Item label="Terça" value="Terca" />
 								<Picker.Item label="Quarta" value="Quarta" />

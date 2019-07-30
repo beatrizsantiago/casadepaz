@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Picker, TimePickerAndroid, ScrollView } from "react-native"
+import { Picker, TimePickerAndroid, ScrollView, TouchableOpacity, Text } from "react-native"
 
 import CapService from '../services/CapService'
 
 import { Container } from './styles/MainStyled'
-import { Label, InputText, MediumInput, ColMediumInput, Button, TextButton } from './styles/RegisterCapStyled'
+import { Label, InputText, MediumInput, ColMediumInput, Button, TextButton, RowHour } from './styles/RegisterCapStyled'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 export default class RegisterCap extends Component {
 
@@ -13,8 +14,7 @@ export default class RegisterCap extends Component {
 		latitude: null,
 		longitude: null,
 		day: '',
-		hour: '',
-		minute: 0,
+		hour: '00:00h',
 		telephone: '',
 		leader: '',
 		subLeader: '',
@@ -23,19 +23,14 @@ export default class RegisterCap extends Component {
 	}
 
 	setHour = async () => {
+		const { action, hour, minute } = await TimePickerAndroid.open({
+			hour: hour,
+			minute: minute,
+			is24Hour: true,
+		})
 
-		const { hour, minute } = this.state;
-		try {
-			await TimePickerAndroid.open({
-				hour: hour,
-				minute: minute,
-				is24Hour: true
-			})
-
-			console.warn(hour);
-
-		} catch (e) {
-			console.warn('Erro TimePicker: ', e)
+		if (TimePickerAndroid.timeSetAction) {
+			this.setState({ hour: `${hour}:${minute}h` })
 		}
 	}
 
@@ -45,8 +40,7 @@ export default class RegisterCap extends Component {
 			latitude: '',
 			longitude: '',
 			day: '',
-			hour: '',
-			minute: 0,
+			hour: '00:00h',
 			telephone: '',
 			leader: '',
 			subLeader: '',
@@ -84,7 +78,7 @@ export default class RegisterCap extends Component {
 					<MediumInput>
 						<ColMediumInput>
 							<Label>Dia</Label>
-							<Picker onValueChange={day => this.setState({ day })} selectedValue={this.state.day} style={{ marginLeft: 12 }}>
+							<Picker onValueChange={day => this.setState({ day })} selectedValue={this.state.day} style={{ marginLeft: 12, fontSize: 20 }}>
 								<Picker.Item label="Selecione" value="" />
 								<Picker.Item label="Segunda" value="Segunda" />
 								<Picker.Item label="Terça" value="Terca" />
@@ -98,7 +92,12 @@ export default class RegisterCap extends Component {
 
 						<ColMediumInput>
 							<Label>Hora</Label>
-							<InputText onChangeText={hour => this.setState({ hour })} value={this.state.hour} />
+							<RowHour>
+								<Text style={{ fontSize: 20 }}>{this.state.hour}</Text>
+								<TouchableOpacity onPress={() => this.setHour()} style={{ backgroundColor: 'pink', paddingHorizontal: 5, paddingVertical: 2, borderRadius: 4 }}>
+									<Icon name="md-time" size={35} color="#000" />
+								</TouchableOpacity>
+							</RowHour>
 						</ColMediumInput>
 					</MediumInput>
 

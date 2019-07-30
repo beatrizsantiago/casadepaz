@@ -43,3 +43,11 @@ export const TextButton = styled.Text`
     text-transform: uppercase;
     color: #000;
 `
+
+export const RowHour = styled.View`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0 20px;
+`

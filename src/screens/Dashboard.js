@@ -12,9 +12,10 @@ export default class Dashboard extends Component {
 		numberCaps: 0
 	}
 
-	async componentDidMount() {
-		let numberCaps = await CapService.numberCaps()
-		this.setState({ numberCaps })
+	componentDidMount() {
+		CapService.numberCaps(quantityCaps => {
+			this.setState({ numberCaps: quantityCaps});
+		})
 	}
 
 	render() {
@@ -27,7 +28,7 @@ export default class Dashboard extends Component {
 						</Circle>
 						<Column>
 							<Text style={{ fontSize: 15, textTransform: "uppercase" }}>Quantidade: </Text>
-							<Text style={{ fontSize: 30 }}>{ this.state.numberCaps } Casas de Paz</Text>
+							<Text style={{ fontSize: 30 }}>{this.state.numberCaps} Casas de Paz</Text>
 						</Column>
 					</BigBox>
 				</Row>

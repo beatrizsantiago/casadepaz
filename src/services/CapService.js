@@ -10,13 +10,17 @@ export class CapService {
             .collection('caps').add(cap)
     }
 
-    getCaps = async () => {
+    getCaps = callback => {
+        firebase.firestore().collection('caps').onSnapshot(snapshot => {
+            snapshot.forEach(cap => callback({id: cap.id, ...cap.data()}))
+        }) 
+           
         // Com forEach
         // let returnCaps = [];
         // await firebase.firestore().collection('caps').onSnapshot(snapshot => {
-        //     console.warn(snapshot);
         //     snapshot.forEach(item => {
         //         console.warn(item.data());
+        //         // returnCaps.push(item.data())
         //     })
         // });
         // return returnCaps
@@ -28,16 +32,15 @@ export class CapService {
         // })
         // return returnCaps
 
-        let caps = await firebase.firestore().collection('caps').get();
-        return caps.docs.map(cap => ({id: cap.id, ...cap.data()}))
+        // let caps = await firebase.firestore().collection('caps').get();
+        // return caps.docs.map(cap => ({id: cap.id, ...cap.data()}))
 
         // let caps = await firebase.firestore().collection('caps').onSnapshot();
         // return caps.map(cap => ({id: cap.id, ...cap.data()}))
     }
 
-    numberCaps = async () => {
-        let numCaps = await firebase.firestore().collection('caps').get()
-        return numCaps.size
+    numberCaps = callback => {
+        firebase.firestore().collection('caps').onSnapshot(snapshot => callback(snapshot.size));
     }
 }
 

@@ -54,8 +54,8 @@ const FeedbackStack = createStackNavigator({
 
 const AppDrawer = createDrawerNavigator(
 	{
-		SearchCap: SearchCapStack,
 		Dashboard: DashboardStack,
+		SearchCap: SearchCapStack,
 		RegisterCap: RegisterCapStack,
 		Feedback: FeedbackStack,
 	},
@@ -72,7 +72,7 @@ export default createAppContainer(
 			App: AppDrawer,
 		},
 		{
-			initialRouteName: 'App'
+			initialRouteName: 'Login'
 		}
 	)
 );

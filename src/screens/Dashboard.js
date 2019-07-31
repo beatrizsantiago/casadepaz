@@ -27,8 +27,8 @@ export default class Dashboard extends Component {
 							<Icon name="ios-home" color="#fff" size={60} />
 						</Circle>
 						<Column>
-							<Text style={{ fontSize: 15, textTransform: "uppercase" }}>Quantidade: </Text>
-							<Text style={{ fontSize: 30 }}>{this.state.numberCaps} Casas de Paz</Text>
+							<Text style={{ fontSize: 35 }}>{this.state.numberCaps}</Text>
+							<Text style={{ fontSize: 20, textTransform: "uppercase" }}>Casas de Paz </Text>
 						</Column>
 					</BigBox>
 				</Row>

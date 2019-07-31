@@ -24,7 +24,7 @@ export const BigBox = styled.View`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
     width: 95%;
     height: 130px;
     padding: 10px;
@@ -37,6 +37,7 @@ export const Circle = styled.View`
     align-items: center;
     width: 100px;
     height: 100px;
+    margin-right: 10px;
     border-radius: 50px;
     background-color: pink;
 `

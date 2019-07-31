@@ -14,7 +14,7 @@ export const Item = styled.TouchableOpacity`
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 20px;
+    padding: 16px 20px;
 `
 
 export const Title = styled.Text`

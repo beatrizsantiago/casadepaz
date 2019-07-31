@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 export const Bar = styled.View`
     display: flex;
+    align-items: center;
     flex-direction: row;
     height: 60px;
     border-bottom-color: #ebebeb;
@@ -11,10 +12,10 @@ export const Bar = styled.View`
 
 export const Button = styled.TouchableOpacity`
     position: absolute;
-    padding-top: 5px;
-    padding-left: 10px;
+    display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 10px;
 `
 
 export const TitleCenter = styled.View`

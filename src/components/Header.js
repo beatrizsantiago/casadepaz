@@ -9,10 +9,10 @@ export default Header = props => {
 	return (
 		<Bar>
 			<Button onPress={toggleDrawerButtonPressed}>
-				<Icon name="ios-menu" size={42} color="#000" />
+				<Icon name="ios-menu" size={42} color="#fff" />
 			</Button>
 			<TitleCenter>
-				<Title>{props.title}</Title>
+				<Title style={{color: '#fff'}}>{props.title}</Title>
 			</TitleCenter>
 		</Bar>
 	);

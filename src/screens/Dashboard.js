@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from "react-native";
+import { View, ScrollView, Text, Animated  } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import CapService from '../services/CapService'
@@ -14,7 +14,7 @@ export default class Dashboard extends Component {
 
 	componentDidMount() {
 		CapService.numberCaps(quantityCaps => {
-			this.setState({ numberCaps: quantityCaps});
+			this.setState({ numberCaps: quantityCaps });
 		})
 	}
 
@@ -32,17 +32,29 @@ export default class Dashboard extends Component {
 						</Column>
 					</BigBox>
 				</Row>
-				<Row>
-					<MediumBox />
-					<MediumBox />
-				</Row>
-				<Row>
-					<LargeBox />
-				</Row>
-				<Row>
-					<MediumBox />
-					<MediumBox />
-				</Row>
+				<ScrollView>
+					<Row>
+						<MediumBox />
+						<MediumBox />
+					</Row>
+					<Row>
+						<LargeBox />
+					</Row>
+					<Row>
+						<MediumBox />
+						<MediumBox />
+					</Row>
+					<Row>
+						<MediumBox />
+						<MediumBox />
+					</Row>
+					<Row>
+						<LargeBox />
+					</Row>
+					<Row>
+						<LargeBox />
+					</Row>
+				</ScrollView>
 			</Container>
 		);
 	}

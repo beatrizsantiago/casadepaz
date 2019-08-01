@@ -37,7 +37,7 @@ export const Circle = styled.View`
     align-items: center;
     width: 100px;
     height: 100px;
-    margin-right: 10px;
+    margin: 0 20px 0 10px;
     border-radius: 50px;
     background-color: #ff6028;
 `

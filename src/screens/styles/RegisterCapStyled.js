@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 export const Label = styled.Text`
     margin: 14px 12px 0px 12px;
     font-size: 18px;
-    text-transform: uppercase;
     color: #000;
     font-weight: bold;
 `
@@ -42,7 +41,6 @@ export const TextButton = styled.Text`
     font-size: 22px;
     text-transform: uppercase;
     color: #fff;
-    font-weight: bold;
 `
 
 export const RowHour = styled.View`

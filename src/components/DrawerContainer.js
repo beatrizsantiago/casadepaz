@@ -45,8 +45,8 @@ export default DrawerContainer = ({ navigation }) => {
                 <Title>Feedback</Title>
             </Item>
             <Item onPress={this.handlePress}>
-                <Icon name="logout" size={32} color="#000" />
-                <Title>Sair</Title>
+                <Icon name="logout" size={32} color="#ff6028" />
+                <Title style={{ color: '#ff6028' }}>Sair</Title>
             </Item>
         </Container>
     )

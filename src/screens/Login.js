@@ -70,7 +70,7 @@ export default class Login extends Component {
                     <InputText secureTextEntry onChangeText={password => this.setState({ password })} value={this.state.password} />
 
                     <Button onPress={this.handleLogin} >
-                        <Text style={{ fontSize: 20 }}>LOGIN</Text>
+                        <Text style={{ fontSize: 20, color: '#fff' }}>LOGIN</Text>
                     </Button>
 
                     <Footer>

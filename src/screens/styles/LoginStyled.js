@@ -28,7 +28,7 @@ export const Button = styled.TouchableOpacity`
     height: 45px;
     margin: 15px 40px;
     border-radius: 5px;
-    background-color: pink;
+    background-color: #ff6028;
 `
 
 export const Footer = styled.View`

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 export const Label = styled.Text`
-    margin: 14px 20px 0px 20px;
+    margin: 14px 12px 0px 12px;
     font-size: 18px;
     text-transform: uppercase;
     color: #000;
@@ -11,7 +11,7 @@ export const Label = styled.Text`
 
 export const InputText = styled.TextInput`
     height: 42px;
-    margin: 0px 20px;
+    margin: 0px 12px;
     padding: 1px;
     border-bottom-width: 2px;
     border-bottom-color: #9c9c9c;
@@ -34,14 +34,15 @@ export const Button = styled.TouchableOpacity`
     justify-content: center;
     align-items: center;
     height: 60px;
-    margin: 20px;
-    background-color: pink;
+    margin: 12px;
+    background-color: #ff6028;
 `
 
 export const TextButton = styled.Text`
     font-size: 22px;
     text-transform: uppercase;
-    color: #000;
+    color: #fff;
+    font-weight: bold;
 `
 
 export const RowHour = styled.View`
@@ -49,5 +50,5 @@ export const RowHour = styled.View`
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
-    margin: 0 20px;
+    margin: 0 12px;
 `

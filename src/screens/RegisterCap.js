@@ -29,9 +29,9 @@ export default class RegisterCap extends Component {
 			is24Hour: true,
 		})
 
-		if (TimePickerAndroid.timeSetAction) {
+		if (action === TimePickerAndroid.timeSetAction) {
 			this.setState({ hour: `${hour}:${minute}h` })
-		}
+		} 
 	}
 
 	clearData = () => {
@@ -94,8 +94,8 @@ export default class RegisterCap extends Component {
 							<Label>Hora</Label>
 							<RowHour>
 								<Text style={{ fontSize: 20 }}>{this.state.hour}</Text>
-								<TouchableOpacity onPress={() => this.setHour()} style={{ backgroundColor: 'pink', paddingHorizontal: 5, paddingVertical: 2, borderRadius: 4 }}>
-									<Icon name="md-time" size={35} color="#000" />
+								<TouchableOpacity onPress={() => this.setHour()} style={{ backgroundColor: '#ff6028', paddingHorizontal: 5, paddingVertical: 2, borderRadius: 4 }}>
+									<Icon name="md-time" size={35} color="#fff" />
 								</TouchableOpacity>
 							</RowHour>
 						</ColMediumInput>

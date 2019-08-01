@@ -39,7 +39,7 @@ export const Circle = styled.View`
     height: 100px;
     margin-right: 10px;
     border-radius: 50px;
-    background-color: pink;
+    background-color: #ff6028;
 `
 
 export const MediumBox = styled.View`

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { Picker, TimePickerAndroid, ScrollView, TouchableOpacity, Text } from "react-native"
+import { Picker, TimePickerAndroid, ScrollView, TouchableOpacity, Text, StyleSheet } from "react-native"
+import Icon from 'react-native-vector-icons/Ionicons'
+import { TextInputMask } from 'react-native-masked-text'
 
 import CapService from '../services/CapService'
 
 import { Container } from './styles/MainStyled'
 import { Label, InputText, MediumInput, ColMediumInput, Button, TextButton, RowHour } from './styles/RegisterCapStyled'
-import Icon from 'react-native-vector-icons/Ionicons'
 
 export default class RegisterCap extends Component {
 
@@ -102,7 +103,7 @@ export default class RegisterCap extends Component {
 					</MediumInput>
 
 					<Label>Telefone</Label>
-					<InputText onChangeText={telephone => this.setState({ telephone })} value={this.state.telephone} />
+					<TextInputMask style={styles.inputMask} type={'cel-phone'} options={{maskType: 'BRL', withDDD: true, dddMask: '(99) '}} onChangeText={telephone => this.setState({ telephone })} value={this.state.telephone} keyboardType="numeric" />
 
 					<Label>Líder</Label>
 					<InputText onChangeText={leader => this.setState({ leader })} value={this.state.leader} />
@@ -125,3 +126,14 @@ export default class RegisterCap extends Component {
 	}
 
 };
+
+const styles = StyleSheet.create({
+	inputMask: {
+		height: 40,
+		marginHorizontal: 12,
+		padding: 1,
+		fontSize: 20,
+		borderBottomWidth: 2,
+		borderBottomColor: '#9c9c9c',
+	}
+})

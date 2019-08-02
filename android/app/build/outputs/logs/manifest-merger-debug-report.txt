@@ -183,13 +183,13 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\an
 	tools:ignore
 		ADDED from C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\android\app\src\debug\AndroidManifest.xml:7:75-114
 	android:roundIcon
-		ADDED from C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\android\app\src\main\AndroidManifest.xml:10:7-52
-		ADDED from C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\android\app\src\main\AndroidManifest.xml:10:7-52
+		ADDED from C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\android\app\src\main\AndroidManifest.xml:10:7-41
+		ADDED from C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\android\app\src\main\AndroidManifest.xml:10:7-41
 	tools:targetApi
 		ADDED from C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\android\app\src\debug\AndroidManifest.xml:7:54-74
 	android:icon
-		ADDED from C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\android\app\src\main\AndroidManifest.xml:9:7-41
-		ADDED from C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\android\app\src\main\AndroidManifest.xml:9:7-41
+		ADDED from C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\android\app\src\main\AndroidManifest.xml:9:7-36
+		ADDED from C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\android\app\src\main\AndroidManifest.xml:9:7-36
 	android:allowBackup
 		ADDED from C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\android\app\src\main\AndroidManifest.xml:11:7-34
 		ADDED from C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\android\app\src\main\AndroidManifest.xml:11:7-34

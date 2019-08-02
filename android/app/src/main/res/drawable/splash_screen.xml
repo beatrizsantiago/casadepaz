@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/fundo_app"/>
+    <!-- <item>
+      <bitmap 
+        android:width="20dp"
+        android:height="20dp"
+        android:gravity="center" 
+        android:src="@drawable/icon_cap"/>
+    </item> -->
+
+    <item
+        android:width="320dp"
+        android:height="180dp"
+        android:drawable="@drawable/icon_cap"
+        android:gravity="center" />
+</layer-list>

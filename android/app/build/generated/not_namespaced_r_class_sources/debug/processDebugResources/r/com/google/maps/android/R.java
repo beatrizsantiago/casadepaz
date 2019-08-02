@@ -110,53 +110,53 @@ public final class R {
     public static final class raw {
         private raw() {}
 
-        public static final int amu_ballon_gx_prefix = 0x7f0b0000;
-        public static final int amu_basic_folder = 0x7f0b0001;
-        public static final int amu_basic_placemark = 0x7f0b0002;
-        public static final int amu_cdata = 0x7f0b0003;
-        public static final int amu_default_balloon = 0x7f0b0004;
-        public static final int amu_document_nest = 0x7f0b0005;
-        public static final int amu_draw_order_ground_overlay = 0x7f0b0006;
-        public static final int amu_extended_data = 0x7f0b0007;
-        public static final int amu_ground_overlay = 0x7f0b0008;
-        public static final int amu_ground_overlay_color = 0x7f0b0009;
-        public static final int amu_inline_style = 0x7f0b000a;
-        public static final int amu_multigeometry_placemarks = 0x7f0b000b;
-        public static final int amu_multiple_placemarks = 0x7f0b000c;
-        public static final int amu_nested_folders = 0x7f0b000d;
-        public static final int amu_nested_multigeometry = 0x7f0b000e;
-        public static final int amu_poly_style_boolean_alpha = 0x7f0b000f;
-        public static final int amu_poly_style_boolean_numeric = 0x7f0b0010;
-        public static final int amu_unknwown_folder = 0x7f0b0011;
-        public static final int amu_unsupported = 0x7f0b0012;
-        public static final int amu_visibility_ground_overlay = 0x7f0b0013;
+        public static final int amu_ballon_gx_prefix = 0x7f0a0000;
+        public static final int amu_basic_folder = 0x7f0a0001;
+        public static final int amu_basic_placemark = 0x7f0a0002;
+        public static final int amu_cdata = 0x7f0a0003;
+        public static final int amu_default_balloon = 0x7f0a0004;
+        public static final int amu_document_nest = 0x7f0a0005;
+        public static final int amu_draw_order_ground_overlay = 0x7f0a0006;
+        public static final int amu_extended_data = 0x7f0a0007;
+        public static final int amu_ground_overlay = 0x7f0a0008;
+        public static final int amu_ground_overlay_color = 0x7f0a0009;
+        public static final int amu_inline_style = 0x7f0a000a;
+        public static final int amu_multigeometry_placemarks = 0x7f0a000b;
+        public static final int amu_multiple_placemarks = 0x7f0a000c;
+        public static final int amu_nested_folders = 0x7f0a000d;
+        public static final int amu_nested_multigeometry = 0x7f0a000e;
+        public static final int amu_poly_style_boolean_alpha = 0x7f0a000f;
+        public static final int amu_poly_style_boolean_numeric = 0x7f0a0010;
+        public static final int amu_unknwown_folder = 0x7f0a0011;
+        public static final int amu_unsupported = 0x7f0a0012;
+        public static final int amu_visibility_ground_overlay = 0x7f0a0013;
     }
     public static final class string {
         private string() {}
 
-        public static final int common_google_play_services_enable_button = 0x7f0c0042;
-        public static final int common_google_play_services_enable_text = 0x7f0c0043;
-        public static final int common_google_play_services_enable_title = 0x7f0c0044;
-        public static final int common_google_play_services_install_button = 0x7f0c0045;
-        public static final int common_google_play_services_install_title = 0x7f0c0047;
-        public static final int common_google_play_services_notification_ticker = 0x7f0c0049;
-        public static final int common_google_play_services_unknown_issue = 0x7f0c004a;
-        public static final int common_google_play_services_unsupported_text = 0x7f0c004b;
-        public static final int common_google_play_services_update_button = 0x7f0c004c;
-        public static final int common_google_play_services_update_text = 0x7f0c004d;
-        public static final int common_google_play_services_update_title = 0x7f0c004e;
-        public static final int common_google_play_services_updating_text = 0x7f0c004f;
-        public static final int common_google_play_services_wear_update_text = 0x7f0c0050;
-        public static final int common_open_on_phone = 0x7f0c0051;
-        public static final int common_signin_button_text = 0x7f0c0052;
-        public static final int common_signin_button_text_long = 0x7f0c0053;
+        public static final int common_google_play_services_enable_button = 0x7f0b0042;
+        public static final int common_google_play_services_enable_text = 0x7f0b0043;
+        public static final int common_google_play_services_enable_title = 0x7f0b0044;
+        public static final int common_google_play_services_install_button = 0x7f0b0045;
+        public static final int common_google_play_services_install_title = 0x7f0b0047;
+        public static final int common_google_play_services_notification_ticker = 0x7f0b0049;
+        public static final int common_google_play_services_unknown_issue = 0x7f0b004a;
+        public static final int common_google_play_services_unsupported_text = 0x7f0b004b;
+        public static final int common_google_play_services_update_button = 0x7f0b004c;
+        public static final int common_google_play_services_update_text = 0x7f0b004d;
+        public static final int common_google_play_services_update_title = 0x7f0b004e;
+        public static final int common_google_play_services_updating_text = 0x7f0b004f;
+        public static final int common_google_play_services_wear_update_text = 0x7f0b0050;
+        public static final int common_open_on_phone = 0x7f0b0051;
+        public static final int common_signin_button_text = 0x7f0b0052;
+        public static final int common_signin_button_text_long = 0x7f0b0053;
     }
     public static final class style {
         private style() {}
 
-        public static final int amu_Bubble_TextAppearance_Dark = 0x7f0d0173;
-        public static final int amu_Bubble_TextAppearance_Light = 0x7f0d0174;
-        public static final int amu_ClusterIcon_TextAppearance = 0x7f0d0175;
+        public static final int amu_Bubble_TextAppearance_Dark = 0x7f0c0173;
+        public static final int amu_Bubble_TextAppearance_Light = 0x7f0c0174;
+        public static final int amu_ClusterIcon_TextAppearance = 0x7f0c0175;
     }
     public static final class styleable {
         private styleable() {}

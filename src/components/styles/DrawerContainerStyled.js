@@ -6,7 +6,7 @@ export const Container = styled.View`
 `
 
 export const Header = styled.View`
-    background-color: #ff6028;
+    background-color: #f68121;
     height: 150px;
 `
 

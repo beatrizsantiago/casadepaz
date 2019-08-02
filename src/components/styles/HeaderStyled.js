@@ -8,7 +8,7 @@ export const Bar = styled.View`
     height: 60px;
     border-bottom-color: #ebebeb;
     border-bottom-width: 2px;
-    background-color: #ff6028;
+    background-color: #f68121;
 `
 
 export const Button = styled.TouchableOpacity`

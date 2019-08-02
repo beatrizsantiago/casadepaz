@@ -95,7 +95,7 @@ export default class RegisterCap extends Component {
 							<Label>Hora</Label>
 							<RowHour>
 								<Text style={{ fontSize: 20 }}>{this.state.hour}</Text>
-								<TouchableOpacity onPress={() => this.setHour()} style={{ backgroundColor: '#ff6028', paddingHorizontal: 5, paddingVertical: 2, borderRadius: 4 }}>
+								<TouchableOpacity onPress={() => this.setHour()} style={styles.hourButton}>
 									<Icon name="md-time" size={35} color="#fff" />
 								</TouchableOpacity>
 							</RowHour>
@@ -135,5 +135,11 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		borderBottomWidth: 2,
 		borderBottomColor: '#9c9c9c',
+	},
+	hourButton: {
+		backgroundColor: '#f68121', 
+		paddingHorizontal: 5, 
+		paddingVertical: 2, 
+		borderRadius: 4
 	}
 })

@@ -72,7 +72,7 @@ export default createAppContainer(
 			App: AppDrawer,
 		},
 		{
-			initialRouteName: 'App'
+			initialRouteName: 'Login'
 		}
 	)
 );

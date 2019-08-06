@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, KeyboardAvoidingView, Alert } from 'react-native'
+import { Text, KeyboardAvoidingView, Alert, PermissionsAndroid, Platform } from 'react-native'
 
 import UserService from '../services/UserService'
 
@@ -16,6 +16,11 @@ export default class Login extends Component {
 
     static navigationOptions = {
         header: null,
+    }
+    
+    async componentDidMount() {
+        if(Platform.OS = "android")
+            await PermissionsAndroid.request( PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION );
     }
 
     errorLogin = () => (

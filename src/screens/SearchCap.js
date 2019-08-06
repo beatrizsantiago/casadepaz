@@ -51,7 +51,7 @@ export default class SearchCap extends Component {
 
         return (
             <Container>
-                <MapView style={styles.map} initialRegion={{ latitude: -3.71214, longitude: -38.5539, latitudeDelta: 0.03, longitudeDelta: 0.03 }} showsUserLocation>
+                <MapView style={styles.map} initialRegion={{ latitude: -3.71214, longitude: -38.5539, latitudeDelta: 0.03, longitudeDelta: 0.03 }} showsUserLocation={true}>
                     {
                         this.state.searching == true ?
                             this.state.visibleCaps.map(cap => (

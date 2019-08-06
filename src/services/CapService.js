@@ -42,10 +42,6 @@ export class CapService {
     numberCaps = callback => {
         firebase.firestore().collection('caps').onSnapshot(snapshot => callback(snapshot.size));
     }
-
-    searchLocaleCap = () => {
-        
-    }
 }
 
 export default new CapService()

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { StyleSheet, View, TouchableOpacity, Text } from 'react-native'
+import { StyleSheet, View, TouchableOpacity, Text, Picker } from 'react-native'
 import MapView, { Marker } from 'react-native-maps'
 import Autocomplete from 'react-native-autocomplete-input';
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -8,6 +8,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import CapService from '../services/CapService'
 
 import { Container } from './styles/MainStyled'
+import { SearchContainer, AutocompleteContainer, SelectContainer, ButtonClose } from './styles/SearchCapStyled'
 
 export default class SearchCap extends Component {
 
@@ -42,7 +43,7 @@ export default class SearchCap extends Component {
     }
 
     clearInput = () => {
-        this.setState({ searchLocale: '', searching: false })
+        this.setState({ searchLocale: '', searching: false, hideResults: true })
     }
 
     render() {
@@ -63,29 +64,52 @@ export default class SearchCap extends Component {
                     }
                 </MapView>
 
-                <View style={styles.autocompleteContainer}>
-                    <Autocomplete
-                        onBlur={() => this.setState({ hideResults: true, searching: this.state.searchLocale ? true : false })}
-                        hideResults={this.state.hideResults}
-                        data={data}
-                        defaultValue={this.state.searchLocale}
-                        onChangeText={text => this.setState({ searchLocale: text, hideResults: false })}
-                        renderItem={({ item, i }) => (
-                            <TouchableOpacity style={styles.buttonItem} onPress={() => this.handleSearch(item)}>
-                                <Text style={{ fontSize: 16 }}>{item.local}</Text>
-                            </TouchableOpacity>
-                        )}
-                        inputContainerStyle={styles.inputSearch}
-                        placeholder="Digite o endereço / bairro / CEP da cap..." />
+                <SearchContainer>
+                    <AutocompleteContainer>
+                        <Autocomplete
+                            onBlur={() => this.setState({ hideResults: true, searching: this.state.searchLocale ? true : false })}
+                            hideResults={this.state.hideResults}
+                            data={data}
+                            defaultValue={this.state.searchLocale}
+                            onChangeText={text => this.setState({ searchLocale: text, hideResults: false })}
+                            renderItem={({ item, i }) => (
+                                <TouchableOpacity style={styles.buttonItem} onPress={() => this.handleSearch(item)}>
+                                    <Text style={{ fontSize: 16 }}>{item.local}</Text>
+                                </TouchableOpacity>
+                            )}
+                            inputContainerStyle={styles.inputSearch}
+                            placeholder="Digite o endereço / bairro / CEP da cap..." />
 
-                    {this.state.searchLocale ?
-                        <TouchableOpacity style={styles.buttonClose} onPress={() => this.clearInput()}>
-                            <Icon name="ios-close" color="#fff" size={40} />
-                        </TouchableOpacity>
-                        :
-                        <View></View>
-                    }
-                </View>
+                        {this.state.searchLocale ?
+                            <ButtonClose onPress={() => this.clearInput()}>
+                                <Icon name="ios-close" color="#fff" size={40} />
+                            </ButtonClose>
+                            :
+                            <View></View>
+                        }
+                    </AutocompleteContainer>
+                    <SelectContainer>
+                        <Picker style={styles.select} >
+                            <Picker.Item label="Dia" value="" />
+                            <Picker.Item label="Segunda" value="Segunda" />
+                            <Picker.Item label="Terça" value="Terca" />
+                            <Picker.Item label="Quarta" value="Quarta" />
+                            <Picker.Item label="Quinta" value="Quinta" />
+                            <Picker.Item label="Sexta" value="Sexta" />
+                            <Picker.Item label="Sábado" value="Sabado" />
+                            <Picker.Item label="Domingo" value="Domingo" />
+                        </Picker>
+                        <Picker style={styles.select} >
+                            <Picker.Item label="Hora" value="" />
+                            <Picker.Item label="18h" value="Segunda" />
+                            <Picker.Item label="18:30h" value="Segunda" />
+                            <Picker.Item label="19h" value="Segunda" />
+                            <Picker.Item label="19:30h" value="Terca" />
+                            <Picker.Item label="20h" value="Quarta" />
+                            <Picker.Item label="20:30h" value="Quinta" />
+                        </Picker>
+                    </SelectContainer>
+                </SearchContainer>
             </Container>
         )
     }
@@ -94,13 +118,6 @@ export default class SearchCap extends Component {
 const styles = StyleSheet.create({
     map: {
         flex: 1
-    },
-    autocompleteContainer: {
-        position: 'absolute',
-        display: 'flex',
-        flexDirection: 'row',
-        width: '100%',
-        padding: 18
     },
     buttonItem: {
         padding: 10,
@@ -112,13 +129,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 5
     },
-    buttonClose: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 46,
-        height: 42,
-        borderRadius: 5,
-        backgroundColor: '#f68121',
+    select: { 
+        width: '48.6%', 
+        height: 38, 
+        backgroundColor: '#fff'
     }
 })

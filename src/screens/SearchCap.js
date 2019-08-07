@@ -17,6 +17,7 @@ export default class SearchCap extends Component {
         caps: [],
         visibleCaps: [],
         searchLocale: '',
+        searchDay: '',
         searching: false,
         hideResults: true,
         region: {
@@ -24,10 +25,10 @@ export default class SearchCap extends Component {
             longitude: 0.0,
             latitudeDelta: 0.03,
             longitudeDelta: 0.03
-        }
+        },
     }
 
-    currentPosition = () => {
+    setCurrentPosition = () => {
         Geolocation.getCurrentPosition(info => {
             this.setState({ region: { latitude: info.coords.latitude, longitude: info.coords.longitude, latitudeDelta: 0.03, longitudeDelta: 0.03 } })
         });
@@ -40,7 +41,7 @@ export default class SearchCap extends Component {
             this.setState({ caps: oldCaps })
         })
 
-        this.currentPosition()
+        this.setCurrentPosition()
     }
 
     filterLocale = locale => {
@@ -48,6 +49,15 @@ export default class SearchCap extends Component {
         let filterResult = searchCaps.filter(filterCap => filterCap.local.includes(locale))
 
         return filterResult
+    }
+
+    filterDay = day => {
+        let searchCaps = this.state.caps
+        let filterDayResult = searchCaps.filter(filterCap => filterCap.day.includes(day))
+
+        console.warn(filterDayResult);
+
+        // return filterResult
     }
 
     handleSearch = resultCap => {
@@ -70,7 +80,7 @@ export default class SearchCap extends Component {
 
     clearInput = () => {
         this.setState({ searchLocale: '', searching: false, hideResults: true })
-        this.currentPosition()
+        this.setCurrentPosition()
     }
 
     render() {
@@ -125,7 +135,7 @@ export default class SearchCap extends Component {
                     </AutocompleteContainer>
                     <SelectContainer>
                         <Select>
-                            <Picker style={styles.select} >
+                            <Picker style={styles.select} onValueChange={day => this.setState({ searchDay: day })} selectedValue={this.state.searchDay} >
                                 <Picker.Item label="Dia" value="" />
                                 <Picker.Item label="Segunda" value="Segunda" />
                                 <Picker.Item label="Terça" value="Terca" />
@@ -139,12 +149,11 @@ export default class SearchCap extends Component {
                         <Select>
                             <Picker style={styles.select} >
                                 <Picker.Item label="Hora" value="" />
-                                <Picker.Item label="18h" value="Segunda" />
-                                <Picker.Item label="18:30h" value="Segunda" />
-                                <Picker.Item label="19h" value="Segunda" />
-                                <Picker.Item label="19:30h" value="Terca" />
-                                <Picker.Item label="20h" value="Quarta" />
-                                <Picker.Item label="20:30h" value="Quinta" />
+                                <Picker.Item label="18h" value="" />
+                                <Picker.Item label="18:30h" value="" />
+                                <Picker.Item label="19:30h" value="" />
+                                <Picker.Item label="20h" value="" />
+                                <Picker.Item label="20:30h" value="" />
                             </Picker>
                         </Select>
                     </SelectContainer>

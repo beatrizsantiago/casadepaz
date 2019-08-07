@@ -27,6 +27,12 @@ export default class SearchCap extends Component {
         }
     }
 
+    currentPosition = () => {
+        Geolocation.getCurrentPosition(info => {
+            this.setState({ region: { latitude: info.coords.latitude, longitude: info.coords.longitude, latitudeDelta: 0.03, longitudeDelta: 0.03 } })
+        });
+    }
+
     componentDidMount() {
         CapService.getCaps(cap => {
             let oldCaps = this.state.caps
@@ -34,11 +40,7 @@ export default class SearchCap extends Component {
             this.setState({ caps: oldCaps })
         })
 
-        Geolocation.getCurrentPosition(info => {
-            console.warn(info.coords.latitude)
-            console.warn(info.coords.longitude);
-            this.setState({ region: { latitude: info.coords.latitude, longitude: info.coords.longitude, latitudeDelta: 0.03, longitudeDelta: 0.03 } })
-        });
+        this.currentPosition()
     }
 
     filterLocale = locale => {
@@ -52,11 +54,23 @@ export default class SearchCap extends Component {
         let result = []
         result.push(resultCap)
 
-        this.setState({ visibleCaps: result, searchLocale: resultCap.local, hideResults: true, searching: true })
+        this.setState({
+            visibleCaps: result,
+            searchLocale: resultCap.local,
+            hideResults: true,
+            searching: true,
+            region: {
+                latitude: parseFloat(resultCap.latitude),
+                longitude: parseFloat(resultCap.longitude),
+                latitudeDelta: 0.03,
+                longitudeDelta: 0.03
+            }
+        })
     }
 
     clearInput = () => {
         this.setState({ searchLocale: '', searching: false, hideResults: true })
+        this.currentPosition()
     }
 
     render() {

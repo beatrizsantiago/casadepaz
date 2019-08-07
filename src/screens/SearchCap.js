@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 
 import { StyleSheet, View, TouchableOpacity, Text, Picker } from 'react-native'
-import MapView, { Marker } from 'react-native-maps'
+import MapView, { Marker, Callout } from 'react-native-maps'
+import Geolocation from '@react-native-community/geolocation';
 import Autocomplete from 'react-native-autocomplete-input';
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import CapService from '../services/CapService'
 
 import { Container } from './styles/MainStyled'
-import { SearchContainer, AutocompleteContainer, SelectContainer, ButtonClose } from './styles/SearchCapStyled'
+import { SearchContainer, AutocompleteContainer, SelectContainer, Select, ButtonClose } from './styles/SearchCapStyled'
 
 export default class SearchCap extends Component {
 
@@ -17,7 +18,13 @@ export default class SearchCap extends Component {
         visibleCaps: [],
         searchLocale: '',
         searching: false,
-        hideResults: true
+        hideResults: true,
+        region: {
+            latitude: 0.0,
+            longitude: 0.0,
+            latitudeDelta: 0.03,
+            longitudeDelta: 0.03
+        }
     }
 
     componentDidMount() {
@@ -26,6 +33,12 @@ export default class SearchCap extends Component {
             oldCaps.push(cap)
             this.setState({ caps: oldCaps })
         })
+
+        Geolocation.getCurrentPosition(info => {
+            console.warn(info.coords.latitude)
+            console.warn(info.coords.longitude);
+            this.setState({ region: { latitude: info.coords.latitude, longitude: info.coords.longitude, latitudeDelta: 0.03, longitudeDelta: 0.03 } })
+        });
     }
 
     filterLocale = locale => {
@@ -51,15 +64,23 @@ export default class SearchCap extends Component {
 
         return (
             <Container>
-                <MapView style={styles.map} initialRegion={{ latitude: -3.71214, longitude: -38.5539, latitudeDelta: 0.03, longitudeDelta: 0.03 }} showsUserLocation={true}>
+                <MapView style={styles.map} region={this.state.region} showsUserLocation={true} >
                     {
                         this.state.searching == true ?
                             this.state.visibleCaps.map(cap => (
-                                <Marker key={cap.id} coordinate={{ latitude: parseFloat(cap.latitude), longitude: parseFloat(cap.longitude) }} pinColor="#f68121" />
+                                <Marker key={cap.id} coordinate={{ latitude: parseFloat(cap.latitude), longitude: parseFloat(cap.longitude) }} pinColor="#f68121">
+                                    <Callout>
+                                        <Text>{cap.local}</Text>
+                                    </Callout>
+                                </Marker>
                             ))
                             :
                             this.state.caps.map(cap => (
-                                <Marker key={cap.id} coordinate={{ latitude: parseFloat(cap.latitude), longitude: parseFloat(cap.longitude) }} pinColor="#f68121" />
+                                <Marker key={cap.id} coordinate={{ latitude: parseFloat(cap.latitude), longitude: parseFloat(cap.longitude) }} pinColor="#f68121">
+                                    <Callout>
+                                        <Text>{cap.local}</Text>
+                                    </Callout>
+                                </Marker>
                             ))
                     }
                 </MapView>
@@ -89,25 +110,29 @@ export default class SearchCap extends Component {
                         }
                     </AutocompleteContainer>
                     <SelectContainer>
-                        <Picker style={styles.select} >
-                            <Picker.Item label="Dia" value="" />
-                            <Picker.Item label="Segunda" value="Segunda" />
-                            <Picker.Item label="Terça" value="Terca" />
-                            <Picker.Item label="Quarta" value="Quarta" />
-                            <Picker.Item label="Quinta" value="Quinta" />
-                            <Picker.Item label="Sexta" value="Sexta" />
-                            <Picker.Item label="Sábado" value="Sabado" />
-                            <Picker.Item label="Domingo" value="Domingo" />
-                        </Picker>
-                        <Picker style={styles.select} >
-                            <Picker.Item label="Hora" value="" />
-                            <Picker.Item label="18h" value="Segunda" />
-                            <Picker.Item label="18:30h" value="Segunda" />
-                            <Picker.Item label="19h" value="Segunda" />
-                            <Picker.Item label="19:30h" value="Terca" />
-                            <Picker.Item label="20h" value="Quarta" />
-                            <Picker.Item label="20:30h" value="Quinta" />
-                        </Picker>
+                        <Select>
+                            <Picker style={styles.select} >
+                                <Picker.Item label="Dia" value="" />
+                                <Picker.Item label="Segunda" value="Segunda" />
+                                <Picker.Item label="Terça" value="Terca" />
+                                <Picker.Item label="Quarta" value="Quarta" />
+                                <Picker.Item label="Quinta" value="Quinta" />
+                                <Picker.Item label="Sexta" value="Sexta" />
+                                <Picker.Item label="Sábado" value="Sabado" />
+                                <Picker.Item label="Domingo" value="Domingo" />
+                            </Picker>
+                        </Select>
+                        <Select>
+                            <Picker style={styles.select} >
+                                <Picker.Item label="Hora" value="" />
+                                <Picker.Item label="18h" value="Segunda" />
+                                <Picker.Item label="18:30h" value="Segunda" />
+                                <Picker.Item label="19h" value="Segunda" />
+                                <Picker.Item label="19:30h" value="Terca" />
+                                <Picker.Item label="20h" value="Quarta" />
+                                <Picker.Item label="20:30h" value="Quinta" />
+                            </Picker>
+                        </Select>
                     </SelectContainer>
                 </SearchContainer>
             </Container>
@@ -129,9 +154,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 5
     },
-    select: { 
-        width: '48.6%', 
-        height: 38, 
-        backgroundColor: '#fff'
+    select: {
+        width: '97%',
+        height: 38,
+        backgroundColor: '#fff',
     }
 })

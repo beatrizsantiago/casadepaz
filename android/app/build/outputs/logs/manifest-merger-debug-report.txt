@@ -7,6 +7,7 @@ INJECTED from C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\android\app\sr
 MERGED from C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\android\app\src\main\AndroidManifest.xml:1:1-33:12
 MERGED from [:react-native-firebase] C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\node_modules\react-native-firebase\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-23:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\ebb0e51e27f74fecd6a8954ab494429b\AndroidManifest.xml:17:1-22:12
+MERGED from [:@react-native-community_geolocation] C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\node_modules\@react-native-community\geolocation\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-maps] C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-12:12
 MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\1810c45e867baa6a4771cdc86b08c3f3\AndroidManifest.xml:17:1-32:12
 MERGED from [com.google.firebase:firebase-auth:17.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\97ecfec8403a98262febe63e38d6cd39\AndroidManifest.xml:17:1-42:12
@@ -245,6 +246,8 @@ MERGED from [:react-native-firebase] C:\Users\ana.santiago.REDEINOVA\Documents\c
 MERGED from [:react-native-firebase] C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\node_modules\react-native-firebase\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\ebb0e51e27f74fecd6a8954ab494429b\AndroidManifest.xml:20:5-43
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\ebb0e51e27f74fecd6a8954ab494429b\AndroidManifest.xml:20:5-43
+MERGED from [:@react-native-community_geolocation] C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\node_modules\@react-native-community\geolocation\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:@react-native-community_geolocation] C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\node_modules\@react-native-community\geolocation\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-maps] C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-maps] C:\Users\ana.santiago.REDEINOVA\Documents\casadepaz\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\ana.santiago.REDEINOVA\.gradle\caches\transforms-2\files-2.1\1810c45e867baa6a4771cdc86b08c3f3\AndroidManifest.xml:20:5-44

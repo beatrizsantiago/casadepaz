@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 
 import CapService from '../services/CapService'
 
-import { Container, SearchContainer, AutocompleteContainer, SelectContainer, Select, ButtonClose, ButtonCloseCard } from './styles/SearchCapStyled'
+import { Container, SearchContainer, AutocompleteContainer, SelectContainer, Select, ButtonClose, ButtonCloseCard, TextLarge, MediumInput, TextMedim } from './styles/SearchCapStyled'
 
 export default class SearchCap extends Component {
 
@@ -27,6 +27,8 @@ export default class SearchCap extends Component {
         },
         details: false,
         animatedValue: new Animated.Value(400),
+        idCapSelected: '',
+        dataCapSelected: {},
     }
 
     setCurrentPosition = () => {
@@ -84,7 +86,11 @@ export default class SearchCap extends Component {
         this.setCurrentPosition()
     }
 
-    cardToggleHandle = () => {
+    cardToggleHandle = selectedCap => {
+
+        this.setState({ dataCapSelected: selectedCap ? selectedCap : {} })
+        console.warn(this.state.dataCapSelected);
+        
         this.setState(
             { details: !this.state.details },
             () => {
@@ -110,7 +116,7 @@ export default class SearchCap extends Component {
                     {
                         this.state.searching == true ?
                             this.state.visibleCaps.map(cap => (
-                                <Marker key={cap.id} coordinate={{ latitude: parseFloat(cap.latitude), longitude: parseFloat(cap.longitude) }} onPress={() => this.cardToggleHandle()} pinColor="#f68121">
+                                <Marker key={cap.id} coordinate={{ latitude: parseFloat(cap.latitude), longitude: parseFloat(cap.longitude) }} onPress={() => this.cardToggleHandle(cap)} pinColor="#f68121">
                                     <Callout>
                                         <Text>{cap.local}</Text>
                                     </Callout>
@@ -118,7 +124,7 @@ export default class SearchCap extends Component {
                             ))
                             :
                             this.state.caps.map(cap => (
-                                <Marker key={cap.id} coordinate={{ latitude: parseFloat(cap.latitude), longitude: parseFloat(cap.longitude) }} onPress={() => {this.cardToggleHandle(); this.setState({ region: { latitude: parseFloat(cap.latitude), longitude: parseFloat(cap.longitude), latitudeDelta: 0.03, longitudeDelta: 0.03 } })}} pinColor="#f68121">
+                                <Marker key={cap.id} coordinate={{ latitude: parseFloat(cap.latitude), longitude: parseFloat(cap.longitude) }} onPress={() => {this.cardToggleHandle(cap); this.setState({ region: { latitude: parseFloat(cap.latitude), longitude: parseFloat(cap.longitude), latitudeDelta: 0.03, longitudeDelta: 0.03 } })}} pinColor="#f68121">
                                     <Callout>
                                         <Text>{cap.local}</Text>
                                     </Callout>
@@ -135,6 +141,7 @@ export default class SearchCap extends Component {
                             data={data}
                             defaultValue={this.state.searchLocale}
                             onChangeText={text => this.setState({ searchLocale: text, hideResults: false })}
+                            listContainerStyle={{ position: 'absolute', marginTop: 42, zIndex: 10 }}
                             renderItem={({ item, i }) => (
                                 <TouchableOpacity style={styles.buttonItem} onPress={() => this.handleSearch(item)}>
                                     <Text style={{ fontSize: 16 }}>{item.local}</Text>
@@ -181,6 +188,13 @@ export default class SearchCap extends Component {
                     <ButtonCloseCard onPress={() => this.cardToggleHandle()}>
                         <Icon name="ios-close" color="#f68121" size={35} />
                     </ButtonCloseCard>
+                    <MediumInput>
+                        <TextMedim>{`Dia: ${this.state.dataCapSelected.day}`}</TextMedim>
+                        <TextMedim>{`Hora: ${this.state.dataCapSelected.hour}`}</TextMedim>
+                    </MediumInput>
+                    <TextLarge>{`Contato: ${this.state.dataCapSelected.telephone}`}</TextLarge>
+                    <TextLarge>{`Líder: ${this.state.dataCapSelected.leader}`}</TextLarge>
+                    <TextLarge>{`Supervisor: ${this.state.dataCapSelected.supervisor}`}</TextLarge>
                 </Animated.View>
             </Container>
         )
@@ -208,6 +222,8 @@ const styles = StyleSheet.create({
     },
     card: {
         position: 'absolute', 
+        display: 'flex',
+        flexDirection: 'column',
         width: '90%', 
         height: 200, 
         bottom: 0,

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { StyleSheet, View, TouchableOpacity, Text, Picker } from 'react-native'
+import { StyleSheet, View, TouchableOpacity, Text, Picker, Animated, Easing } from 'react-native'
 import MapView, { Marker, Callout } from 'react-native-maps'
 import Geolocation from '@react-native-community/geolocation';
 import Autocomplete from 'react-native-autocomplete-input';
@@ -8,8 +8,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 
 import CapService from '../services/CapService'
 
-import { Container } from './styles/MainStyled'
-import { SearchContainer, AutocompleteContainer, SelectContainer, Select, ButtonClose } from './styles/SearchCapStyled'
+import { Container, SearchContainer, AutocompleteContainer, SelectContainer, Select, ButtonClose, ButtonCloseCard } from './styles/SearchCapStyled'
 
 export default class SearchCap extends Component {
 
@@ -26,6 +25,8 @@ export default class SearchCap extends Component {
             latitudeDelta: 0.03,
             longitudeDelta: 0.03
         },
+        details: false,
+        animatedValue: new Animated.Value(400),
     }
 
     setCurrentPosition = () => {
@@ -72,8 +73,8 @@ export default class SearchCap extends Component {
             region: {
                 latitude: parseFloat(resultCap.latitude),
                 longitude: parseFloat(resultCap.longitude),
-                latitudeDelta: 0.03,
-                longitudeDelta: 0.03
+                latitudeDelta: 0.002,
+                longitudeDelta: 0.002
             }
         })
     }
@@ -81,6 +82,23 @@ export default class SearchCap extends Component {
     clearInput = () => {
         this.setState({ searchLocale: '', searching: false, hideResults: true })
         this.setCurrentPosition()
+    }
+
+    cardToggleHandle = () => {
+        this.setState(
+            { details: !this.state.details },
+            () => {
+                Animated.timing(
+                    this.state.animatedValue,
+                    { 
+                        toValue: this.state.details ? 0 : 400,
+                        duration: 250,
+                        easing: Easing.sin,
+                        delay: 0
+                    }
+                ).start()
+            }
+        )
     }
 
     render() {
@@ -92,7 +110,7 @@ export default class SearchCap extends Component {
                     {
                         this.state.searching == true ?
                             this.state.visibleCaps.map(cap => (
-                                <Marker key={cap.id} coordinate={{ latitude: parseFloat(cap.latitude), longitude: parseFloat(cap.longitude) }} pinColor="#f68121">
+                                <Marker key={cap.id} coordinate={{ latitude: parseFloat(cap.latitude), longitude: parseFloat(cap.longitude) }} onPress={() => this.cardToggleHandle()} pinColor="#f68121">
                                     <Callout>
                                         <Text>{cap.local}</Text>
                                     </Callout>
@@ -100,7 +118,7 @@ export default class SearchCap extends Component {
                             ))
                             :
                             this.state.caps.map(cap => (
-                                <Marker key={cap.id} coordinate={{ latitude: parseFloat(cap.latitude), longitude: parseFloat(cap.longitude) }} pinColor="#f68121">
+                                <Marker key={cap.id} coordinate={{ latitude: parseFloat(cap.latitude), longitude: parseFloat(cap.longitude) }} onPress={() => {this.cardToggleHandle(); this.setState({ region: { latitude: parseFloat(cap.latitude), longitude: parseFloat(cap.longitude), latitudeDelta: 0.03, longitudeDelta: 0.03 } })}} pinColor="#f68121">
                                     <Callout>
                                         <Text>{cap.local}</Text>
                                     </Callout>
@@ -158,6 +176,12 @@ export default class SearchCap extends Component {
                         </Select>
                     </SelectContainer>
                 </SearchContainer>
+
+                <Animated.View style={[ styles.card, { transform: [{ translateY: this.state.animatedValue}] } ]}>
+                    <ButtonCloseCard onPress={() => this.cardToggleHandle()}>
+                        <Icon name="ios-close" color="#f68121" size={35} />
+                    </ButtonCloseCard>
+                </Animated.View>
             </Container>
         )
     }
@@ -181,5 +205,15 @@ const styles = StyleSheet.create({
         width: '97%',
         height: 38,
         backgroundColor: '#fff',
+    },
+    card: {
+        position: 'absolute', 
+        width: '90%', 
+        height: 200, 
+        bottom: 0,
+        padding: 10, 
+        backgroundColor: '#fff',
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
     }
 })

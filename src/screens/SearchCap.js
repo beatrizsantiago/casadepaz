@@ -9,7 +9,7 @@ import IconLocal from 'react-native-vector-icons/Entypo'
 
 import CapService from '../services/CapService'
 
-import { Container, SearchContainer, AutocompleteContainer, SelectContainer, Select, ButtonClose, ButtonCloseCard, LargeInput, TextLarge, MediumInput, TextMedim } from './styles/SearchCapStyled'
+import { Container, SearchContainer, AutocompleteContainer, SelectContainer, Select, ButtonClose, ButtonCloseCard, LargeInput, TextLarge, MediumInput, TextMedim, IconsInput } from './styles/SearchCapStyled'
 
 export default class SearchCap extends Component {
 
@@ -200,7 +200,7 @@ export default class SearchCap extends Component {
                 <Animated.View style={[styles.card, { transform: [{ translateY: this.state.animatedValue }] }]}>
                     <View style={styles.viewBtn}>
                         <ButtonCloseCard onPress={() => this.setState({ dataCapSelected: {}, idCapSelected: undefined }, () => this.callAnimation(false) )}>
-                            <Icon name="chevron-down" color="#f68121" size={35} />
+                            <Icon name="minus" color="#f68121" size={40} />
                         </ButtonCloseCard>
                     </View>
                     <LargeInput>
@@ -224,6 +224,17 @@ export default class SearchCap extends Component {
                     <LargeInput>
                         <TextLarge>{`Supervisor: ${this.state.dataCapSelected.supervisor}`}</TextLarge>
                     </LargeInput>
+                    <IconsInput>
+                        <TouchableOpacity>
+                            <Icon name="square-edit-outline" color="#f68121" size={30} />
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Icon name="home-map-marker" color="#f68121" size={30} />
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Icon name="share-variant" color="#f68121" size={30} />
+                        </TouchableOpacity>
+                    </IconsInput>
                 </Animated.View>
             </Container>
         )
@@ -254,7 +265,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         width: '90%',
-        height: 200,
+        height: 240,
         bottom: 0,
         padding: 10,
         backgroundColor: '#fff',

@@ -83,3 +83,10 @@ export const TextMedim = styled.Text`
     margin: 3px 0px;
     font-size: 18px;
 `
+
+export const IconsInput = styled.View`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+`

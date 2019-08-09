@@ -53,15 +53,20 @@ export const ButtonClose = styled.TouchableOpacity`
 export const ButtonCloseCard = styled.TouchableOpacity`
     display: flex;
     justify-content: center;
+    align-items: flex-end;
+    width: 23px;
+    height: 16px;
+`
+
+export const LargeInput = styled.View`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 3px 0px;
     align-items: center;
-    width: 24px;
-    height: 22px;
 `
 
 export const TextLarge = styled.Text`
-    width: 100%;
-    height: 22px;
-    margin: 3px 0px;
     font-size: 18px;
 `
 
@@ -74,7 +79,6 @@ export const MediumInput = styled.View`
 
 export const TextMedim = styled.Text`
     width: 49%;
-    height: 22px;
     margin: 3px 0px;
     font-size: 18px;
 `

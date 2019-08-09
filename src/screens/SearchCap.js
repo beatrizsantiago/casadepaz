@@ -4,11 +4,12 @@ import { StyleSheet, View, TouchableOpacity, Text, Picker, Animated, Easing } fr
 import MapView, { Marker, Callout } from 'react-native-maps'
 import Geolocation from '@react-native-community/geolocation';
 import Autocomplete from 'react-native-autocomplete-input';
-import Icon from 'react-native-vector-icons/Ionicons'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import IconLocal from 'react-native-vector-icons/Entypo'
 
 import CapService from '../services/CapService'
 
-import { Container, SearchContainer, AutocompleteContainer, SelectContainer, Select, ButtonClose, ButtonCloseCard, TextLarge, MediumInput, TextMedim } from './styles/SearchCapStyled'
+import { Container, SearchContainer, AutocompleteContainer, SelectContainer, Select, ButtonClose, ButtonCloseCard, LargeInput, TextLarge, MediumInput, TextMedim } from './styles/SearchCapStyled'
 
 export default class SearchCap extends Component {
 
@@ -25,7 +26,7 @@ export default class SearchCap extends Component {
             latitudeDelta: 0.03,
             longitudeDelta: 0.03
         },
-        details: false,
+        isDetailsVisible: false,
         animatedValue: new Animated.Value(400),
         idCapSelected: '',
         dataCapSelected: {},
@@ -88,16 +89,15 @@ export default class SearchCap extends Component {
 
     cardToggleHandle = selectedCap => {
 
-        this.setState({ dataCapSelected: selectedCap ? selectedCap : {} })
-        console.warn(this.state.dataCapSelected);
-        
+        this.setState({ dataCapSelected: selectedCap || {} })
+
         this.setState(
-            { details: !this.state.details },
+            { isDetailsVisible: !this.state.isDetailsVisible },
             () => {
                 Animated.timing(
                     this.state.animatedValue,
-                    { 
-                        toValue: this.state.details ? 0 : 400,
+                    {
+                        toValue: this.state.isDetailsVisible ? 0 : 400,
                         duration: 250,
                         easing: Easing.sin,
                         delay: 0
@@ -124,7 +124,7 @@ export default class SearchCap extends Component {
                             ))
                             :
                             this.state.caps.map(cap => (
-                                <Marker key={cap.id} coordinate={{ latitude: parseFloat(cap.latitude), longitude: parseFloat(cap.longitude) }} onPress={() => {this.cardToggleHandle(cap); this.setState({ region: { latitude: parseFloat(cap.latitude), longitude: parseFloat(cap.longitude), latitudeDelta: 0.03, longitudeDelta: 0.03 } })}} pinColor="#f68121">
+                                <Marker key={cap.id} coordinate={{ latitude: parseFloat(cap.latitude), longitude: parseFloat(cap.longitude) }} onPress={() => { this.cardToggleHandle(cap); this.setState({ region: { latitude: parseFloat(cap.latitude), longitude: parseFloat(cap.longitude), latitudeDelta: 0.03, longitudeDelta: 0.03 } }) }} pinColor="#f68121">
                                     <Callout>
                                         <Text>{cap.local}</Text>
                                     </Callout>
@@ -152,7 +152,7 @@ export default class SearchCap extends Component {
 
                         {this.state.searchLocale ?
                             <ButtonClose onPress={() => this.clearInput()}>
-                                <Icon name="ios-close" color="#fff" size={40} />
+                                <Icon name="window-close" color="#fff" size={30} />
                             </ButtonClose>
                             :
                             <View></View>
@@ -184,17 +184,30 @@ export default class SearchCap extends Component {
                     </SelectContainer>
                 </SearchContainer>
 
-                <Animated.View style={[ styles.card, { transform: [{ translateY: this.state.animatedValue}] } ]}>
-                    <ButtonCloseCard onPress={() => this.cardToggleHandle()}>
-                        <Icon name="ios-close" color="#f68121" size={35} />
-                    </ButtonCloseCard>
+                <Animated.View style={[styles.card, { transform: [{ translateY: this.state.animatedValue }] }]}>
+                    <View style={styles.viewBtn}>
+                        <ButtonCloseCard onPress={() => this.cardToggleHandle()}>
+                            <Icon name="close-circle-outline" color="#f68121" size={25} />
+                        </ButtonCloseCard>
+                    </View>
+                    <LargeInput>
+                        <IconLocal name="location" color="#f68121" size={25} style={{ marginRight: 8 }} />
+                        <TextLarge>{this.state.dataCapSelected.local}</TextLarge>
+                    </LargeInput>
                     <MediumInput>
-                        <TextMedim>{`Dia: ${this.state.dataCapSelected.day}`}</TextMedim>
-                        <TextMedim>{`Hora: ${this.state.dataCapSelected.hour}`}</TextMedim>
+                        <TextMedim><Icon name="calendar-today" color="#f68121" size={25} /> {this.state.dataCapSelected.day}</TextMedim>
+                        <TextMedim><Icon name="timer" color="#f68121" size={25} /> {this.state.dataCapSelected.hour}</TextMedim>
                     </MediumInput>
-                    <TextLarge>{`Contato: ${this.state.dataCapSelected.telephone}`}</TextLarge>
-                    <TextLarge>{`Líder: ${this.state.dataCapSelected.leader}`}</TextLarge>
-                    <TextLarge>{`Supervisor: ${this.state.dataCapSelected.supervisor}`}</TextLarge>
+                    <LargeInput>
+                        <Icon name="phone-classic" color="#f68121" size={25} style={{ marginRight: 8 }} />
+                        <TextLarge>{this.state.dataCapSelected.telephone}</TextLarge>
+                    </LargeInput>
+                    <LargeInput>
+                        <TextLarge>{`Líder: ${this.state.dataCapSelected.leader}`}</TextLarge>
+                    </LargeInput>
+                    <LargeInput>
+                        <TextLarge>{`Supervisor: ${this.state.dataCapSelected.supervisor}`}</TextLarge>
+                    </LargeInput>
                 </Animated.View>
             </Container>
         )
@@ -221,15 +234,20 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     card: {
-        position: 'absolute', 
+        position: 'absolute',
         display: 'flex',
         flexDirection: 'column',
-        width: '90%', 
-        height: 200, 
+        width: '90%',
+        height: 200,
         bottom: 0,
-        padding: 10, 
+        padding: 10,
         backgroundColor: '#fff',
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
+    },
+    viewBtn: { 
+        width: '100%', 
+        display: 'flex', 
+        alignItems: 'flex-end'
     }
 })

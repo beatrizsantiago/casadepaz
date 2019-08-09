@@ -200,7 +200,7 @@ export default class SearchCap extends Component {
                 <Animated.View style={[styles.card, { transform: [{ translateY: this.state.animatedValue }] }]}>
                     <View style={styles.viewBtn}>
                         <ButtonCloseCard onPress={() => this.setState({ dataCapSelected: {}, idCapSelected: undefined }, () => this.callAnimation(false) )}>
-                            <Icon name="close-circle-outline" color="#f68121" size={25} />
+                            <Icon name="chevron-down" color="#f68121" size={35} />
                         </ButtonCloseCard>
                     </View>
                     <LargeInput>
@@ -208,8 +208,11 @@ export default class SearchCap extends Component {
                         <TextLarge>{this.state.dataCapSelected.local}</TextLarge>
                     </LargeInput>
                     <MediumInput>
-                        <TextMedim><Icon name="calendar-today" color="#f68121" size={25} /> {this.state.dataCapSelected.day}</TextMedim>
-                        <TextMedim><Icon name="timer" color="#f68121" size={25} /> {this.state.dataCapSelected.hour}</TextMedim>
+                        <Icon name="calendar-today" color="#f68121" size={25} />
+                        <TextMedim>{this.state.dataCapSelected.day}</TextMedim>
+
+                        <Icon name="timer" color="#f68121" size={25} />
+                        <TextMedim>{this.state.dataCapSelected.hour}</TextMedim>
                     </MediumInput>
                     <LargeInput>
                         <Icon name="phone-classic" color="#f68121" size={25} style={{ marginRight: 8 }} />
@@ -261,6 +264,6 @@ const styles = StyleSheet.create({
     viewBtn: {
         width: '100%',
         display: 'flex',
-        alignItems: 'flex-end'
+        alignItems: 'center'
     }
 })

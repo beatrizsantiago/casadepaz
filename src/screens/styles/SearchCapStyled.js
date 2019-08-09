@@ -53,15 +53,15 @@ export const ButtonClose = styled.TouchableOpacity`
 export const ButtonCloseCard = styled.TouchableOpacity`
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    width: 23px;
+    align-items: center;
+    width: 30px;
     height: 16px;
 `
 
 export const LargeInput = styled.View`
     display: flex;
     flex-direction: row;
-    width: 100%;
+    max-width: 90%;
     margin: 3px 0px;
     align-items: center;
 `
@@ -75,10 +75,11 @@ export const MediumInput = styled.View`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 `
 
 export const TextMedim = styled.Text`
-    width: 49%;
+    width: 40%;
     margin: 3px 0px;
     font-size: 18px;
 `

@@ -26,7 +26,6 @@ export default class SearchCap extends Component {
             latitudeDelta: 0.03,
             longitudeDelta: 0.03
         },
-        isDetailsVisible: false,
         animatedValue: new Animated.Value(400),
         idCapSelected: '',
         dataCapSelected: {},
@@ -87,24 +86,38 @@ export default class SearchCap extends Component {
         this.setCurrentPosition()
     }
 
-    cardToggleHandle = selectedCap => {
-
-        this.setState({ dataCapSelected: selectedCap || {} })
-
+    callAnimation = (isUp, callback) => {
         this.setState(
-            { isDetailsVisible: !this.state.isDetailsVisible },
             () => {
                 Animated.timing(
                     this.state.animatedValue,
                     {
-                        toValue: this.state.isDetailsVisible ? 0 : 400,
+                        toValue: isUp ? 0 : 400,
                         duration: 250,
                         easing: Easing.sin,
                         delay: 0
                     }
-                ).start()
+                ).start(callback || (() => {}))
             }
         )
+    }
+
+    cardToggleHandle = selectedCap => {
+        if(!this.state.idCapSelected && selectedCap) {
+            this.setState({ dataCapSelected: selectedCap, idCapSelected: selectedCap.id }, () => {
+                this.callAnimation(true)
+            })
+        } else if(this.state.idCapSelected == selectedCap.id) {
+            this.setState({ dataCapSelected: {}, idCapSelected: undefined }, () => {
+                this.callAnimation(false)
+            })
+        } else if(this.state.idCapSelected != selectedCap.id) {
+            this.callAnimation(false, () => {
+                this.setState({ dataCapSelected: selectedCap, idCapSelected: selectedCap.id }, () => {
+                    this.callAnimation(true)
+                })
+            })
+        }
     }
 
     render() {
@@ -186,7 +199,7 @@ export default class SearchCap extends Component {
 
                 <Animated.View style={[styles.card, { transform: [{ translateY: this.state.animatedValue }] }]}>
                     <View style={styles.viewBtn}>
-                        <ButtonCloseCard onPress={() => this.cardToggleHandle()}>
+                        <ButtonCloseCard onPress={() => this.setState({ dataCapSelected: {}, idCapSelected: undefined }, () => this.callAnimation(false) )}>
                             <Icon name="close-circle-outline" color="#f68121" size={25} />
                         </ButtonCloseCard>
                     </View>
@@ -245,9 +258,9 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
     },
-    viewBtn: { 
-        width: '100%', 
-        display: 'flex', 
+    viewBtn: {
+        width: '100%',
+        display: 'flex',
         alignItems: 'flex-end'
     }
 })

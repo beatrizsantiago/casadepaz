@@ -22,6 +22,18 @@ export const Column = styled.View`
     flex-direction: column;
 `
 
+export const RowBar = styled.View`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 40px;
+    border-bottom-width: 1px;
+    border-bottom-color: #f68121;
+    background-color: #fff;
+`
+
 export const BigBox = styled.View`
     display: flex;
     flex-direction: row;

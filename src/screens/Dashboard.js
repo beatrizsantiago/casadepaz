@@ -5,7 +5,7 @@ import IconAnt from 'react-native-vector-icons/AntDesign'
 
 import CapService from '../services/CapService'
 
-import { Container, Row, Column, BigBox, Circle, MediumBoxWhite, MediumBoxOrange, CircleMedim, LargeBox, HeaderBox } from './styles/DashboardStyled';
+import { Container, Row, Column, RowBar, BigBox, Circle, MediumBoxWhite, MediumBoxOrange, CircleMedim, LargeBox, HeaderBox } from './styles/DashboardStyled';
 
 export default class Dashboard extends Component {
 
@@ -33,6 +33,10 @@ export default class Dashboard extends Component {
 						</Column>
 					</BigBox>
 				</Row>
+				<RowBar>
+					<Text style={{ fontSize: 15, textTransform: "uppercase", color: '#000' }}>Informações de <Text style={{ fontWeight: 'bold' }}>18/08/2019</Text> à <Text style={{ fontWeight: 'bold' }}>24/08/2019</Text></Text>
+				</RowBar>
+
 
 				<ScrollView>
 					<Row>

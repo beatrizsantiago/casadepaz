@@ -54,8 +54,8 @@ const FeedbackStack = createStackNavigator({
 
 const AppDrawer = createDrawerNavigator(
 	{
-		SearchCap: SearchCapStack,
 		Dashboard: DashboardStack,
+		SearchCap: SearchCapStack,
 		RegisterCap: RegisterCapStack,
 		Feedback: FeedbackStack,
 	},

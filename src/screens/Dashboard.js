@@ -4,22 +4,43 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import IconAnt from 'react-native-vector-icons/AntDesign'
 
 import CapService from '../services/CapService'
+import FeedbackService from '../services/FeedbackService'
 
 import { Container, Row, Column, RowBar, BigBox, Circle, MediumBoxWhite, MediumBoxOrange, CircleMedim, LargeBox, HeaderBox } from './styles/DashboardStyled';
 
 export default class Dashboard extends Component {
 
 	state = {
-		numberCaps: 0
+		numberCaps: 0,
+		feedbackCap: [],
+		today: new Date(),
+		lastWeek: new Date()
 	}
 
 	componentDidMount() {
 		CapService.numberCaps(quantityCaps => {
 			this.setState({ numberCaps: quantityCaps });
 		})
+
+		let today = new Date()
+		let lastWeek = new Date()
+		lastWeek.setDate(today.getDate() - 7)
+
+		this.setState({ today, lastWeek })
+
+		FeedbackService.getInformationPeriod(lastWeek, today, feedback => {
+			// let feedbacks = this.state.feedbackCap
+			// feedbacks.push(feedback)
+
+			// this.setState({ feedbackCap: feedbacks })
+			
+			console.warn(feedback);
+		})
 	}
 
 	render() {
+		const { today } = this.state
+		const { lastWeek } = this.state
 		return (
 			<Container>
 				<Row>
@@ -34,7 +55,7 @@ export default class Dashboard extends Component {
 					</BigBox>
 				</Row>
 				<RowBar>
-					<Text style={{ fontSize: 15, textTransform: "uppercase", color: '#000' }}>Informações de <Text style={{ fontWeight: 'bold' }}>18/08/2019</Text> à <Text style={{ fontWeight: 'bold' }}>24/08/2019</Text></Text>
+					<Text style={{ fontSize: 15, textTransform: "uppercase", color: '#000' }}>Informações de <Text style={{ fontWeight: 'bold' }}>{`${lastWeek.getDate()}/${lastWeek.getMonth() + 1}/${lastWeek.getFullYear()}`}</Text> à <Text style={{ fontWeight: 'bold' }}>{`${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`}</Text></Text>
 				</RowBar>
 
 

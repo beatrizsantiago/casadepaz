@@ -9,7 +9,7 @@ export class FeedbackService {
     }
 
     getInformationPeriod = (initialDate, finalDate, callback) => {
-        firebase.firestore().collection('feedback').where('dateCap', '>', initialDate).where('dateCap', '<=', finalDate).onSnapshot(snapshot => {
+        firebase.firestore().collection('feedback').where('dateFeedback', '>', initialDate).where('dateFeedback', '<=', finalDate).onSnapshot(snapshot => {
             let quantityPeople = 0
             let quantityMiracles = 0
             let quantityConversion = 0

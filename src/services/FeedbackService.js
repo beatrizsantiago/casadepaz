@@ -4,8 +4,19 @@ import firebase from 'react-native-firebase'
 
 export class FeedbackService {
 
-    getAllInformation = () => {
+    getAllInformation = callback => {
+        firebase.firestore().collection('feedback').onSnapshot(snapshot => {
+            snapshot.forEach(async info => {
+                let feedbackData = info.data()
+                let snap = await feedbackData.idCap.get()
+                let refCap = snap.data()
 
+                let feedbackInfo = info.data()
+                delete feedbackInfo.idCap
+                
+                callback({id: info.id, ...feedbackInfo, ...refCap})
+            })
+        })
     }
 
     getInformationPeriod = (initialDate, finalDate, callback) => {

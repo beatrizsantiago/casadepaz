@@ -28,8 +28,6 @@ export default class Feedback extends Component {
     }
 
     render() {
-        console.warn(this.state.caps)
-
         return (
             <Container>
                 <ScrollView>
@@ -45,8 +43,10 @@ export default class Feedback extends Component {
                                     <Text style={{ fontSize: 18, width: '88%' }}>{cap.leader}</Text>
                                 </LargeField>
                                 <LargeField>
-                                    <Icon name="calendar-clock" color="#f68121" size={30} />
-                                    <Text style={{ fontSize: 18, width: '88%' }}>09/08/2019 às 19:30h</Text>
+                                    <Icon name="calendar-multiselect" color="#f68121" size={30} />
+                                    <Text style={{ fontSize: 18, width: '37%' }}>{cap.day}</Text>
+                                    <Icon name="clock-outline" color="#f68121" size={30} />
+                                    <Text style={{ fontSize: 18, width: '37%' }}>{cap.hour}</Text>
                                 </LargeField>
                             </CapCard>
                         ))

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, ScrollView, Text, Animated  } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons'
 import IconAnt from 'react-native-vector-icons/AntDesign'
+import moment from 'moment'
 
 import CapService from '../services/CapService'
 import FeedbackService from '../services/FeedbackService'
@@ -56,10 +57,10 @@ export default class Dashboard extends Component {
 						</Column>
 					</BigBox>
 				</Row>
+				
 				<RowBar>
-					<Text style={{ fontSize: 15, textTransform: "uppercase", color: '#000' }}>Informações de <Text style={{ fontWeight: 'bold' }}>{`${lastWeek.getDate()}/${lastWeek.getMonth() + 1}/${lastWeek.getFullYear()}`}</Text> à <Text style={{ fontWeight: 'bold' }}>{`${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`}</Text></Text>
+					<Text style={{ fontSize: 15, textTransform: "uppercase", color: '#000' }}>Informações de <Text style={{ fontWeight: 'bold' }}>{moment(lastWeek).format('DD/MM/YYYY')}</Text> à <Text style={{ fontWeight: 'bold' }}>{moment(today).format('DD/MM/YYYY')}</Text></Text>
 				</RowBar>
-
 
 				<ScrollView>
 					<Row>

@@ -14,7 +14,12 @@ export default class Dashboard extends Component {
 		numberCaps: 0,
 		feedbackCap: [],
 		today: new Date(),
-		lastWeek: new Date()
+		lastWeek: new Date(),
+		cardData: {
+			quantityPeople: 0,
+			quantityConversion: 0,
+			quantityMiracles: 0
+		}
 	}
 
 	componentDidMount() {
@@ -29,18 +34,15 @@ export default class Dashboard extends Component {
 		this.setState({ today, lastWeek })
 
 		FeedbackService.getInformationPeriod(lastWeek, today, feedback => {
-			// let feedbacks = this.state.feedbackCap
-			// feedbacks.push(feedback)
-
-			// this.setState({ feedbackCap: feedbacks })
-			
-			console.warn(feedback);
+			this.setState({ cardData : feedback })
 		})
 	}
 
 	render() {
 		const { today } = this.state
 		const { lastWeek } = this.state
+		const { cardData } = this.state
+		
 		return (
 			<Container>
 				<Row>
@@ -67,7 +69,7 @@ export default class Dashboard extends Component {
 									<IconAnt name="linechart" color="#fff" size={35} />
 								</CircleMedim>
 								<Column>
-									<Text style={{ fontSize: 22, color: '#fff' }}>32</Text>
+									<Text style={{ fontSize: 22, color: '#fff' }}>{cardData.quantityConversion}</Text>
 									<Text style={{ fontSize: 12, textTransform: "uppercase", color: '#fff' }}>conversões</Text>
 								</Column>
 							</Row>
@@ -78,7 +80,7 @@ export default class Dashboard extends Component {
 									<IconAnt name="barschart" color="#fff" size={40} />
 								</CircleMedim>
 								<Column>
-									<Text style={{ fontSize: 22, color: '#fff' }}>15</Text>
+									<Text style={{ fontSize: 22, color: '#fff' }}>{cardData.quantityMiracles}</Text>
 									<Text style={{ fontSize: 12, textTransform: "uppercase", color: '#fff' }}>milagres</Text>
 								</Column>
 							</Row>
@@ -91,7 +93,7 @@ export default class Dashboard extends Component {
 							</HeaderBox>
 							<View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
 								<Icon name="ios-people" color="#f68121" size={50} />
-								<Text style={{ fontSize: 22, textTransform: "uppercase", color: '#000', marginLeft: 10 }}>326 pessoas</Text>
+								<Text style={{ fontSize: 22, textTransform: "uppercase", color: '#000', marginLeft: 10 }}>{cardData.quantityPeople} pessoas</Text>
 							</View>
 						</LargeBox>
 					</Row>

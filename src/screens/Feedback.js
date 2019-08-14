@@ -11,7 +11,8 @@ import { CapCard, LargeField } from './styles/FeedbackStyled'
 export default class Feedback extends Component {
 
     state = {
-        caps: []
+        caps: [],
+        feedbacks: [],
     }
 
     componentDidMount() {
@@ -21,15 +22,18 @@ export default class Feedback extends Component {
             this.setState({ caps: oldCaps })
         })
 
-        // FeedbackService.getAllInformation(feedback => {
-        //     let resp = this.state.feedbacks
-        //     resp.push(feedback)
-        //     this.setState({ feedbacks: resp })
-        // })
+        FeedbackService.getAllInformation(feedback => {
+            let resp = this.state.feedbacks
+            resp.push(feedback)
+            this.setState({ feedbacks: resp })
+        })
     }
 
-    handlePress = () => {
-        this.props.navigation.navigate('FeedbackList')
+    handlePress = idCap => {
+        let filterFeedback = this.state.feedbacks
+        let filterResult = filterFeedback.filter(filterFeedback => filterFeedback.idRefCap.includes(idCap))
+        
+        this.props.navigation.navigate('FeedbackList', {feedbacks: filterResult})
     }
 
     render() {
@@ -38,7 +42,7 @@ export default class Feedback extends Component {
                 <ScrollView style={{ flex: 1, width: '100%' }}>
                     {
                         this.state.caps.map(cap => (
-                            <CapCard key={cap.id} onPress={() => this.handlePress()}>
+                            <CapCard key={cap.id} onPress={() => this.handlePress(cap.id)}>
                                 <LargeField>
                                     <Icon name="home-map-marker" color="#f68121" size={30} />
                                     <Text style={{ fontSize: 18, width: '88%' }}>{cap.local}</Text>

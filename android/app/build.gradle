@@ -197,8 +197,8 @@ dependencies {
         exclude group: 'com.google.android.gms', module: 'play-services-maps'
     }
     
-    implementation 'com.google.android.gms:play-services-base:15.0.1'
-    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    implementation 'com.google.android.gms:play-services-base:17.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.firebase:firebase-core:17.0.0'
     implementation "com.google.firebase:firebase-auth:17.0.0"
     implementation "com.google.firebase:firebase-firestore:19.0.0"

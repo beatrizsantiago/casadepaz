@@ -10,11 +10,12 @@ export class FeedbackService {
                 let feedbackData = info.data()
                 let snap = await feedbackData.idCap.get()
                 let refCap = snap.data()
+                let idRefCap = snap.id
 
                 let feedbackInfo = info.data()
                 delete feedbackInfo.idCap
                 
-                callback({id: info.id, ...feedbackInfo, ...refCap})
+                callback({id: info.id, ...feedbackInfo, idRefCap, ...refCap})
             })
         })
     }

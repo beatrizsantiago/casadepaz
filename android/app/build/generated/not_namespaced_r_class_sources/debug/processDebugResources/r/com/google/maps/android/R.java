@@ -36,11 +36,11 @@ public final class R {
         public static final int uiMapToolbar = 0x7f020137;
         public static final int uiRotateGestures = 0x7f020138;
         public static final int uiScrollGestures = 0x7f020139;
-        public static final int uiTiltGestures = 0x7f02013a;
-        public static final int uiZoomControls = 0x7f02013b;
-        public static final int uiZoomGestures = 0x7f02013c;
-        public static final int useViewLifecycle = 0x7f02013d;
-        public static final int zOrderOnTop = 0x7f02014b;
+        public static final int uiTiltGestures = 0x7f02013b;
+        public static final int uiZoomControls = 0x7f02013c;
+        public static final int uiZoomGestures = 0x7f02013d;
+        public static final int useViewLifecycle = 0x7f02013e;
+        public static final int zOrderOnTop = 0x7f02014c;
     }
     public static final class color {
         private color() {}
@@ -165,7 +165,7 @@ public final class R {
         public static final int LoadingImageView_circleCrop = 0;
         public static final int LoadingImageView_imageAspectRatio = 1;
         public static final int LoadingImageView_imageAspectRatioAdjust = 2;
-        public static final int[] MapAttrs = { 0x7f02002c, 0x7f02004a, 0x7f02004b, 0x7f02004c, 0x7f02004d, 0x7f02004e, 0x7f02004f, 0x7f020050, 0x7f0200a3, 0x7f0200a4, 0x7f0200a5, 0x7f0200a6, 0x7f0200ba, 0x7f0200bd, 0x7f020136, 0x7f020137, 0x7f020138, 0x7f020139, 0x7f02013a, 0x7f02013b, 0x7f02013c, 0x7f02013d, 0x7f02014b };
+        public static final int[] MapAttrs = { 0x7f02002c, 0x7f02004a, 0x7f02004b, 0x7f02004c, 0x7f02004d, 0x7f02004e, 0x7f02004f, 0x7f020050, 0x7f0200a3, 0x7f0200a4, 0x7f0200a5, 0x7f0200a6, 0x7f0200ba, 0x7f0200bd, 0x7f020136, 0x7f020137, 0x7f020138, 0x7f020139, 0x7f02013a, 0x7f02013b, 0x7f02013c, 0x7f02013d, 0x7f02013e, 0x7f02014c };
         public static final int MapAttrs_ambientEnabled = 0;
         public static final int MapAttrs_cameraBearing = 1;
         public static final int MapAttrs_cameraMaxZoomPreference = 2;
@@ -184,11 +184,12 @@ public final class R {
         public static final int MapAttrs_uiMapToolbar = 15;
         public static final int MapAttrs_uiRotateGestures = 16;
         public static final int MapAttrs_uiScrollGestures = 17;
-        public static final int MapAttrs_uiTiltGestures = 18;
-        public static final int MapAttrs_uiZoomControls = 19;
-        public static final int MapAttrs_uiZoomGestures = 20;
-        public static final int MapAttrs_useViewLifecycle = 21;
-        public static final int MapAttrs_zOrderOnTop = 22;
+        public static final int MapAttrs_uiScrollGesturesDuringRotateOrZoom = 18;
+        public static final int MapAttrs_uiTiltGestures = 19;
+        public static final int MapAttrs_uiZoomControls = 20;
+        public static final int MapAttrs_uiZoomGestures = 21;
+        public static final int MapAttrs_useViewLifecycle = 22;
+        public static final int MapAttrs_zOrderOnTop = 23;
         public static final int[] SignInButton = { 0x7f020045, 0x7f020062, 0x7f0200f0 };
         public static final int SignInButton_buttonSize = 0;
         public static final int SignInButton_colorScheme = 1;

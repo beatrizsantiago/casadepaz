@@ -7,6 +7,7 @@ import SearchCap from './src/screens/SearchCap'
 import RegisterCap from './src/screens/RegisterCap'
 import Feedback from './src/screens/Feedback'
 import FeedbackList from './src/screens/FeedbackList'
+import FeedbackDetails from './src/screens/FeedbackDetails'
 
 import Header from './src/components/Header'
 import DrawerContainer from './src/components/DrawerContainer'
@@ -63,8 +64,19 @@ const FeedbackListStack = createStackNavigator({
 	}
 })
 
+const FeedbackDetailsStack = createStackNavigator({
+	FeedbackDetails: {
+		screen: FeedbackDetails,
+		headerMode: 'screen',
+		navigationOptions: ({ navigation }) => ({
+			header: () => <Header navigation={navigation} title="Detalhes Feedback" />
+		})
+	}
+})
+
 const AppDrawer = createDrawerNavigator(
 	{
+		FeedbackDetails: FeedbackDetailsStack,
 		Dashboard: DashboardStack,
 		SearchCap: SearchCapStack,
 		RegisterCap: RegisterCapStack,

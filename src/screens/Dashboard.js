@@ -7,7 +7,8 @@ import moment from 'moment'
 import CapService from '../services/CapService'
 import FeedbackService from '../services/FeedbackService'
 
-import { Container, Row, Column, RowBar, BigBox, Circle, MediumBoxWhite, MediumBoxOrange, CircleMedim, LargeBox, HeaderBox } from './styles/DashboardStyled';
+import { ContainerGray } from './styles/MainStyled'
+import { Row, Column, RowBar, BigBox, Circle, MediumBoxWhite, MediumBoxOrange, CircleMedim, LargeBox, HeaderBox } from './styles/DashboardStyled';
 
 export default class Dashboard extends Component {
 
@@ -45,7 +46,7 @@ export default class Dashboard extends Component {
 		const { cardData } = this.state
 		
 		return (
-			<Container>
+			<ContainerGray>
 				<Row>
 					<BigBox>
 						<Circle>
@@ -113,7 +114,7 @@ export default class Dashboard extends Component {
 						<LargeBox />
 					</Row>
 				</ScrollView>
-			</Container>
+			</ContainerGray>
 		);
 	}
 }

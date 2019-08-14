@@ -1,14 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-export const Container = styled.View`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    background-color: #f2f2f2;
-`
-
 export const Row = styled.View`
     display: flex;
     flex-direction: row;
@@ -90,7 +82,7 @@ export const LargeBox = styled.View`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 95%;
+    width: 96%;
     height: 80px;
     margin: 0px 6px;
     background-color: #fff;

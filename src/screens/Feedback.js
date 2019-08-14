@@ -5,7 +5,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import FeedbackService from '../services/FeedbackService'
 import CapService from '../services/CapService'
 
-import { Container, CapCard, LargeField } from './styles/FeedbackStyled'
+import { ContainerGray } from './styles/MainStyled'
+import { CapCard, LargeField } from './styles/FeedbackStyled'
 
 export default class Feedback extends Component {
 
@@ -29,11 +30,11 @@ export default class Feedback extends Component {
 
     render() {
         return (
-            <Container>
-                <ScrollView>
+            <ContainerGray>
+                <ScrollView style={{ flex: 1, width: '100%' }}>
                     {
                         this.state.caps.map(cap => (
-                            <CapCard>
+                            <CapCard key={cap.id}>
                                 <LargeField>
                                     <Icon name="home-map-marker" color="#f68121" size={30} />
                                     <Text style={{ fontSize: 18, width: '88%' }}>{cap.local}</Text>
@@ -52,7 +53,7 @@ export default class Feedback extends Component {
                         ))
                     }
                 </ScrollView>
-            </Container>
+            </ContainerGray>
         )
     }
 }

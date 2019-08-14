@@ -1,11 +1,21 @@
 import React, { Component } from 'react'
 import { View, Text, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/Feather'
+import IconIonicon from 'react-native-vector-icons/Ionicons'
+import Collapsible from 'react-native-collapsible';
 
 import { ContainerGray } from './styles/MainStyled'
-import { BigCard, Row, CardLeft, CardRight, LargeCard, Circle, ItemIcon, TextCard, SimpleCard, HeaderCard } from './styles/FeedbackDetailsStyled'
+import { BigCard, Row, CardLeft, LargeCard, Circle, ItemIcon, TextCard, SimpleCard, HeaderCard } from './styles/FeedbackDetailsStyled'
 
 export default class FeedbackDetails extends Component {
+    state = {
+        collapsed: true,
+    }
+
+    toggleExpanded = () => {
+        this.setState({ collapsed: !this.state.collapsed });
+    }
+
     render() {
         return (
             <ContainerGray>
@@ -36,10 +46,15 @@ export default class FeedbackDetails extends Component {
                         <TextCard>10 milagres</TextCard>
                     </LargeCard>
                     <SimpleCard>
-                        <HeaderCard>
-                            <Text style={{ fontSize: 14, textTransform: "uppercase", color: '#fff', fontWeight: 'bold', marginVertical: 2 }}>Descrição dos Milagres</Text>
+                        <HeaderCard onPress={() => this.toggleExpanded()}>
+                            <Text style={{ fontSize: 14, textTransform: "uppercase", color: '#fff', fontWeight: 'bold' }}>Descrição dos Milagres</Text>
+                            <IconIonicon name="ios-arrow-down" size={22} color="#fff" />
                         </HeaderCard>
-                        <Text style={{ margin: 4 }}>Descrição dos Milagres</Text>
+                        <Collapsible style={{ backgroundColor: '#fff' }} collapsed={this.state.collapsed} duration={500}>
+                            <View>
+                                <Text style={{ marginHorizontal: 10, marginVertical: 5, textAlign: 'center', fontSize: 15 }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</Text>
+                            </View>
+                        </Collapsible>
                     </SimpleCard>
                 </ScrollView>
             </ContainerGray>

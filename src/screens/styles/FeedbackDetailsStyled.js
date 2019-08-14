@@ -87,13 +87,14 @@ export const SimpleCard = styled.View`
     flex-direction: column;
     width: 97%;
     margin: 4px 0px 4px 5px;
-    background-color: #fff;
 `
 
-export const HeaderCard = styled.View`
+export const HeaderCard = styled.TouchableOpacity`
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
+    padding: 10px;
     background-color: #f68121;
 `

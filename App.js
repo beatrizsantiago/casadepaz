@@ -51,20 +51,14 @@ const FeedbackStack = createStackNavigator({
 		navigationOptions: ({ navigation }) => ({
 			header: () => <Header navigation={navigation} title="Feedback" />
 		})
-	}
-})
-
-const FeedbackListStack = createStackNavigator({
+	},
 	FeedbackList: {
 		screen: FeedbackList,
 		headerMode: 'screen',
 		navigationOptions: ({ navigation }) => ({
 			header: () => <Header navigation={navigation} title="Feedback" />
 		})
-	}
-})
-
-const FeedbackDetailsStack = createStackNavigator({
+	},
 	FeedbackDetails: {
 		screen: FeedbackDetails,
 		headerMode: 'screen',
@@ -76,12 +70,10 @@ const FeedbackDetailsStack = createStackNavigator({
 
 const AppDrawer = createDrawerNavigator(
 	{
-		FeedbackDetails: FeedbackDetailsStack,
+		Feedback: FeedbackStack,
 		Dashboard: DashboardStack,
 		SearchCap: SearchCapStack,
 		RegisterCap: RegisterCapStack,
-		Feedback: FeedbackStack,
-		FeedbackList: FeedbackListStack,
 	},
 	{
 		contentComponent: ({ navigation }) => <DrawerContainer navigation={navigation} />,

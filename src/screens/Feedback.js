@@ -28,13 +28,17 @@ export default class Feedback extends Component {
         // })
     }
 
+    handlePress = () => {
+        this.props.navigation.navigate('FeedbackList')
+    }
+
     render() {
         return (
             <ContainerGray>
                 <ScrollView style={{ flex: 1, width: '100%' }}>
                     {
                         this.state.caps.map(cap => (
-                            <CapCard key={cap.id}>
+                            <CapCard key={cap.id} onPress={() => this.handlePress()}>
                                 <LargeField>
                                     <Icon name="home-map-marker" color="#f68121" size={30} />
                                     <Text style={{ fontSize: 18, width: '88%' }}>{cap.local}</Text>

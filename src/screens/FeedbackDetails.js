@@ -48,7 +48,7 @@ export default class FeedbackDetails extends Component {
                     <SimpleCard>
                         <HeaderCard onPress={() => this.toggleExpanded()}>
                             <Text style={{ fontSize: 14, textTransform: "uppercase", color: '#fff', fontWeight: 'bold' }}>Descrição dos Milagres</Text>
-                            <IconIonicon name="ios-arrow-down" size={22} color="#fff" />
+                            <IconIonicon name={this.state.collapsed ? "ios-arrow-down" : "ios-arrow-up"} size={22} color="#fff" />
                         </HeaderCard>
                         <Collapsible style={{ backgroundColor: '#fff' }} collapsed={this.state.collapsed} duration={500}>
                             <View>

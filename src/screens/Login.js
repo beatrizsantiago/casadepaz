@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Text, KeyboardAvoidingView, Alert, PermissionsAndroid, Platform } from 'react-native'
+import { Text, KeyboardAvoidingView, Alert, PermissionsAndroid, Platform, Image } from 'react-native'
 
 import UserService from '../services/UserService'
 
 import { Container } from './styles/MainStyled'
 import { Header, Label, InputText, Button, Footer } from './styles/LoginStyled'
 import Loading from '../components/Loading'
+import Logo from '../assets/img/logo.png'
 
 export default class Login extends Component {
 
@@ -66,7 +67,10 @@ export default class Login extends Component {
 
                     <Loading ref={e => this.loading = e} text="Autenticando" />
 
-                    <Header />
+                    <Header>
+                        <Image style={{ width: 150, height: 170 }} source={Logo} />
+                        {/* <Text style={{ color: '#7a7a7a', fontSize: 30 }}>Casa de Paz</Text> */}
+                    </Header>
 
                     <Label>E-mail</Label>
                     <InputText onChangeText={email => this.setState({ email })} value={this.state.email} />

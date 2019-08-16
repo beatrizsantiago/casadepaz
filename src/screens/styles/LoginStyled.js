@@ -2,7 +2,12 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 export const Header = styled.View`
-    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 50px 0px 20px 0px;
 `
 
 export const Label = styled.Text`

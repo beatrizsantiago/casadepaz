@@ -98,3 +98,16 @@ export const HeaderCard = styled.TouchableOpacity`
     padding: 10px;
     background-color: #f68121;
 `
+
+export const ImgCard = styled.View`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 97%;
+    margin: 4px 0px 4px 5px;
+    padding: 4px;
+    border: solid 1px #ffb980;
+    border-radius: 4px;
+    background-color: #fff;
+`

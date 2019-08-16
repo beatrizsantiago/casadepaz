@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, Image } from 'react-native'
 import Icon from 'react-native-vector-icons/Feather'
 import IconIonicon from 'react-native-vector-icons/Ionicons'
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome'
 import Collapsible from 'react-native-collapsible';
 
 import { ContainerGray } from './styles/MainStyled'
-import { BigCard, Row, CardLeft, LargeCard, Circle, ItemIcon, TextCard, SimpleCard, HeaderCard } from './styles/FeedbackDetailsStyled'
+import { BigCard, Row, CardLeft, LargeCard, Circle, ItemIcon, TextCard, SimpleCard, HeaderCard, ImgCard } from './styles/FeedbackDetailsStyled'
 
 export default class FeedbackDetails extends Component {
     state = {
@@ -77,7 +77,17 @@ export default class FeedbackDetails extends Component {
                                 <TextCard>Não houve milagre hoje!</TextCard>
                             </LargeCard>)
                     }
-
+                    <ImgCard>
+                        {
+                            feedback.photoCap ?
+                                <Image style={{ width: '100%', height: 200 }} source={{ uri: feedback.photoCap }} />
+                                :
+                                <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                                    <IconIonicon name="ios-images" color="#969696" size={20} />
+                                    <Text style={{ color: '#969696', fontSize: 15 }}> Nenhuma foto foi registrada!</Text>
+                                </View>
+                        }
+                    </ImgCard>
                 </ScrollView>
             </ContainerGray>
         )

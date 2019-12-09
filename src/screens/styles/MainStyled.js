@@ -14,3 +14,11 @@ export const ContainerGray = styled.View`
     flex: 1;
     background-color: #f2f2f2;
 `
+
+export const ViewModal = styled.View`
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+`

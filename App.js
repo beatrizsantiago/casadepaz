@@ -1,6 +1,7 @@
 import React from 'react';
 import { createSwitchNavigator, createStackNavigator, createDrawerNavigator, createAppContainer } from "react-navigation";
 
+import Splash from './src/screens/Splash'
 import Login from './src/screens/Login'
 import Dashboard from './src/screens/Dashboard'
 import SearchCap from './src/screens/SearchCap'
@@ -11,6 +12,8 @@ import FeedbackDetails from './src/screens/FeedbackDetails'
 
 import Header from './src/components/Header'
 import DrawerContainer from './src/components/DrawerContainer'
+
+const SplahStack = createStackNavigator({ Splash })
 
 const LoginStack = createStackNavigator({ Login })
 
@@ -84,11 +87,12 @@ const AppDrawer = createDrawerNavigator(
 export default createAppContainer(
 	createSwitchNavigator(
 		{
+			Splash: SplahStack,
 			Login: LoginStack,
 			App: AppDrawer,
 		},
 		{
-			initialRouteName: 'Login'
+			initialRouteName: 'Splash'
 		}
 	)
 );

@@ -16,13 +16,13 @@ export default class Feedback extends Component {
     }
 
     componentDidMount() {
-        CapService.getCaps(cap => {
+        CapService.GetCaps(cap => {
             let oldCaps = this.state.caps
             oldCaps.push(cap)
             this.setState({ caps: oldCaps })
         })
 
-        FeedbackService.getAllInformation(feedback => {
+        FeedbackService.GetAllInformation(feedback => {
             let resp = this.state.feedbacks
             resp.push(feedback)
             this.setState({ feedbacks: resp })

@@ -53,7 +53,7 @@ export default class RegisterCap extends Component {
 	handlePressRegister = async () => {
 		const { local, latitude, longitude, day, hour, telephone, leader, subLeader, houseOwner, supervisor } = this.state
 
-		await CapService.register(local, latitude, longitude, day, hour, telephone, leader, subLeader, houseOwner, supervisor)
+		await CapService.Register(local, latitude, longitude, day, hour, telephone, leader, subLeader, houseOwner, supervisor)
 		this.clearData()
 	}
 

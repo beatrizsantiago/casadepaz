@@ -25,7 +25,7 @@ export default class Dashboard extends Component {
 	}
 
 	componentDidMount() {
-		CapService.numberCaps(quantityCaps => {
+		CapService.NumberCaps(quantityCaps => {
 			this.setState({ numberCaps: quantityCaps });
 		})
 
@@ -35,7 +35,7 @@ export default class Dashboard extends Component {
 
 		this.setState({ today, lastWeek })
 
-		FeedbackService.getInformationPeriod(lastWeek, today, feedback => {
+		FeedbackService.GetInformationPeriod(lastWeek, today, feedback => {
 			this.setState({ cardData : feedback })
 		})
 	}

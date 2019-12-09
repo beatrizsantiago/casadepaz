@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components/native'
 
 export const Container = styled.View`
@@ -20,7 +19,7 @@ export const SearchContainer = styled.View`
 export const AutocompleteContainer = styled.View`
     display: flex;
     flex-direction: row;
-    width: 85.5%;
+    width: 87%;
 `
 
 export const SelectContainer = styled.View`
@@ -34,7 +33,7 @@ export const Select = styled.View`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 48.6%;
+    width: 48.8%;
     height: 43px;
     background-color: #fff;
     border: solid 1px #c2c2c2;
@@ -47,9 +46,34 @@ export const ButtonClose = styled.TouchableOpacity`
     align-items: center;
     width: 46px;
     height: 42px;
+    margin-right: 4px;
     border-radius: 5px;
     background-color: #f68121;
 `
+
+export const ButtonCentralize = styled.TouchableOpacity`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 46px;
+    height: 42px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+`
+
+export const ButtonCloseSelect = styled.TouchableOpacity`
+    position: absolute;
+    right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 46px;
+    height: 42px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #f68121;
+`
+
 export const ButtonCloseCard = styled.TouchableOpacity`
     display: flex;
     justify-content: center;

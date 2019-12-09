@@ -49,7 +49,7 @@ export default class FeedbackDetails extends Component {
                         </CardLeft>
                     </Row>
                     {
-                        feedback.miracles ?
+                        feedback.quantityMiracles > 0 ?
                             (<View>
                                 <LargeCard>
                                     <Circle>

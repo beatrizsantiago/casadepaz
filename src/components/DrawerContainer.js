@@ -9,7 +9,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 export default DrawerContainer = ({ navigation }) => {
 
     logout = async () => {
-        await UserService.logout()
+        await UserService.Logout()
             .then(() => navigation.navigate('Login'))
     }
 
@@ -45,8 +45,8 @@ export default DrawerContainer = ({ navigation }) => {
                 <Title>Feedback</Title>
             </Item>
             <Item onPress={this.handlePress}>
-                <Icon name="logout" size={32} color="#f68121" />
-                <Title style={{ color: '#f68121' }}>Sair</Title>
+                <Icon name="logout" size={32} color="#000" />
+                <Title>Sair</Title>
             </Item>
         </Container>
     )

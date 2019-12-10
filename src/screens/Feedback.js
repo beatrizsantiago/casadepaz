@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, ScrollView } from "react-native"
+import { View, Text, ScrollView, ActivityIndicator } from "react-native"
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import FeedbackService from '../services/FeedbackService'
@@ -13,6 +13,7 @@ export default class Feedback extends Component {
     state = {
         caps: [],
         feedbacks: [],
+        loading: true
     }
 
     componentDidMount() {
@@ -27,40 +28,51 @@ export default class Feedback extends Component {
             resp.push(feedback)
             this.setState({ feedbacks: resp })
         })
+
+        setTimeout(() => {
+            this.setState({ loading: false })
+        }, 1000)
     }
 
     handlePress = idCap => {
         let filterFeedback = this.state.feedbacks
         let filterResult = filterFeedback.filter(filterFeedback => filterFeedback.idRefCap.includes(idCap))
-        
-        this.props.navigation.navigate('FeedbackList', {feedbacks: filterResult})
+
+        this.props.navigation.navigate('FeedbackList', { feedbacks: filterResult })
     }
 
     render() {
         return (
             <ContainerGray>
-                <ScrollView style={{ flex: 1, width: '100%' }}>
-                    {
-                        this.state.caps.map(cap => (
-                            <CapCard key={cap.id} onPress={() => this.handlePress(cap.id)}>
-                                <LargeField>
-                                    <Icon name="home-map-marker" color="#f68121" size={30} />
-                                    <Text style={{ fontSize: 18, width: '88%' }}>{cap.local}</Text>
-                                </LargeField>
-                                <LargeField>
-                                    <Icon name="account-circle" color="#f68121" size={30} />
-                                    <Text style={{ fontSize: 18, width: '88%' }}>{cap.leader}</Text>
-                                </LargeField>
-                                <LargeField>
-                                    <Icon name="calendar-multiselect" color="#f68121" size={30} />
-                                    <Text style={{ fontSize: 18, width: '37%' }}>{cap.day}</Text>
-                                    <Icon name="clock-outline" color="#f68121" size={30} />
-                                    <Text style={{ fontSize: 18, width: '37%' }}>{cap.hour}</Text>
-                                </LargeField>
-                            </CapCard>
-                        ))
-                    }
-                </ScrollView>
+                {
+                    this.state.loading ?
+                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                            <ActivityIndicator size="large" color="#f68121" />
+                        </View>
+                        :
+                        <ScrollView style={{ flex: 1, width: '100%' }}>
+                            {
+                                this.state.caps.map(cap => (
+                                    <CapCard key={cap.id} onPress={() => this.handlePress(cap.id)}>
+                                        <LargeField>
+                                            <Icon name="home-map-marker" color="#f68121" size={30} />
+                                            <Text style={{ fontSize: 18, width: '88%' }}>{cap.local}</Text>
+                                        </LargeField>
+                                        <LargeField>
+                                            <Icon name="account-circle" color="#f68121" size={30} />
+                                            <Text style={{ fontSize: 18, width: '88%' }}>{cap.leader}</Text>
+                                        </LargeField>
+                                        <LargeField>
+                                            <Icon name="calendar-multiselect" color="#f68121" size={30} />
+                                            <Text style={{ fontSize: 18, width: '37%' }}>{cap.day}</Text>
+                                            <Icon name="clock-outline" color="#f68121" size={30} />
+                                            <Text style={{ fontSize: 18, width: '37%' }}>{cap.hour}</Text>
+                                        </LargeField>
+                                    </CapCard>
+                                ))
+                            }
+                        </ScrollView>
+                }
             </ContainerGray>
         )
     }

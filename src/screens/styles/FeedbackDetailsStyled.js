@@ -99,6 +99,12 @@ export const HeaderCard = styled.TouchableOpacity`
     background-color: #f68121;
 `
 
+export const Description = styled.Text`
+    margin: 5px 10px 5px 10px;
+    text-align: center;
+    font-size: 15px;
+`
+
 export const ImgCard = styled.View`
     display: flex;
     flex-direction: row;

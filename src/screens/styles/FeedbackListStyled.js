@@ -12,3 +12,16 @@ export const DateFeedbackCard = styled.TouchableOpacity`
     border-bottom-width: 1px;
     border-bottom-color: #e3e3e3;
 `
+
+export const EmptyFeedback = styled.View`
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justifyContent: center;
+    alignItems: center;
+`
+
+export const TextEmptyFeedback = styled.Text`
+    font-size: 18;
+    color: #969696;
+`

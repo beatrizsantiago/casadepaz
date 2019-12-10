@@ -1,40 +1,46 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, ScrollView } from "react-native"
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
+import IconAntDesign from 'react-native-vector-icons/AntDesign'
 import moment from 'moment'
 
 import { ContainerGray } from './styles/MainStyled'
-import { DateFeedbackCard } from './styles/FeedbackListStyled'
+import { DateFeedbackCard, EmptyFeedback, TextEmptyFeedback } from './styles/FeedbackListStyled'
 
-export default class FeedbackList extends Component {
+export default function FeedbackList(props) {
 
-    state = {
-        feedbacks: []
+    const [feedbacksCap, setFeedbacksCap] = useState([])
+
+    useEffect(() => {
+        const { feedbacks } = props.navigation.state.params
+        setFeedbacksCap(feedbacks)
+    }, [])
+
+    const handlePress = feedback => {
+        props.navigation.navigate('FeedbackDetails', { feedback })
     }
 
-    componentDidMount() {
-        const { feedbacks } = this.props.navigation.state.params
-        this.setState({ feedbacks })
-    }
-
-    handlePress = feedback => {
-        this.props.navigation.navigate('FeedbackDetails', { feedback })
-    }
-
-    render() {
-        return (
-            <ContainerGray>
-                <ScrollView style={{ flex: 1, width: '100%' }}>
-                    {
-                        this.state.feedbacks.map(feedback => (
-                            <DateFeedbackCard key={feedback.id} onPress={() => this.handlePress(feedback)}>
-                                <Text style={{ fontSize: 16 }}>{moment(feedback.dateFeedback.seconds*1000).format('DD/MM/YYYY [às] HH:MM')}</Text>
-                                <Icon name="arrow-right" size={16} color="#f68121" />
-                            </DateFeedbackCard>
-                        ))
-                    }
-                </ScrollView>
-            </ContainerGray>
-        )
-    }
+    return (
+        <ContainerGray>
+            {
+                feedbacksCap.length == 0 ?
+                    <EmptyFeedback>
+                        <IconAntDesign name="exception1" size={100} color="#c7c7c7" style={{ marginBottom: 5 }} />
+                        <TextEmptyFeedback>Ainda não há feedback</TextEmptyFeedback>
+                        <TextEmptyFeedback>para esta Casa de Paz!</TextEmptyFeedback>
+                    </EmptyFeedback>
+                    :
+                    <ScrollView style={{ flex: 1, width: '100%' }}>
+                        {
+                            feedbacksCap.map(feedback => (
+                                <DateFeedbackCard key={feedback.id} onPress={() => handlePress(feedback)}>
+                                    <Text style={{ fontSize: 16 }}>{moment(feedback.dateFeedback.seconds * 1000).format('DD/MM/YYYY [às] HH:MM')}</Text>
+                                    <Icon name="arrow-right" size={16} color="#f68121" />
+                                </DateFeedbackCard>
+                            ))
+                        }
+                    </ScrollView>
+            }
+        </ContainerGray>
+    )
 }

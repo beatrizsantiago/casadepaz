@@ -1,10 +1,17 @@
 import firebase from 'react-native-firebase'
 
 export function Register(local, latitude, longitude, day, hour, telephone, leader, subLeader, houseOwner, supervisor) {
-    let cap = { local, latitude, longitude, day, hour, telephone, leader, subLeader, houseOwner, supervisor }
+    try {
+        let cap = { local, latitude, longitude, day, hour, telephone, leader, subLeader, houseOwner, supervisor }
+    
+        firebase.firestore()
+            .collection('caps').add(cap)
 
-    firebase.firestore()
-        .collection('caps').add(cap)
+        return true
+    } catch (error) {
+        console.warn("Error Register: ", error);
+        throw error        
+    }
 }
 
 export function GetCaps(callback) {

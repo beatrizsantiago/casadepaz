@@ -1,22 +1,36 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, ScrollView, Image } from 'react-native'
+import { View, Text, ScrollView, Image, Modal, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Feather'
 import IconIonicon from 'react-native-vector-icons/Ionicons'
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome'
-import Collapsible from 'react-native-collapsible';
+import Collapsible from 'react-native-collapsible'
+import ImageViewer from 'react-native-image-zoom-viewer'
 
 import { ContainerGray } from './styles/MainStyled'
-import { BigCard, Row, CardLeft, LargeCard, Circle, ItemIcon, TextCard, SimpleCard, HeaderCard, Description, ImgCard } from './styles/FeedbackDetailsStyled'
+import { BigCard, Row, CardLeft, LargeCard, Circle, ItemIcon, TextCard, SimpleCard, HeaderCard, Description, ImgCard, ButtonClose } from './styles/FeedbackDetailsStyled'
+import { } from 'react-native-gesture-handler'
 
 export default function FeedbackDetails(props) {
 
     const [collapsed, setCollapsed] = useState(true)
     const [feedback, setFeedback] = useState({})
+    const [isImageViewVisible, setIsImageViewVisible] = useState(false)
+    const [imageSource, setImageSource] = useState([])
 
     useEffect(() => {
         const { feedback } = props.navigation.state.params
         setFeedback(feedback)
+        setImageSource([{ url: feedback.photoCap }])
     }, [])
+
+    const showImage = () => imageSource ?
+        <Modal visible={isImageViewVisible} transparent={true}>
+            <ImageViewer
+                imageUrls={imageSource}
+                enableSwipeDown={true}
+                onSwipeDown={() => setIsImageViewVisible(false)}
+            />
+        </Modal> : null
 
     const toggleExpanded = () => {
         setCollapsed(!collapsed)
@@ -27,7 +41,7 @@ export default function FeedbackDetails(props) {
             <ScrollView style={{ flex: 1, width: '100%' }}>
                 <BigCard>
                     <Text style={{ fontSize: 15 }}>Líder: <Text style={{ fontWeight: 'bold', textTransform: 'uppercase' }}>{feedback.leader}</Text></Text>
-                    {feedback.subLeader ? <Text style={{ fontSize: 15 }}>Sublíder: <Text style={{ fontWeight: 'bold', textTransform: 'uppercase' }}>{feedback.subLeader}</Text></Text> : null }
+                    {feedback.subLeader ? <Text style={{ fontSize: 15 }}>Sublíder: <Text style={{ fontWeight: 'bold', textTransform: 'uppercase' }}>{feedback.subLeader}</Text></Text> : null}
                     <Text style={{ fontSize: 15 }}>Supervisor: <Text style={{ fontWeight: 'bold', textTransform: 'uppercase' }}>{feedback.supervisor}</Text></Text>
                 </BigCard>
                 <Row>
@@ -74,7 +88,9 @@ export default function FeedbackDetails(props) {
                 <ImgCard>
                     {
                         feedback.photoCap ?
-                            <Image style={{ width: '100%', height: 200 }} source={{ uri: feedback.photoCap }} />
+                            <TouchableOpacity onPress={() => setIsImageViewVisible(true)} style={{ width: '100%', height: 200 }}>
+                                <Image style={{ width: '100%', height: 200 }} source={{ uri: feedback.photoCap }} />
+                            </TouchableOpacity>
                             :
                             <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                 <IconIonicon name="ios-images" color="#969696" size={20} />
@@ -82,6 +98,8 @@ export default function FeedbackDetails(props) {
                             </View>
                     }
                 </ImgCard>
+
+                {showImage()}
             </ScrollView>
         </ContainerGray>
     )

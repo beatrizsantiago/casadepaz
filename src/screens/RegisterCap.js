@@ -6,7 +6,7 @@ import { TextInputMask } from 'react-native-masked-text'
 import CapService from '../services/CapService'
 
 import { Container, ViewModal } from './styles/MainStyled'
-import { Label, InputText, MediumInput, ColMediumInput, Button, TextButton, RowHour } from './styles/RegisterCapStyled'
+import { Label, InputText, MediumInput, ColMediumInput, Button, TextButton, RowHour, RedText } from './styles/RegisterCapStyled'
 
 export default function RegisterCap() {
 
@@ -80,7 +80,7 @@ export default function RegisterCap() {
 	return (
 		<Container>
 			<ScrollView>
-				<Label>Local</Label>
+				<Label>Local <RedText>*</RedText></Label>
 				<InputText onChangeText={local => setLocal(local)} value={local} />
 
 				<MediumInput>
@@ -97,7 +97,7 @@ export default function RegisterCap() {
 
 				<MediumInput>
 					<ColMediumInput>
-						<Label>Dia</Label>
+						<Label>Dia <RedText>*</RedText></Label>
 						<Picker onValueChange={day => setDay(day)} selectedValue={day} style={{ marginLeft: 12, fontSize: 20 }}>
 							<Picker.Item label="Selecione" value="" />
 							<Picker.Item label="Segunda" value="Segunda" />
@@ -111,7 +111,7 @@ export default function RegisterCap() {
 					</ColMediumInput>
 
 					<ColMediumInput>
-						<Label>Hora</Label>
+						<Label>Hora <RedText>*</RedText></Label>
 						<RowHour>
 							<Text style={{ fontSize: 20 }}>{hour}</Text>
 							<TouchableOpacity onPress={() => changeSetHour()} style={styles.hourButton}>
@@ -121,10 +121,10 @@ export default function RegisterCap() {
 					</ColMediumInput>
 				</MediumInput>
 
-				<Label>Telefone</Label>
+				<Label>Telefone <RedText>*</RedText></Label>
 				<TextInputMask style={styles.inputMask} type={'cel-phone'} options={{ maskType: 'BRL', withDDD: true, dddMask: '(99) ' }} onChangeText={telephone => setTelephone(telephone)} value={telephone} keyboardType="numeric" />
 
-				<Label>Líder</Label>
+				<Label>Líder <RedText>*</RedText></Label>
 				<InputText onChangeText={leader => setLeader(leader)} value={leader} />
 
 				<Label>Sublíder</Label>
@@ -133,7 +133,7 @@ export default function RegisterCap() {
 				<Label>Anfitrião</Label>
 				<InputText onChangeText={houseOwner => setHouseOwner(houseOwner)} value={houseOwner} />
 
-				<Label>Supervisor</Label>
+				<Label>Supervisor <RedText>*</RedText></Label>
 				<InputText onChangeText={supervisor => setSupervisor(supervisor)} value={supervisor} />
 
 				<Button onPress={() => handlePressRegister()}>

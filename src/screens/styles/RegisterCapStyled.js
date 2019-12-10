@@ -50,3 +50,7 @@ export const RowHour = styled.View`
     align-items: flex-end;
     margin: 0 12px;
 `
+
+export const RedText = styled.Text`
+    color: #ff0000;
+`

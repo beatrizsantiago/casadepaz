@@ -117,3 +117,13 @@ export const ImgCard = styled.View`
     border-radius: 4px;
     background-color: #fff;
 `
+
+export const ButtonClose = styled.TouchableOpacity`
+    position: absolute;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+`

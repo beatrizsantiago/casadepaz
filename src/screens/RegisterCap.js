@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Picker, TimePickerAndroid, ScrollView, TouchableOpacity, Text, StyleSheet, Modal, ActivityIndicator, Alert } from "react-native"
 import Icon from 'react-native-vector-icons/Ionicons'
+import IconSimple from 'react-native-vector-icons/SimpleLineIcons'
 import { TextInputMask } from 'react-native-masked-text'
 
 import CapService from '../services/CapService'
 
 import { Container, ViewModal } from './styles/MainStyled'
-import { Label, InputText, MediumInput, ColMediumInput, Button, TextButton, RowHour, RedText } from './styles/RegisterCapStyled'
+import { Label, InputText, MediumInput, ColMediumInput, Button, TextButton, RowHour, RedText, ViewButtons, ButtonBack, ButtonAlter } from './styles/RegisterCapStyled'
 
-export default function RegisterCap() {
+export default function RegisterCap(props) {
 
 	const [local, setLocal] = useState('')
 	const [latitude, setLatitude] = useState(null)
@@ -21,6 +22,31 @@ export default function RegisterCap() {
 	const [houseOwner, setHouseOwner] = useState('')
 	const [supervisor, setSupervisor] = useState('')
 	const [loading, setLoading] = useState(false)
+	const [textLoading, setTextLoading] = useState('')
+	const [capIdEdit, setCapIdEdit] = useState(null)
+
+	useEffect(() => {
+		if (props.navigation.state.params) {
+			setTextLoading('Buscando dados...')
+			setLoading(true)
+
+			const { capId } = props.navigation.state.params
+			CapService.GetDataCap(capId).then(cap => {
+				setLocal(cap.local)
+				setLatitude(cap.latitude)
+				setLongitude(cap.longitude)
+				setDay(cap.day)
+				setHour(cap.hour)
+				setTelephone(cap.telephone)
+				setLeader(cap.leader)
+				setSubLeader(cap.subLeader)
+				setHouseOwner(cap.houseOwner)
+				setSupervisor(cap.supervisor)
+				setCapIdEdit(cap.id)
+				setLoading(false)
+			})
+		}
+	}, [])
 
 	const showMessage = message => {
 		Alert.alert('Atenção!', message, [{ text: 'Ok' }])
@@ -64,7 +90,20 @@ export default function RegisterCap() {
 			return showMessage('Por favor, selecione o líder da Casa de Paz.')
 		} else if (supervisor == '') {
 			return showMessage('Por favor, selecione o supervisor da Casa de Paz.')
+			
+		} else if(capIdEdit) {
+			setTextLoading('Alterando Casa de Paz...')
+			setLoading(true)
+
+			let successEdit = await CapService.UpdateCap(capIdEdit, local, latitude, longitude, day, hour, telephone, leader, subLeader, houseOwner, supervisor)
+
+			if (successEdit) {
+				props.navigation.goBack()
+				setLoading(false)
+				return Alert.alert('Sucesso!', 'Casa de Paz alterada.', [{ text: 'Ok' }])
+			}
 		} else {
+			setTextLoading('Cadastrando Casa de Paz...')
 			setLoading(true)
 
 			let successRegister = await CapService.Register(local, latitude, longitude, day, hour, telephone, leader, subLeader, houseOwner, supervisor)
@@ -136,14 +175,27 @@ export default function RegisterCap() {
 				<Label>Supervisor <RedText>*</RedText></Label>
 				<InputText onChangeText={supervisor => setSupervisor(supervisor)} value={supervisor} />
 
-				<Button onPress={() => handlePressRegister()}>
-					<TextButton>Cadastrar</TextButton>
-				</Button>
+				{
+					!capIdEdit ?
+						<Button onPress={() => handlePressRegister()}>
+							<TextButton>Cadastrar</TextButton>
+						</Button>
+						:
+						<ViewButtons>
+							<ButtonBack onPress={() => props.navigation.goBack()}>
+								<IconSimple name="arrow-left" size={18} color="#f68121" />
+								<Text style={{ fontSize: 20, color: '#f68121', marginLeft: 5 }}>Voltar</Text>
+							</ButtonBack>
+							<ButtonAlter onPress={() => handlePressRegister()}>
+								<Text style={{ fontSize: 20, color: '#fff' }}>Alterar</Text>
+							</ButtonAlter>
+						</ViewButtons>
+				}
 			</ScrollView>
 			<Modal animationType="fade" transparent={true} visible={loading}>
 				<ViewModal>
 					<ActivityIndicator size="large" color="#fff" />
-					<Text style={{ color: '#fff', fontSize: 20, marginTop: 5 }}>Cadastrando Casa de Paz...</Text>
+					<Text style={{ color: '#fff', fontSize: 20, marginTop: 5 }}>{textLoading}</Text>
 				</ViewModal>
 			</Modal>
 		</Container>

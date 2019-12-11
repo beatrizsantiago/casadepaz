@@ -54,3 +54,32 @@ export const RowHour = styled.View`
 export const RedText = styled.Text`
     color: #ff0000;
 `
+
+export const ViewButtons = styled.View`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px;
+`
+
+export const ButtonAlter = styled.TouchableOpacity`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 48%;
+    height: 60px;
+    background-color: #f68121;
+`
+
+export const ButtonBack = styled.TouchableOpacity`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 48%;
+    height: 60px;
+    border: solid 1px #f68121;
+    background-color: #fff;
+`

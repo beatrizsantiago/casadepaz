@@ -5,26 +5,33 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import LeaderService from '../services/LeaderService'
 
 import { ContainerGray } from './styles/MainStyled'
-import { LeaderCard, LargeField, TextField, ViewButtons, ButtonAlter, ButtonRemove } from './styles/ListLeaderStyled'
+import { LeaderCard, LargeField, TextField, ViewButtons, ButtonEnable, ButtonDisable } from './styles/ListLeaderStyled'
 
 export default class ListLeaderCap extends Component {
     state = {
-        leaders: [{
-            id: 1,
-            name: "Ana Beatriz Santiago dos Santos",
-            email: 'bia@email.com',
-            telephone: '(00) 00000-0000'
-        }],
+        leaders: [],
         loading: true
     }
 
     componentDidMount() {
+        this.listLeader()
+    }
 
-        LeaderService.GetAllLeaders()
+    listLeader() {
+        LeaderService.GetAllLeaders(leader => {
+            let oldLeaders = this.state.leaders
+            oldLeaders.push(leader)
+            this.setState({ leaders: oldLeaders })
+        })
 
         setTimeout(() => {
             this.setState({ loading: false })
         }, 1000)
+    }
+
+    enableOrDisableLeader = (idDoc, bool) => {
+        LeaderService.UpdateStateLeader(idDoc, bool)
+        this.listLeader()
     }
 
     render() {
@@ -39,7 +46,7 @@ export default class ListLeaderCap extends Component {
                         <ScrollView style={{ flex: 1, width: '100%' }}>
                             {
                                 this.state.leaders.map(leader => (
-                                    <LeaderCard key={leader.id}>
+                                    <LeaderCard key={leader.UID}>
                                         <LargeField>
                                             <Icon name="account-circle" color="#f68121" size={30} />
                                             <TextField>{leader.name}</TextField>
@@ -52,14 +59,19 @@ export default class ListLeaderCap extends Component {
                                             <Icon name="phone" color="#f68121" size={30} />
                                             <TextField>{leader.telephone}</TextField>
                                         </LargeField>
-                                        <ViewButtons>
-                                            <ButtonRemove>
-                                                <Text style={{ fontSize: 20, color: '#f68121', marginLeft: 5 }}>Excluir</Text>
-                                            </ButtonRemove>
-                                            <ButtonAlter>
-                                                <Text style={{ fontSize: 20, color: '#fff' }}>Alterar</Text>
-                                            </ButtonAlter>
-                                        </ViewButtons>
+                                        {leader.active ?
+                                            <ViewButtons>
+                                                <ButtonDisable onPress={() => this.enableOrDisableLeader(leader.id, false)}>
+                                                    <Text style={{ fontSize: 18, color: '#f68121' }}>Desativar</Text>
+                                                </ButtonDisable>
+                                            </ViewButtons>
+                                            :
+                                            <ViewButtons>
+                                                <ButtonEnable onPress={() => this.enableOrDisableLeader(leader.id, true)}>
+                                                    <Text style={{ fontSize: 18, color: '#fff' }}>Ativar</Text>
+                                                </ButtonEnable>
+                                            </ViewButtons>
+                                        }
                                     </LeaderCard>
                                 ))
                             }

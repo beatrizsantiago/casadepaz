@@ -45,7 +45,7 @@ export default DrawerContainer = ({ navigation }) => {
                 <Title>Feedback</Title>
             </Item>
             <Item onPress={() => navigation.navigate('ListLeader')}>
-                <Icon name="account-settings" size={32} color="#000" />
+                <Icon name="account-multiple-outline" size={32} color="#000" />
                 <Title>Líder de Cap</Title>
             </Item>
             <Item onPress={this.handlePress}>

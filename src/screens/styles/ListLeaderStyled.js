@@ -28,27 +28,27 @@ export const TextField = styled.Text`
 export const ViewButtons = styled.View`
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
     padding: 8px;
 `
 
-export const ButtonAlter = styled.TouchableOpacity`
+export const ButtonEnable = styled.TouchableOpacity`
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 40%;
+    width: 60%;
     height: 35px;
     background-color: #f68121;
 `
 
-export const ButtonRemove = styled.TouchableOpacity`
+export const ButtonDisable = styled.TouchableOpacity`
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 40%;
+    width: 60%;
     height: 35px;
     border: solid 1px #f68121;
     background-color: #fff;

@@ -19,6 +19,8 @@ export async function RegisterLeader(email, password, name, telephone) {
         await firebase.firestore()
             .collection('leaders').add({
                 UID: user,
+                active: true,
+                email: email,
                 name: name,
                 telephone: telephone
             })
@@ -35,18 +37,7 @@ export async function GetAllLeaders(callback) {
     try {
         firebase.firestore().collection('leaders').onSnapshot(snapshot => {
             snapshot.forEach(async info => {
-                // console.warn(info.data());
-                
-                
-                // let feedbackData = info.data()
-                // let snap = await feedbackData.idCap.get()
-                // let refCap = snap.data()
-                // let idRefCap = snap.id
-
-                // let feedbackInfo = info.data()
-                // delete feedbackInfo.idCap
-
-                // callback({ id: info.id, ...feedbackInfo, idRefCap, ...refCap })
+                callback({id: info.id, ...info.data()})
             })
         })
     } catch (error) {
@@ -55,4 +46,17 @@ export async function GetAllLeaders(callback) {
     }
 }
 
-export default { CreateUser, RegisterLeader, GetAllLeaders }
+export async function UpdateStateLeader(idDoc, bool) {
+    try {
+        await firebase.firestore().collection('leaders').doc(idDoc).update({
+            active: bool
+        })
+        return true
+
+    } catch (error) {
+        console.warn("Error UpdateStateLeader: ", error);
+        throw error
+    }
+}
+
+export default { CreateUser, RegisterLeader, GetAllLeaders, UpdateStateLeader }

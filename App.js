@@ -123,11 +123,11 @@ const TabBottom = createMaterialBottomTabNavigator(
 
 const AppDrawer = createDrawerNavigator(
 	{
-		LeaderCap: TabBottom,
 		Dashboard: DashboardStack,
 		SearchCap: SearchCapStack,
 		RegisterCap: RegisterCapStack,
 		Feedback: FeedbackStack,
+		LeaderCap: TabBottom,
 	},
 	{
 		contentComponent: ({ navigation }) => <DrawerContainer navigation={navigation} />,

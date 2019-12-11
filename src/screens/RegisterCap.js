@@ -7,7 +7,7 @@ import { TextInputMask } from 'react-native-masked-text'
 import CapService from '../services/CapService'
 
 import { Container, ViewModal } from './styles/MainStyled'
-import { Label, InputText, MediumInput, ColMediumInput, Button, TextButton, RowHour, RedText, ViewButtons, ButtonBack, ButtonAlter } from './styles/RegisterCapStyled'
+import { Label, InputText, MediumInput, ColMediumInput, Button, TextButton, RowHour, RedText, ViewButtons, ButtonBack, ButtonAlter } from './styles/RegisterStyled'
 
 export default function RegisterCap(props) {
 

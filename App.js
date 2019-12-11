@@ -1,5 +1,8 @@
 import React from 'react';
 import { createSwitchNavigator, createStackNavigator, createDrawerNavigator, createAppContainer } from "react-navigation";
+import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs"
+
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import Splash from './src/screens/Splash'
 import Login from './src/screens/Login'
@@ -9,6 +12,8 @@ import RegisterCap from './src/screens/RegisterCap'
 import Feedback from './src/screens/Feedback'
 import FeedbackList from './src/screens/FeedbackList'
 import FeedbackDetails from './src/screens/FeedbackDetails'
+import ListLeaderCap from './src/screens/ListLeaderCap'
+import RegisterLeaderCap from './src/screens/RegisterLeaderCap'
 
 import Header from './src/components/Header'
 import DrawerContainer from './src/components/DrawerContainer'
@@ -71,8 +76,54 @@ const FeedbackStack = createStackNavigator({
 	}
 })
 
+const ListLeaderStack = createStackNavigator({
+	ListLeaderCap: {
+		screen: ListLeaderCap,
+		headerMode: 'screen',
+		navigationOptions: ({ navigation }) => ({
+			header: () => <Header navigation={navigation} title="Líderes de Cap" />,
+		})
+	}
+})
+
+const RegisterLeaderStack = createStackNavigator({
+	RegisterLeaderCap: {
+		screen: RegisterLeaderCap,
+		headerMode: 'screen',
+		navigationOptions: ({ navigation }) => ({
+			header: () => <Header navigation={navigation} title="Cadastrar Líder" />,
+		})
+	}
+})
+
+const TabBottom = createMaterialBottomTabNavigator(
+	{
+		ListLeader: { 
+			screen: ListLeaderStack,
+			navigationOptions: () => ({
+				tabBarIcon: <Icon name="format-list-checkbox" size={25} color="#fff" />,
+				title: 'Listar'
+			})
+		},
+		RegisterLeader: { 
+			screen: RegisterLeaderStack,
+			navigationOptions: () => ({
+				tabBarIcon: <Icon name="account-multiple-plus" size={25} color="#fff" />,
+				title: 'Cadastrar'
+			})
+		},
+	}, {
+		initialRouteName: 'RegisterLeader',
+		activeColor: '#fff',
+		inactiveColor: '#754822',
+		shifting: true,
+		barStyle: { backgroundColor: '#f68121' },
+	}
+)
+
 const AppDrawer = createDrawerNavigator(
 	{
+		LeaderCap: TabBottom,
 		Dashboard: DashboardStack,
 		SearchCap: SearchCapStack,
 		RegisterCap: RegisterCapStack,

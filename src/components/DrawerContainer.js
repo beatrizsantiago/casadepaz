@@ -44,6 +44,10 @@ export default DrawerContainer = ({ navigation }) => {
                 <Icon name="ballot-recount-outline" size={32} color="#000" />
                 <Title>Feedback</Title>
             </Item>
+            <Item onPress={() => navigation.navigate('ListLeader')}>
+                <Icon name="account-settings" size={32} color="#000" />
+                <Title>Líder de Cap</Title>
+            </Item>
             <Item onPress={this.handlePress}>
                 <Icon name="logout" size={32} color="#000" />
                 <Title>Sair</Title>

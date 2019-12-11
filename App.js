@@ -113,7 +113,7 @@ const TabBottom = createMaterialBottomTabNavigator(
 			})
 		},
 	}, {
-		initialRouteName: 'RegisterLeader',
+		initialRouteName: 'ListLeader',
 		activeColor: '#fff',
 		inactiveColor: '#754822',
 		shifting: true,

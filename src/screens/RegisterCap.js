@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Picker, TimePickerAndroid, ScrollView, TouchableOpacity, Text, StyleSheet, Modal, ActivityIndicator, Alert } from "react-native"
 import Icon from 'react-native-vector-icons/Ionicons'
 import IconSimple from 'react-native-vector-icons/SimpleLineIcons'
-import { TextInputMask } from 'react-native-masked-text'
+// import Autocomplete from 'react-native-autocomplete-input'
 
 import CapService from '../services/CapService'
+import LeaderService from '../services/LeaderService'
 
 import { Container, ViewModal } from './styles/MainStyled'
 import { Label, InputText, MediumInput, ColMediumInput, Button, TextButton, RowHour, RedText, ViewButtons, ButtonBack, ButtonAlter } from './styles/RegisterStyled'
@@ -16,7 +17,7 @@ export default function RegisterCap(props) {
 	const [longitude, setLongitude] = useState(null)
 	const [day, setDay] = useState('')
 	const [hour, setHour] = useState('0:00h')
-	const [telephone, setTelephone] = useState('')
+	const [listLeaders, setListLeaders] = useState([])
 	const [leader, setLeader] = useState('')
 	const [subLeader, setSubLeader] = useState('')
 	const [houseOwner, setHouseOwner] = useState('')
@@ -24,8 +25,14 @@ export default function RegisterCap(props) {
 	const [loading, setLoading] = useState(false)
 	const [textLoading, setTextLoading] = useState('')
 	const [capIdEdit, setCapIdEdit] = useState(null)
+	const [hideResults, setHideResults] = useState(true)
 
 	useEffect(() => {
+		listDataEdit()
+		listAllLeaders()
+	}, [])
+
+	const listDataEdit = () => {
 		if (props.navigation.state.params) {
 			setTextLoading('Buscando dados...')
 			setLoading(true)
@@ -37,7 +44,6 @@ export default function RegisterCap(props) {
 				setLongitude(cap.longitude)
 				setDay(cap.day)
 				setHour(cap.hour)
-				setTelephone(cap.telephone)
 				setLeader(cap.leader)
 				setSubLeader(cap.subLeader)
 				setHouseOwner(cap.houseOwner)
@@ -46,7 +52,12 @@ export default function RegisterCap(props) {
 				setLoading(false)
 			})
 		}
-	}, [])
+	}
+
+	const listAllLeaders = () => {
+		LeaderService.GetLeaders()
+			.then(resp => setListLeaders(resp))
+	}
 
 	const showMessage = message => {
 		Alert.alert('Atenção!', message, [{ text: 'Ok' }])
@@ -70,7 +81,6 @@ export default function RegisterCap(props) {
 		setLongitude('')
 		setDay('')
 		setHour('0:00h')
-		setTelephone('')
 		setLeader('')
 		setSubLeader('')
 		setHouseOwner('')
@@ -90,8 +100,8 @@ export default function RegisterCap(props) {
 			return showMessage('Por favor, selecione o líder da Casa de Paz.')
 		} else if (supervisor == '') {
 			return showMessage('Por favor, selecione o supervisor da Casa de Paz.')
-			
-		} else if(capIdEdit) {
+
+		} else if (capIdEdit) {
 			setTextLoading('Alterando Casa de Paz...')
 			setLoading(true)
 
@@ -116,9 +126,16 @@ export default function RegisterCap(props) {
 		}
 	}
 
+	const handlePressLeader = resultLeader => {
+		setLeader(resultLeader.name)
+		setHideResults(true)
+	}
+
+	const dataLeaders = listLeaders.filter(filter => filter.name.includes(leader))
+
 	return (
 		<Container>
-			<ScrollView>
+			<ScrollView style={{ flex: 1 }}>
 				<Label>Local <RedText>*</RedText></Label>
 				<InputText onChangeText={local => setLocal(local)} value={local} />
 
@@ -160,11 +177,23 @@ export default function RegisterCap(props) {
 					</ColMediumInput>
 				</MediumInput>
 
-				<Label>Telefone <RedText>*</RedText></Label>
-				<TextInputMask style={styles.inputMask} type={'cel-phone'} options={{ maskType: 'BRL', withDDD: true, dddMask: '(99) ' }} onChangeText={telephone => setTelephone(telephone)} value={telephone} keyboardType="numeric" />
-
 				<Label>Líder <RedText>*</RedText></Label>
-				<InputText onChangeText={leader => setLeader(leader)} value={leader} />
+
+				{/* <Autocomplete
+					onBlur={() => setHideResults(true)}
+					hideResults={hideResults}
+					data={dataLeaders}
+					defaultValue={leader}
+					onChangeText={text => { setLeader(text); setHideResults(false) }}
+					listContainerStyle={{ position: 'absolute', width: '100%', marginTop: 42, zIndex: 100 }}
+					renderItem={({ item, i }) => (
+						<TouchableOpacity style={styles.buttonItem} onPress={() => handlePressLeader(item)}>
+							<Text style={{ fontSize: 16 }}>{item.name}</Text>
+						</TouchableOpacity>
+					)}
+					inputContainerStyle={styles.inputAutoContainer}
+					style={styles.inputAutoComplete}
+				/> */}
 
 				<Label>Sublíder</Label>
 				<InputText onChangeText={subLeader => setSubLeader(subLeader)} value={subLeader} />
@@ -191,13 +220,13 @@ export default function RegisterCap(props) {
 							</ButtonAlter>
 						</ViewButtons>
 				}
+				<Modal animationType="fade" transparent={true} visible={loading}>
+					<ViewModal>
+						<ActivityIndicator size="large" color="#fff" />
+						<Text style={{ color: '#fff', fontSize: 20, marginTop: 5 }}>{textLoading}</Text>
+					</ViewModal>
+				</Modal>
 			</ScrollView>
-			<Modal animationType="fade" transparent={true} visible={loading}>
-				<ViewModal>
-					<ActivityIndicator size="large" color="#fff" />
-					<Text style={{ color: '#fff', fontSize: 20, marginTop: 5 }}>{textLoading}</Text>
-				</ViewModal>
-			</Modal>
 		</Container>
 	)
 }
@@ -216,5 +245,26 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 5,
 		paddingVertical: 2,
 		borderRadius: 4
-	}
+	},
+	buttonItem: {
+		padding: 10,
+		borderBottomWidth: 1,
+		borderBottomColor: '#e8e8e8'
+	},
+	inputAutoComplete: {
+		position: 'relative',
+		height: 42,
+		borderBottomColor: '#9c9c9c',
+		borderBottomWidth: 2,
+		backgroundColor: '#fff',
+		fontSize: 20,
+		marginBottom: 10,
+	},
+	inputAutoContainer: {
+		position: 'relative',
+		width: '100%',
+		paddingHorizontal: 10,
+		backgroundColor: '#fff',
+		borderColor: '#fff',
+	},
 })

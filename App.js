@@ -1,6 +1,5 @@
 import React from 'react';
-import { createSwitchNavigator, createStackNavigator, createDrawerNavigator, createAppContainer } from "react-navigation";
-import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs"
+import { createSwitchNavigator, createStackNavigator, createDrawerNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
@@ -96,28 +95,48 @@ const RegisterLeaderStack = createStackNavigator({
 	}
 })
 
-const TabBottom = createMaterialBottomTabNavigator(
+const TabBottom = createBottomTabNavigator (
 	{
 		ListLeader: { 
 			screen: ListLeaderStack,
 			navigationOptions: () => ({
-				tabBarIcon: <Icon name="format-list-checkbox" size={25} color="#fff" />,
-				title: 'Listar'
+				// tabBarIcon: <Icon name="format-list-checkbox" size={25} color="#000" />,
+				title: 'Listar Líder'
 			})
 		},
 		RegisterLeader: { 
 			screen: RegisterLeaderStack,
 			navigationOptions: () => ({
-				tabBarIcon: <Icon name="account-multiple-plus" size={25} color="#fff" />,
-				title: 'Cadastrar'
+				// tabBarIcon: <Icon name="account-multiple-plus" size={25} color="#000" />,
+				title: 'Cadastrar Líder'
 			})
 		},
 	}, {
 		initialRouteName: 'ListLeader',
-		activeColor: '#fff',
-		inactiveColor: '#754822',
-		shifting: true,
-		barStyle: { backgroundColor: '#f68121' },
+		defaultNavigationOptions: ({ navigation }) => ({
+			tabBarIcon: ({ focused, horizontal, tintColor }) => {
+				const { routeName } = navigation.state
+				let iconName
+
+				if (routeName === 'ListLeader') {
+					iconName = 'format-list-checkbox'
+
+				} else if (routeName === 'RegisterLeader') {
+					iconName = 'account-multiple-plus';
+				}
+		
+				return <Icon name={iconName} size={26} color={tintColor} />;
+			},
+		}),
+		tabBarOptions: {
+			activeTintColor: '#fff',
+			inactiveTintColor: '#9e4700',
+			activeBackgroundColor: '#f68121',
+			style: {
+				backgroundColor: '#e6781e'
+			},
+			keyboardHidesTabBar: true
+		},
 	}
 )
 

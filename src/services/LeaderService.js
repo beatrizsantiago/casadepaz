@@ -33,6 +33,23 @@ export async function RegisterLeader(email, password, name, telephone) {
     }
 }
 
+export async function GetLeaders() {
+    try {
+        let listLeaders = [];
+
+        let leaders = await firebase.firestore().collection('leaders').get()
+        
+        leaders.docs.forEach(leader => {
+            listLeaders.push({id: leader.id, ...leader.data()})
+        })
+
+        return listLeaders
+    } catch (error) {
+        console.warn("Error GetLeaders: ", error);
+        throw error
+    }
+}
+
 export async function GetAllLeaders(callback) {
     try {
         firebase.firestore().collection('leaders').onSnapshot(snapshot => {
@@ -59,4 +76,4 @@ export async function UpdateStateLeader(idDoc, bool) {
     }
 }
 
-export default { CreateUser, RegisterLeader, GetAllLeaders, UpdateStateLeader }
+export default { CreateUser, RegisterLeader, GetLeaders, GetAllLeaders, UpdateStateLeader }

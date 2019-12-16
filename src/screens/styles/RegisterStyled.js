@@ -17,6 +17,13 @@ export const InputText = styled.TextInput`
     font-size: 20px;
 `
 
+export const ViewAutoComplete = styled.View`
+    width: 97%;
+    margin-top: 1.5%;
+    background-color: #fff;
+    z-index: 100;
+`
+
 export const MediumInput = styled.View`
     display: flex;
     flex-direction: row;

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { Picker, TimePickerAndroid, ScrollView, TouchableOpacity, Text, StyleSheet, Modal, ActivityIndicator, Alert } from "react-native"
+import { View, Picker, TimePickerAndroid, ScrollView, TouchableOpacity, Text, StyleSheet, Modal, ActivityIndicator, Alert } from "react-native"
 import Icon from 'react-native-vector-icons/Ionicons'
 import IconSimple from 'react-native-vector-icons/SimpleLineIcons'
-// import Autocomplete from 'react-native-autocomplete-input'
+import Autocomplete from 'react-native-autocomplete-input'
 
 import CapService from '../services/CapService'
 import LeaderService from '../services/LeaderService'
 
-import { Container, ViewModal } from './styles/MainStyled'
-import { Label, InputText, MediumInput, ColMediumInput, Button, TextButton, RowHour, RedText, ViewButtons, ButtonBack, ButtonAlter } from './styles/RegisterStyled'
+import { ContainerGray, ViewModal } from './styles/MainStyled'
+import { Label, InputText, ViewAutoComplete, MediumInput, ColMediumInput, Button, TextButton, RowHour, RedText, ViewButtons, ButtonBack, ButtonAlter } from './styles/RegisterStyled'
 
 export default function RegisterCap(props) {
 
@@ -134,8 +134,27 @@ export default function RegisterCap(props) {
 	const dataLeaders = listLeaders.filter(filter => filter.name.includes(leader))
 
 	return (
-		<Container>
-			<ScrollView style={{ flex: 1 }}>
+		<ContainerGray>
+			<ViewAutoComplete>
+				<Label>Líder <RedText>*</RedText></Label>
+			</ViewAutoComplete>
+			<Autocomplete
+				onBlur={() => setHideResults(true)}
+				hideResults={hideResults}
+				data={dataLeaders}
+				defaultValue={leader}
+				onChangeText={text => { setLeader(text); setHideResults(false) }}
+				listContainerStyle={{ position: 'absolute', width: '97%', left: '-48.5%', marginTop: 42, zIndex: 100 }}
+				renderItem={({ item, i }) => (
+					<TouchableOpacity style={styles.buttonItem} onPress={() => handlePressLeader(item)}>
+						<Text style={{ fontSize: 16 }}>{item.name}</Text>
+					</TouchableOpacity>
+				)}
+				inputContainerStyle={styles.inputAutoContainer}
+				style={styles.inputAutoComplete}
+			/>
+
+			<ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
 				<Label>Local <RedText>*</RedText></Label>
 				<InputText onChangeText={local => setLocal(local)} value={local} />
 
@@ -177,24 +196,6 @@ export default function RegisterCap(props) {
 					</ColMediumInput>
 				</MediumInput>
 
-				<Label>Líder <RedText>*</RedText></Label>
-
-				{/* <Autocomplete
-					onBlur={() => setHideResults(true)}
-					hideResults={hideResults}
-					data={dataLeaders}
-					defaultValue={leader}
-					onChangeText={text => { setLeader(text); setHideResults(false) }}
-					listContainerStyle={{ position: 'absolute', width: '100%', marginTop: 42, zIndex: 100 }}
-					renderItem={({ item, i }) => (
-						<TouchableOpacity style={styles.buttonItem} onPress={() => handlePressLeader(item)}>
-							<Text style={{ fontSize: 16 }}>{item.name}</Text>
-						</TouchableOpacity>
-					)}
-					inputContainerStyle={styles.inputAutoContainer}
-					style={styles.inputAutoComplete}
-				/> */}
-
 				<Label>Sublíder</Label>
 				<InputText onChangeText={subLeader => setSubLeader(subLeader)} value={subLeader} />
 
@@ -227,11 +228,21 @@ export default function RegisterCap(props) {
 					</ViewModal>
 				</Modal>
 			</ScrollView>
-		</Container>
+		</ContainerGray>
 	)
 }
 
 const styles = StyleSheet.create({
+	scroll: { 
+		flex: 1, 
+		width: '97%', 
+		position: 'absolute', 
+		top: 106, 
+		left: '1.5%', 
+		bottom: 0, 
+		right: 0, 
+		backgroundColor: '#fff' 
+	},
 	inputMask: {
 		height: 40,
 		marginHorizontal: 12,
@@ -261,8 +272,9 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 	},
 	inputAutoContainer: {
-		position: 'relative',
-		width: '100%',
+		position: 'absolute',
+		left: '-48.5%',
+		width: '97%',
 		paddingHorizontal: 10,
 		backgroundColor: '#fff',
 		borderColor: '#fff',

@@ -8,11 +8,17 @@ export function GetAllInformation(callback) {
                 let snap = await feedbackData.idCap.get()
                 let refCap = snap.data()
                 let idRefCap = snap.id
+                // console.warn({leader: { ...snap.data() }});
+                
+                // let leaderData = await refCap.leader.get()
+                // let refLeader = leaderData.data()
+                // console.warn(leaderData.data());
 
                 let feedbackInfo = info.data()
                 delete feedbackInfo.idCap
 
                 callback({ id: info.id, ...feedbackInfo, idRefCap, ...refCap })
+                //, leaderCap: { ...refLeader }
             })
         })
     } catch (error) {

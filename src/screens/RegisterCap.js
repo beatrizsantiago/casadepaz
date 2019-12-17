@@ -19,6 +19,7 @@ export default function RegisterCap(props) {
 	const [hour, setHour] = useState('0:00h')
 	const [listLeaders, setListLeaders] = useState([])
 	const [leader, setLeader] = useState('')
+	const [dataLeader, setDataLeader] = useState({})
 	const [subLeader, setSubLeader] = useState('')
 	const [houseOwner, setHouseOwner] = useState('')
 	const [supervisor, setSupervisor] = useState('')
@@ -56,11 +57,7 @@ export default function RegisterCap(props) {
 
 	const listAllLeaders = () => {
 		LeaderService.GetLeaders()
-			.then(resp => {
-				setListLeaders(resp)
-				console.warn(resp);
-				
-			})
+			.then(resp => setListLeaders(resp))
 	}
 
 	const showMessage = message => {
@@ -118,7 +115,7 @@ export default function RegisterCap(props) {
 			setTextLoading('Cadastrando Casa de Paz...')
 			setLoading(true)
 
-			let successRegister = await CapService.Register(local, latitude, longitude, day, hour, leader, subLeader, houseOwner, supervisor)
+			let successRegister = await CapService.Register(local, latitude, longitude, day, hour, dataLeader, subLeader, houseOwner, supervisor)
 
 			if (successRegister) {
 				clearData()
@@ -129,6 +126,7 @@ export default function RegisterCap(props) {
 	}
 
 	const handlePressLeader = resultLeader => {
+		setDataLeader(resultLeader)
 		setLeader(resultLeader.name)
 		setHideResults(true)
 	}

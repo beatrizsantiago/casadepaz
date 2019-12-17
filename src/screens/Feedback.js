@@ -60,7 +60,7 @@ export default class Feedback extends Component {
                                         </LargeField>
                                         <LargeField>
                                             <Icon name="account-circle" color="#f68121" size={30} />
-                                            <Text style={{ fontSize: 18, width: '88%' }}>{cap.leader}</Text>
+                                            <Text style={{ fontSize: 18, width: '88%' }}>{cap.leader.name}</Text>
                                         </LargeField>
                                         <LargeField>
                                             <Icon name="calendar-multiselect" color="#f68121" size={30} />

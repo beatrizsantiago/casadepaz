@@ -142,10 +142,10 @@ const TabBottom = createBottomTabNavigator (
 
 const AppDrawer = createDrawerNavigator(
 	{
-		RegisterCap: RegisterCapStack,
+		Feedback: FeedbackStack,
 		Dashboard: DashboardStack,
 		SearchCap: SearchCapStack,
-		Feedback: FeedbackStack,
+		RegisterCap: RegisterCapStack,
 		LeaderCap: TabBottom,
 	},
 	{

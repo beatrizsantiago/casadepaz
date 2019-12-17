@@ -84,6 +84,8 @@ export default class SearchCap extends Component {
     }
 
     cardToggleHandle = selectedCap => {
+        console.warn(selectedCap.leader.name, selectedCap.leader.telephone);
+        
         if (!this.state.idCapSelected && selectedCap) {
             this.setState({ dataCapSelected: selectedCap, idCapSelected: selectedCap.id }, () => {
                 this.callAnimation(true)
@@ -274,10 +276,10 @@ export default class SearchCap extends Component {
                     </MediumInput>
                     <LargeInput>
                         <Icon name="phone-classic" color="#f68121" size={25} style={{ marginRight: 8 }} />
-                        <TextLarge>{this.state.dataCapSelected.telephone}</TextLarge>
+                        <TextLarge>{this.state.dataCapSelected.leader ? this.state.dataCapSelected.leader.telephone : ''}</TextLarge>
                     </LargeInput>
                     <LargeInput>
-                        <TextLarge>{`Líder: ${this.state.dataCapSelected.leader}`}</TextLarge>
+                        <TextLarge>{`Líder: ${this.state.dataCapSelected.leader ? this.state.dataCapSelected.leader.name : ''}`}</TextLarge>
                     </LargeInput>
                     <LargeInput>
                         <TextLarge>{`Supervisor: ${this.state.dataCapSelected.supervisor}`}</TextLarge>

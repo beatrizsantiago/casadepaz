@@ -56,7 +56,11 @@ export default function RegisterCap(props) {
 
 	const listAllLeaders = () => {
 		LeaderService.GetLeaders()
-			.then(resp => setListLeaders(resp))
+			.then(resp => {
+				setListLeaders(resp)
+				console.warn(resp);
+				
+			})
 	}
 
 	const showMessage = message => {
@@ -94,8 +98,6 @@ export default function RegisterCap(props) {
 			return showMessage('Por favor, selecione o dia da Casa de Paz.')
 		} else if (hour == '0:00h') {
 			return showMessage('Por favor, informe a hora da Casa de Paz.')
-		} else if (telephone == '') {
-			return showMessage('Por favor, insira um telefone.')
 		} else if (leader == '') {
 			return showMessage('Por favor, selecione o líder da Casa de Paz.')
 		} else if (supervisor == '') {
@@ -105,7 +107,7 @@ export default function RegisterCap(props) {
 			setTextLoading('Alterando Casa de Paz...')
 			setLoading(true)
 
-			let successEdit = await CapService.UpdateCap(capIdEdit, local, latitude, longitude, day, hour, telephone, leader, subLeader, houseOwner, supervisor)
+			let successEdit = await CapService.UpdateCap(capIdEdit, local, latitude, longitude, day, hour, leader, subLeader, houseOwner, supervisor)
 
 			if (successEdit) {
 				props.navigation.goBack()
@@ -116,7 +118,7 @@ export default function RegisterCap(props) {
 			setTextLoading('Cadastrando Casa de Paz...')
 			setLoading(true)
 
-			let successRegister = await CapService.Register(local, latitude, longitude, day, hour, telephone, leader, subLeader, houseOwner, supervisor)
+			let successRegister = await CapService.Register(local, latitude, longitude, day, hour, leader, subLeader, houseOwner, supervisor)
 
 			if (successRegister) {
 				clearData()

@@ -1,8 +1,8 @@
 import firebase from 'react-native-firebase'
 
-export function Register(local, latitude, longitude, day, hour, telephone, leader, subLeader, houseOwner, supervisor) {
+export function Register(local, latitude, longitude, day, hour, leader, subLeader, houseOwner, supervisor) {
     try {
-        let cap = { local, latitude, longitude, day, hour, telephone, leader, subLeader, houseOwner, supervisor }
+        let cap = { local, latitude, longitude, day, hour, leader, subLeader, houseOwner, supervisor }
 
         firebase.firestore()
             .collection('caps').add(cap)
@@ -53,10 +53,10 @@ export async function GetDataCap(id) {
     }
 }
 
-export async function UpdateCap(idCap, local, latitude, longitude, day, hour, telephone, leader, subLeader, houseOwner, supervisor) {
+export async function UpdateCap(idCap, local, latitude, longitude, day, hour, leader, subLeader, houseOwner, supervisor) {
     try {
         await firebase.firestore().collection('caps').doc(idCap).update({
-            local, latitude, longitude, day, hour, telephone, leader, subLeader, houseOwner, supervisor
+            local, latitude, longitude, day, hour, leader, subLeader, houseOwner, supervisor
         })
         return true
     } catch (error) {

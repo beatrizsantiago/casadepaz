@@ -8,18 +8,17 @@ import ImageViewer from 'react-native-image-zoom-viewer'
 
 import { ContainerGray } from './styles/MainStyled'
 import { BigCard, Row, CardLeft, LargeCard, Circle, ItemIcon, TextCard, SimpleCard, HeaderCard, Description, ImgCard, ButtonClose } from './styles/FeedbackDetailsStyled'
-import { } from 'react-native-gesture-handler'
 
 export default function FeedbackDetails(props) {
 
     const [collapsed, setCollapsed] = useState(true)
-    const [feedback, setFeedback] = useState({})
+    const [dataFeedback, setDataFeedback] = useState({})
     const [isImageViewVisible, setIsImageViewVisible] = useState(false)
     const [imageSource, setImageSource] = useState([])
 
     useEffect(() => {
         const { feedback } = props.navigation.state.params
-        setFeedback(feedback)
+        setDataFeedback(feedback)
         setImageSource([{ url: feedback.photoCap }])
     }, [])
 
@@ -33,6 +32,8 @@ export default function FeedbackDetails(props) {
         </Modal> : null
 
     const toggleExpanded = () => {
+        console.warn(dataFeedback.dataLeader.name);
+        
         setCollapsed(!collapsed)
     }
 
@@ -40,32 +41,32 @@ export default function FeedbackDetails(props) {
         <ContainerGray>
             <ScrollView style={{ flex: 1, width: '100%' }}>
                 <BigCard>
-                    <Text style={{ fontSize: 15 }}>Líder: <Text style={{ fontWeight: 'bold', textTransform: 'uppercase' }}>{feedback.leader}</Text></Text>
-                    {feedback.subLeader ? <Text style={{ fontSize: 15 }}>Sublíder: <Text style={{ fontWeight: 'bold', textTransform: 'uppercase' }}>{feedback.subLeader}</Text></Text> : null}
-                    <Text style={{ fontSize: 15 }}>Supervisor: <Text style={{ fontWeight: 'bold', textTransform: 'uppercase' }}>{feedback.supervisor}</Text></Text>
+                    <Text style={{ fontSize: 15 }}>Líder: <Text style={{ fontWeight: 'bold', textTransform: 'uppercase' }}>{dataFeedback.dataLeader ? dataFeedback.dataLeader.name : ''}</Text></Text>
+                    {dataFeedback.subLeader ? <Text style={{ fontSize: 15 }}>Sublíder: <Text style={{ fontWeight: 'bold', textTransform: 'uppercase' }}>{dataFeedback.subLeader}</Text></Text> : null}
+                    <Text style={{ fontSize: 15 }}>Supervisor: <Text style={{ fontWeight: 'bold', textTransform: 'uppercase' }}>{dataFeedback.supervisor}</Text></Text>
                 </BigCard>
                 <Row>
                     <CardLeft>
                         <ItemIcon>
                             <Icon name="users" size={22} color="#f68121" />
                         </ItemIcon>
-                        <TextCard>{feedback.quantityPeople} pessoas</TextCard>
+                        <TextCard>{dataFeedback.quantityPeople} pessoas</TextCard>
                     </CardLeft>
                     <CardLeft>
                         <ItemIcon>
                             <Icon name="bar-chart-2" size={25} color="#f68121" />
                         </ItemIcon>
-                        <TextCard>{feedback.quantityConversion} Conversões</TextCard>
+                        <TextCard>{dataFeedback.quantityConversion} Conversões</TextCard>
                     </CardLeft>
                 </Row>
                 {
-                    feedback.quantityMiracles > 0 ?
+                    dataFeedback.quantityMiracles > 0 ?
                         <View>
                             <LargeCard>
                                 <Circle>
                                     <IconFontAwesome name="smile-o" size={30} color="#f68121" />
                                 </Circle>
-                                <TextCard>{feedback.quantityMiracles} milagres</TextCard>
+                                <TextCard>{dataFeedback.quantityMiracles} milagres</TextCard>
                             </LargeCard>
                             <SimpleCard>
                                 <HeaderCard onPress={() => toggleExpanded()}>
@@ -73,7 +74,7 @@ export default function FeedbackDetails(props) {
                                     <IconIonicon name={collapsed ? "ios-arrow-down" : "ios-arrow-up"} size={22} color="#fff" />
                                 </HeaderCard>
                                 <Collapsible style={{ backgroundColor: '#fff' }} collapsed={collapsed} duration={500}>
-                                    <Description>{feedback.descriptionMiracles ? feedback.descriptionMiracles : "Não há nenhuma descrição"}</Description>
+                                    <Description>{dataFeedback.descriptionMiracles ? dataFeedback.descriptionMiracles : "Não há nenhuma descrição"}</Description>
                                 </Collapsible>
                             </SimpleCard>
                         </View>
@@ -87,9 +88,9 @@ export default function FeedbackDetails(props) {
                 }
                 <ImgCard>
                     {
-                        feedback.photoCap ?
+                        dataFeedback.photoCap ?
                             <TouchableOpacity onPress={() => setIsImageViewVisible(true)} style={{ width: '100%', height: 200 }}>
-                                <Image style={{ width: '100%', height: 200 }} source={{ uri: feedback.photoCap }} />
+                                <Image style={{ width: '100%', height: 200 }} source={{ uri: dataFeedback.photoCap }} />
                             </TouchableOpacity>
                             :
                             <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>

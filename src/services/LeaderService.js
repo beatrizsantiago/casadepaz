@@ -33,6 +33,26 @@ export async function RegisterLeader(email, password, name, telephone) {
     }
 }
 
+export async function GetLeaderCap(idCap) {
+    try {
+        let caps = await firebase.firestore().collection('caps').get();
+        let dataCap = {}
+        caps.docs.map(cap => {
+            if (cap.id == idCap) {
+                dataCap = { id: cap.id, ...cap.data() }
+            }
+        })
+
+        let infoLeader = await dataCap.leader.get()
+        let leader = {id: infoLeader.id, ...infoLeader.data()}
+
+        return leader        
+    } catch (error) {
+        console.warn("Error GetLeaderCap: ", error);
+        throw error
+    }
+}
+
 export async function GetLeaders() {
     try {
         let listLeaders = [];
@@ -76,4 +96,4 @@ export async function UpdateStateLeader(idDoc, bool) {
     }
 }
 
-export default { CreateUser, RegisterLeader, GetLeaders, GetAllLeaders, UpdateStateLeader }
+export default { CreateUser, RegisterLeader, GetLeaderCap, GetLeaders, GetAllLeaders, UpdateStateLeader }

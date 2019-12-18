@@ -285,7 +285,7 @@ export default class SearchCap extends Component {
                         <TextLarge>{`Supervisor: ${this.state.dataCapSelected.supervisor}`}</TextLarge>
                     </LargeInput>
                     <IconsInput>
-                        <TouchableOpacity onPress={() => this.props.navigation.push('RegisterCap', { capId: this.state.dataCapSelected.id })}>
+                        <TouchableOpacity onPress={() => this.props.navigation.push('Cadastrar Cap', { capId: this.state.dataCapSelected.id })}>
                             <Icon name="square-edit-outline" color="#f68121" size={30} />
                         </TouchableOpacity>
                         <TouchableOpacity>

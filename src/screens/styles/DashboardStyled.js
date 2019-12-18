@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 export const Row = styled.View`
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     margin: 5px 0px;
 `
@@ -62,7 +62,7 @@ export const CircleMedim = styled.View`
 export const MediumBoxWhite = styled.View`
     display: flex;
     flex-direction: column;
-    width: 46%;
+    width: 46.5%;
     height: 90px;
     margin: 0px 6px;
     background-color: #fff;
@@ -72,7 +72,7 @@ export const MediumBoxOrange = styled.View`
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 46%;
+    width: 46.5%;
     height: 90px;
     margin: 0px 6px;
     background-color: #f68121;

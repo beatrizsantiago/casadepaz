@@ -1,5 +1,8 @@
-import React from 'react';
-import { createSwitchNavigator, createStackNavigator, createDrawerNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
+import React from 'react'
+import { createSwitchNavigator, createAppContainer } from "react-navigation"
+import { createStackNavigator } from 'react-navigation-stack'
+import { createDrawerNavigator } from 'react-navigation-drawer'
+import { createBottomTabNavigator } from 'react-navigation-tabs'
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
@@ -17,140 +20,147 @@ import RegisterLeaderCap from './src/screens/RegisterLeaderCap'
 import Header from './src/components/Header'
 import DrawerContainer from './src/components/DrawerContainer'
 
+import DrawerRoutes  from './src/config/navigation/routesBuilder'
+import SideMenu from './src/components/SideMenu'
+
 const SplahStack = createStackNavigator({ Splash })
 
 const LoginStack = createStackNavigator({ Login })
 
-const DashboardStack = createStackNavigator({
-	Dashboard: {
-		screen: Dashboard,
-		headerMode: 'screen',
-		navigationOptions: ({ navigation }) => ({
-			header: () => <Header navigation={navigation} title="Dashboard" />
-		})
-	}
-})
+// const DashboardStack = createStackNavigator({
+// 	Dashboard: {
+// 		screen: Dashboard,
+// 		headerMode: 'screen',
+// 		navigationOptions: ({ navigation }) => ({
+// 			header: () => <Header navigation={navigation} title="Dashboard" />
+// 		})
+// 	}
+// })
 
-const SearchCapStack = createStackNavigator({
-	SearchCap: {
-		screen: SearchCap,
-		headerMode: 'screen',
-		navigationOptions: ({ navigation }) => ({
-			header: () => <Header navigation={navigation} title="Pesquisar Cap" />
-		})
-	}
-})
+// const SearchCapStack = createStackNavigator({
+// 	SearchCap: {
+// 		screen: SearchCap,
+// 		headerMode: 'screen',
+// 		navigationOptions: ({ navigation }) => ({
+// 			header: () => <Header navigation={navigation} title="Pesquisar Cap" />
+// 		})
+// 	}
+// })
 
-const RegisterCapStack = createStackNavigator({
-	RegisterCap: {
-		screen: RegisterCap,
-		headerMode: 'screen',
-		navigationOptions: ({ navigation }) => ({
-			header: () => <Header navigation={navigation} title="Cadastrar Cap" />
-		})
-	}
-})
+// const RegisterCapStack = createStackNavigator({
+// 	RegisterCap: {
+// 		screen: RegisterCap,
+// 		headerMode: 'screen',
+// 		navigationOptions: ({ navigation }) => ({
+// 			header: () => <Header navigation={navigation} title="Cadastrar Cap" />
+// 		})
+// 	}
+// })
 
-const FeedbackStack = createStackNavigator({
-	Feedback: {
-		screen: Feedback,
-		headerMode: 'screen',
-		navigationOptions: ({ navigation }) => ({
-			header: () => <Header navigation={navigation} title="Feedback" />
-		})
-	},
-	FeedbackList: {
-		screen: FeedbackList,
-		headerMode: 'screen',
-		navigationOptions: ({ navigation }) => ({
-			header: () => <Header navigation={navigation} title="Feedback" />
-		})
-	},
-	FeedbackDetails: {
-		screen: FeedbackDetails,
-		headerMode: 'screen',
-		navigationOptions: ({ navigation }) => ({
-			header: () => <Header navigation={navigation} title="Detalhes Feedback" />
-		})
-	}
-})
+// const FeedbackStack = createStackNavigator({
+// 	Feedback: {
+// 		screen: Feedback,
+// 		headerMode: 'screen',
+// 		navigationOptions: ({ navigation }) => ({
+// 			header: () => <Header navigation={navigation} title="Feedback" />
+// 		})
+// 	},
+// 	FeedbackList: {
+// 		screen: FeedbackList,
+// 		headerMode: 'screen',
+// 		navigationOptions: ({ navigation }) => ({
+// 			header: () => <Header navigation={navigation} title="Feedback" />
+// 		})
+// 	},
+// 	FeedbackDetails: {
+// 		screen: FeedbackDetails,
+// 		headerMode: 'screen',
+// 		navigationOptions: ({ navigation }) => ({
+// 			header: () => <Header navigation={navigation} title="Detalhes Feedback" />
+// 		})
+// 	}
+// })
 
-const ListLeaderStack = createStackNavigator({
-	ListLeaderCap: {
-		screen: ListLeaderCap,
-		headerMode: 'screen',
-		navigationOptions: ({ navigation }) => ({
-			header: () => <Header navigation={navigation} title="Líderes de Cap" />,
-		})
-	}
-})
+// const ListLeaderStack = createStackNavigator({
+// 	ListLeaderCap: {
+// 		screen: ListLeaderCap,
+// 		headerMode: 'screen',
+// 		navigationOptions: ({ navigation }) => ({
+// 			header: () => <Header navigation={navigation} title="Líderes de Cap" />,
+// 		})
+// 	}
+// })
 
-const RegisterLeaderStack = createStackNavigator({
-	RegisterLeaderCap: {
-		screen: RegisterLeaderCap,
-		headerMode: 'screen',
-		navigationOptions: ({ navigation }) => ({
-			header: () => <Header navigation={navigation} title="Cadastrar Líder" />,
-		})
-	}
-})
+// const RegisterLeaderStack = createStackNavigator({
+// 	RegisterLeaderCap: {
+// 		screen: RegisterLeaderCap,
+// 		headerMode: 'screen',
+// 		navigationOptions: ({ navigation }) => ({
+// 			header: () => <Header navigation={navigation} title="Cadastrar Líder" />,
+// 		})
+// 	}
+// })
 
-const TabBottom = createBottomTabNavigator (
-	{
-		ListLeader: { 
-			screen: ListLeaderStack,
-			navigationOptions: () => ({
-				// tabBarIcon: <Icon name="format-list-checkbox" size={25} color="#000" />,
-				title: 'Listar Líder'
-			})
-		},
-		RegisterLeader: { 
-			screen: RegisterLeaderStack,
-			navigationOptions: () => ({
-				// tabBarIcon: <Icon name="account-multiple-plus" size={25} color="#000" />,
-				title: 'Cadastrar Líder'
-			})
-		},
-	}, {
-		initialRouteName: 'ListLeader',
-		defaultNavigationOptions: ({ navigation }) => ({
-			tabBarIcon: ({ focused, horizontal, tintColor }) => {
-				const { routeName } = navigation.state
-				let iconName
+// const TabBottom = createBottomTabNavigator (
+// 	{
+// 		ListLeader: { 
+// 			screen: ListLeaderStack,
+// 			navigationOptions: () => ({
+// 				// tabBarIcon: <Icon name="format-list-checkbox" size={25} color="#000" />,
+// 				title: 'Listar Líder'
+// 			})
+// 		},
+// 		RegisterLeader: { 
+// 			screen: RegisterLeaderStack,
+// 			navigationOptions: () => ({
+// 				// tabBarIcon: <Icon name="account-multiple-plus" size={25} color="#000" />,
+// 				title: 'Cadastrar Líder'
+// 			})
+// 		},
+// 	}, {
+// 		initialRouteName: 'ListLeader',
+// 		defaultNavigationOptions: ({ navigation }) => ({
+// 			tabBarIcon: ({ focused, horizontal, tintColor }) => {
+// 				const { routeName } = navigation.state
+// 				let iconName
 
-				if (routeName === 'ListLeader') {
-					iconName = 'format-list-checkbox'
+// 				if (routeName === 'ListLeader') {
+// 					iconName = 'format-list-checkbox'
 
-				} else if (routeName === 'RegisterLeader') {
-					iconName = 'account-multiple-plus';
-				}
+// 				} else if (routeName === 'RegisterLeader') {
+// 					iconName = 'account-multiple-plus';
+// 				}
 		
-				return <Icon name={iconName} size={26} color={tintColor} />;
-			},
-		}),
-		tabBarOptions: {
-			activeTintColor: '#fff',
-			inactiveTintColor: '#9e4700',
-			activeBackgroundColor: '#f68121',
-			style: {
-				backgroundColor: '#e6781e'
-			},
-			keyboardHidesTabBar: true
-		},
-	}
-)
+// 				return <Icon name={iconName} size={26} color={tintColor} />;
+// 			},
+// 		}),
+// 		tabBarOptions: {
+// 			activeTintColor: '#fff',
+// 			inactiveTintColor: '#9e4700',
+// 			activeBackgroundColor: '#f68121',
+// 			style: {
+// 				backgroundColor: '#e6781e'
+// 			},
+// 			keyboardHidesTabBar: true
+// 		},
+// 	}
+// )
 
 const AppDrawer = createDrawerNavigator(
 	{
-		Dashboard: DashboardStack,
-		SearchCap: SearchCapStack,
-		Feedback: FeedbackStack,
-		RegisterCap: RegisterCapStack,
-		LeaderCap: TabBottom,
+		...DrawerRoutes
+
+
+		// Dashboard: DashboardStack,
+		// SearchCap: SearchCapStack,
+		// Feedback: FeedbackStack,
+		// RegisterCap: RegisterCapStack,
+		// LeaderCap: TabBottom,
 	},
 	{
-		contentComponent: ({ navigation }) => <DrawerContainer navigation={navigation} />,
-		drawerWidth: 300,
+		// contentComponent: ({ navigation }) => <DrawerContainer navigation={navigation} />,
+		// drawerWidth: 300,
+		contentComponent: props => <SideMenu {...props} />
 	}
 );
 

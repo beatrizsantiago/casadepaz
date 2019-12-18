@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 
-import { View, Text, Picker, TouchableOpacity, Animated, Easing, StyleSheet } from 'react-native'
+import { View, Text, Picker, Animated, Easing, StyleSheet } from 'react-native'
 import MapView, { Marker, Callout } from 'react-native-maps'
 import Geolocation from '@react-native-community/geolocation';
 import Autocomplete from 'react-native-autocomplete-input';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import IconLocal from 'react-native-vector-icons/Entypo'
+
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 import CapService from '../services/CapService'
 
@@ -84,8 +86,6 @@ export default class SearchCap extends Component {
     }
 
     cardToggleHandle = selectedCap => {
-        console.warn(selectedCap.leader.name, selectedCap.leader.telephone);
-        
         if (!this.state.idCapSelected && selectedCap) {
             this.setState({ dataCapSelected: selectedCap, idCapSelected: selectedCap.id }, () => {
                 this.callAnimation(true)

@@ -40,16 +40,16 @@ export default function RegisterCap(props) {
 
 			const { capId } = props.navigation.state.params
 			CapService.GetDataCap(capId).then(cap => {
-				setLocal(cap.local)
-				setLatitude(cap.latitude)
-				setLongitude(cap.longitude)
-				setDay(cap.day)
-				setHour(cap.hour)
-				setLeader(cap.leader)
-				setSubLeader(cap.subLeader)
-				setHouseOwner(cap.houseOwner)
-				setSupervisor(cap.supervisor)
-				setCapIdEdit(cap.id)
+				setLocal(cap.dataCap.local)
+				setLatitude(cap.dataCap.latitude)
+				setLongitude(cap.dataCap.longitude)
+				setDay(cap.dataCap.day)
+				setHour(cap.dataCap.hour)
+				setLeader(cap.leader.name)
+				setSubLeader(cap.dataCap.subLeader)
+				setHouseOwner(cap.dataCap.houseOwner)
+				setSupervisor(cap.dataCap.supervisor)
+				setCapIdEdit(cap.dataCap.id)
 				setLoading(false)
 			})
 		}
@@ -104,7 +104,7 @@ export default function RegisterCap(props) {
 			setTextLoading('Alterando Casa de Paz...')
 			setLoading(true)
 
-			let successEdit = await CapService.UpdateCap(capIdEdit, local, latitude, longitude, day, hour, leader, subLeader, houseOwner, supervisor)
+			let successEdit = await CapService.UpdateCap(capIdEdit, local, latitude, longitude, day, hour, dataLeader, subLeader, houseOwner, supervisor)
 
 			if (successEdit) {
 				props.navigation.goBack()

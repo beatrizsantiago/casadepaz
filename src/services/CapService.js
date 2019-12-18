@@ -52,7 +52,10 @@ export async function GetDataCap(id) {
             }
         })
 
-        return dataCap
+        let infoLeader = await dataCap.leader.get()
+        let leader = {id: infoLeader.id, ...infoLeader.data()}
+
+        return { dataCap, leader}
 
     } catch (error) {
         console.warn("Error GetDataCap: ", error);
@@ -63,7 +66,7 @@ export async function GetDataCap(id) {
 export async function UpdateCap(idCap, local, latitude, longitude, day, hour, leader, subLeader, houseOwner, supervisor) {
     try {
         await firebase.firestore().collection('caps').doc(idCap).update({
-            local, latitude, longitude, day, hour, leader, subLeader, houseOwner, supervisor
+            local, latitude, longitude, day, hour, leader: firebase.firestore().doc(`leaders/${leader.id}`), subLeader, houseOwner, supervisor
         })
         return true
     } catch (error) {

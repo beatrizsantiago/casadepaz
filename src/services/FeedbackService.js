@@ -35,12 +35,15 @@ export function GetInformationPeriod(initialDate, finalDate, callback) {
             let quantityPeople = 0
             let quantityMiracles = 0
             let quantityConversion = 0
+            let images = []
             snapshot.forEach(info => {
                 quantityPeople += info.data().quantityPeople
                 quantityMiracles += info.data().quantityMiracles
                 quantityConversion += info.data().quantityConversion
+                images.push(info.data().photoCap)
             })
-            callback({ quantityPeople, quantityConversion, quantityMiracles })
+            
+            callback({ quantityPeople, quantityConversion, quantityMiracles, images })
         })
     } catch (error) {
         console.warn("Error GetInformationPeriod: ", error);

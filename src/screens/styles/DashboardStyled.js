@@ -96,3 +96,33 @@ export const HeaderBox = styled.View`
     height: 35%;
     background-color: #f68121;
 `
+
+export const CardScroll = styled.View`
+    display: flex;
+    flex-direction: row;
+    width: 96%;
+    height: 220px;
+    background-color: #fff;
+`
+
+export const LeftBoxCard = styled.View`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12%;
+    height: 100%;
+    background-color: #f68121;
+`
+
+export const Gallery = styled.ScrollView`
+    height: 100%;
+    padding: 5px;
+`
+
+export const BoxEmptyImage = styled.View`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 88%;
+    height: 100%;
+`

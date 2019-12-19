@@ -30,7 +30,7 @@ export default class NavBar extends Component {
 
     renderNavigationLeftMenuItem = () => (
         <TouchableOpacity onPress={() => this.menuButtonPressed()} style={{ marginLeft: 10 }}>
-            <Icon name='ios-menu' size={35} color="#fff" />
+            <Icon name='ios-menu' size={38} color="#fff" />
         </TouchableOpacity>
     )
 
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         // marginHorizontal: 14,
     },
     title: {
-        fontSize: 20,
+        fontSize: 22,
         color: '#fff',
     }
 })

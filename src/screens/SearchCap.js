@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 
-import { View, Text, Picker, Animated, Easing, StyleSheet } from 'react-native'
+import { View, Text, Picker, Animated, Easing, TouchableOpacity, StyleSheet } from 'react-native'
 import MapView, { Marker, Callout } from 'react-native-maps'
 import Geolocation from '@react-native-community/geolocation';
 import Autocomplete from 'react-native-autocomplete-input';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import IconLocal from 'react-native-vector-icons/Entypo'
-
-import { TouchableOpacity } from 'react-native-gesture-handler'
 
 import CapService from '../services/CapService'
 
@@ -40,7 +38,7 @@ export default class SearchCap extends Component {
     }
 
     listAllCaps = () => {
-        CapService.GetCaps(cap => {
+        CapService.GetActiveCaps(cap => {
             let oldCaps = this.state.allCaps
             oldCaps.push(cap)
             this.setState({ allCaps: oldCaps, listCaps: oldCaps })

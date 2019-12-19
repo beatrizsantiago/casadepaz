@@ -56,7 +56,7 @@ export default function RegisterCap(props) {
 	}
 
 	const listAllLeaders = () => {
-		LeaderService.GetLeaders()
+		LeaderService.GetActiveLeaders()
 			.then(resp => setListLeaders(resp))
 	}
 

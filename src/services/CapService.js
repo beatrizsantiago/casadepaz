@@ -2,7 +2,7 @@ import firebase from 'react-native-firebase'
 
 export function Register(local, latitude, longitude, day, hour, leader, subLeader, houseOwner, supervisor) {
     try {
-        let cap = { local, latitude, longitude, day, hour, leader: firebase.firestore().doc(`leaders/${leader.id}`), subLeader, houseOwner, supervisor }
+        let cap = { active: true, local, latitude, longitude, day, hour, leader: firebase.firestore().doc(`leaders/${leader.id}`), subLeader, houseOwner, supervisor }
 
         firebase.firestore()
             .collection('caps').add(cap)
@@ -32,12 +32,40 @@ export function GetCaps(callback) {
     }
 }
 
+export function GetActiveCaps(callback) {
+    try {
+        firebase.firestore().collection('caps').where('active', '==', true).onSnapshot(snapshot => {
+            snapshot.forEach(async cap => {
+                let capData = cap.data()
+                let snap = await capData.leader.get()
+                let refLeader = snap.data()
+                let idRefLeader = snap.id
+
+                callback({ id: cap.id, ...capData, leader: { id: idRefLeader, ...refLeader } })
+            })
+        })
+    } catch (error) {
+        console.warn("Error GetActiveCaps: ", error);
+        throw error
+    }
+}
+
 export function NumberCaps(callback) {
     try {
         firebase.firestore().collection('caps').onSnapshot(snapshot => callback(snapshot.size));
 
     } catch (error) {
         console.warn("Error NumberCaps: ", error);
+        throw error
+    }
+}
+
+export function NumberActiveCaps(callback) {
+    try {
+        firebase.firestore().collection('caps').where('active', '==', true).onSnapshot(snapshot => callback(snapshot.size));
+
+    } catch (error) {
+        console.warn("Error NumberActiveCaps: ", error);
         throw error
     }
 }
@@ -75,4 +103,17 @@ export async function UpdateCap(idCap, local, latitude, longitude, day, hour, le
     }
 }
 
-export default { Register, GetCaps, NumberCaps, GetDataCap, UpdateCap }
+export async function UpdateStateCap(idCap, bool) {
+    try {
+        await firebase.firestore().collection('caps').doc(idCap).update({
+            active: bool
+        })
+        return true
+
+    } catch (error) {
+        console.warn("Error UpdateStateCap: ", error);
+        throw error
+    }
+}
+
+export default { Register, GetCaps, GetActiveCaps, NumberCaps, NumberActiveCaps, GetDataCap, UpdateCap, UpdateStateCap }

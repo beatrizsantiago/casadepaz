@@ -53,11 +53,11 @@ export async function GetLeaderCap(idCap) {
     }
 }
 
-export async function GetLeaders() {
+export async function GetActiveLeaders() {
     try {
         let listLeaders = [];
 
-        let leaders = await firebase.firestore().collection('leaders').get()
+        let leaders = await firebase.firestore().collection('leaders').where('active', '==', true).get()
         
         leaders.docs.forEach(leader => {
             listLeaders.push({id: leader.id, ...leader.data()})
@@ -65,7 +65,7 @@ export async function GetLeaders() {
 
         return listLeaders
     } catch (error) {
-        console.warn("Error GetLeaders: ", error);
+        console.warn("Error GetActiveLeaders: ", error);
         throw error
     }
 }
@@ -96,4 +96,4 @@ export async function UpdateStateLeader(idDoc, bool) {
     }
 }
 
-export default { CreateUser, RegisterLeader, GetLeaderCap, GetLeaders, GetAllLeaders, UpdateStateLeader }
+export default { CreateUser, RegisterLeader, GetLeaderCap, GetActiveLeaders, GetAllLeaders, UpdateStateLeader }

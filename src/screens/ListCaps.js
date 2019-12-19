@@ -1,32 +1,27 @@
 import React, { Component } from 'react'
-import { View, Text, ScrollView, ActivityIndicator } from "react-native"
+import { View, Text, ScrollView, ActivityIndicator, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
-import FeedbackService from '../services/FeedbackService'
 import CapService from '../services/CapService'
 
 import { ContainerGray } from './styles/MainStyled'
-import { CapCard, LargeField } from './styles/ListCapsStyled'
+import { CapCard, LargeField, ViewButtons, ButtonEnable, ButtonDisable } from './styles/ListCapsStyled'
 
-export default class Feedback extends Component {
-
+export default class ListCaps extends Component {
     state = {
         caps: [],
-        feedbacks: [],
         loading: true
     }
 
     componentDidMount() {
-        CapService.GetActiveCaps(cap => {
+        this.listAllCaps()
+    }
+
+    listAllCaps() {
+        CapService.GetCaps(cap => {
             let oldCaps = this.state.caps
             oldCaps.push(cap)
             this.setState({ caps: oldCaps })
-        })
-
-        FeedbackService.GetAllInformation(feedback => {
-            let resp = this.state.feedbacks
-            resp.push(feedback)
-            this.setState({ feedbacks: resp })
         })
 
         setTimeout(() => {
@@ -34,11 +29,8 @@ export default class Feedback extends Component {
         }, 1000)
     }
 
-    handlePress = idCap => {
-        let filterFeedback = this.state.feedbacks
-        let filterResult = filterFeedback.filter(filterFeedback => filterFeedback.idRefCap.includes(idCap))
-
-        this.props.navigation.navigate('FeedbackList', { feedbacks: filterResult })
+    enableOrDisableCap = (idCap, bool) => {
+        CapService.UpdateStateCap(idCap, bool)
     }
 
     render() {
@@ -53,7 +45,7 @@ export default class Feedback extends Component {
                         <ScrollView style={{ flex: 1, width: '100%' }}>
                             {
                                 this.state.caps.map(cap => (
-                                    <CapCard key={cap.id} onPress={() => this.handlePress(cap.id)}>
+                                    <CapCard key={cap.id}>
                                         <LargeField>
                                             <Icon name="home-map-marker" color="#f68121" size={30} />
                                             <Text style={{ fontSize: 18, width: '88%' }}>{cap.local}</Text>
@@ -62,12 +54,21 @@ export default class Feedback extends Component {
                                             <Icon name="account-circle" color="#f68121" size={30} />
                                             <Text style={{ fontSize: 18, width: '88%' }}>{cap.leader.name}</Text>
                                         </LargeField>
-                                        <LargeField>
-                                            <Icon name="calendar-multiselect" color="#f68121" size={30} />
-                                            <Text style={{ fontSize: 18, width: '37%' }}>{cap.day}</Text>
-                                            <Icon name="clock-outline" color="#f68121" size={30} />
-                                            <Text style={{ fontSize: 18, width: '37%' }}>{cap.hour}</Text>
-                                        </LargeField>
+
+                                        <ViewButtons>
+                                            {cap.active ?
+                                                <ButtonDisable onPress={() => this.enableOrDisableCap(cap.id, false)}>
+                                                    <Text style={{ fontSize: 18, color: '#f68121' }}>Desativar</Text>
+                                                </ButtonDisable>
+                                                :
+                                                <ButtonEnable onPress={() => this.enableOrDisableCap(cap.id, true)}>
+                                                    <Text style={{ fontSize: 18, color: '#fff' }}>Ativar</Text>
+                                                </ButtonEnable>
+                                            }
+                                            <ButtonEnable onPress={() => this.props.navigation.push('Cadastrar Cap', { capId: cap.id })}>
+                                                <Text style={{ fontSize: 18, color: '#fff' }}>Editar</Text>
+                                            </ButtonEnable>
+                                        </ViewButtons>
                                     </CapCard>
                                 ))
                             }

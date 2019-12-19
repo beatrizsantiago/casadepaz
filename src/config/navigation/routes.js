@@ -2,6 +2,8 @@ import React from 'react'
 
 import Dashboard from '../../screens/Dashboard'
 import SearchCap from '../../screens/SearchCap'
+import Cap from '../../screens/Cap'
+import ListCaps from '../../screens/ListCaps'
 import RegisterCap from '../../screens/RegisterCap'
 import Feedback from '../../screens/Feedback'
 import FeedbackList from '../../screens/FeedbackList'
@@ -26,11 +28,25 @@ const Routes = [
         hide: false,
     },
     {
+        id: 'Casa de Paz',
+        title: 'Casa de Paz',
+        icon: 'home-outline',
+        screen: Cap,
+        hide: false,
+    },
+    {
+        id: 'Listar Caps',
+        title: 'Listar Caps',
+        icon: 'pin-outline',
+        screen: ListCaps,
+        hide: true,
+    },
+    {
         id: 'Cadastrar Cap',
         title: 'Cadastrar Cap',
         icon: 'pin-outline',
         screen: RegisterCap,
-        hide: false,
+        hide: true,
     },
     {
         id: 'Feedback',

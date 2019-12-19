@@ -25,7 +25,7 @@ export default class Dashboard extends Component {
 	}
 
 	componentDidMount() {
-		CapService.NumberCaps(quantityCaps => {
+		CapService.NumberActiveCaps(quantityCaps => {
 			this.setState({ numberCaps: quantityCaps });
 		})
 

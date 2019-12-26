@@ -126,3 +126,34 @@ export const BoxEmptyImage = styled.View`
     width: 88%;
     height: 100%;
 `
+
+export const TitleInfo = styled.Text`
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #000;
+`
+
+export const TitleQuantity = styled.Text`
+    font-size: 22px;
+    color: #fff;
+`
+
+export const SubtitleQuantity = styled.Text`
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #fff;
+`
+
+export const TitleHeaderBox = styled.Text`
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: bold;
+`
+
+export const TitleBox = styled.Text`
+    font-size: 22px;
+    text-transform: uppercase;
+    color: #000;
+    margin-left: 10px;
+`

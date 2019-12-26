@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { View, ScrollView, Text, Modal, Image } from "react-native";
+import React, { Component } from 'react'
+import { View, ScrollView, Text, Modal, Image, TouchableOpacity } from "react-native"
 import Icon from 'react-native-vector-icons/Ionicons'
 import IconAnt from 'react-native-vector-icons/AntDesign'
 import IconFeather from 'react-native-vector-icons/Feather'
@@ -10,8 +10,10 @@ import CapService from '../services/CapService'
 import FeedbackService from '../services/FeedbackService'
 
 import { ContainerGray } from './styles/MainStyled'
-import { Row, Column, RowBar, BigBox, Circle, MediumBoxWhite, MediumBoxOrange, CircleMedim, LargeBox, HeaderBox, CardScroll, LeftBoxCard, Gallery, BoxEmptyImage } from './styles/DashboardStyled';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {
+	Row, Column, RowBar, BigBox, Circle, MediumBoxWhite, MediumBoxOrange, CircleMedim, LargeBox, HeaderBox, CardScroll, LeftBoxCard, Gallery,
+	BoxEmptyImage, TitleInfo, TitleQuantity, SubtitleQuantity, TitleHeaderBox, TitleBox
+} from './styles/DashboardStyled'
 
 export default class Dashboard extends Component {
 
@@ -26,8 +28,9 @@ export default class Dashboard extends Component {
 			quantityMiracles: 0,
 			images: []
 		},
+		urlImages: [],
+		indexImageVisible: 0,
 		isImageViewVisible: false,
-		urlImages: []
 	}
 
 	componentDidMount() {
@@ -47,6 +50,7 @@ export default class Dashboard extends Component {
 
 		FeedbackService.GetInformationPeriod(lastWeek, today, feedback => {
 			this.setState({ cardData: feedback })
+			this.createObjectUrlsImages()
 		})
 	}
 
@@ -54,7 +58,7 @@ export default class Dashboard extends Component {
 		let urls = []
 
 		this.state.cardData.images.map(img => {
-			if(img) {
+			if (img) {
 				urls.push({ url: img })
 			}
 		})
@@ -68,6 +72,7 @@ export default class Dashboard extends Component {
 				imageUrls={this.state.urlImages}
 				enableSwipeDown={true}
 				onSwipeDown={() => this.setState({ isImageViewVisible: false })}
+				index={this.state.indexImageVisible}
 			/>
 		</Modal>
 
@@ -91,42 +96,38 @@ export default class Dashboard extends Component {
 				</Row>
 
 				<RowBar>
-					<Text style={{ fontSize: 15, textTransform: "uppercase", color: '#000' }}>Informações de <Text style={{ fontWeight: 'bold' }}>{moment(lastWeek).format('DD/MM/YYYY')}</Text> à <Text style={{ fontWeight: 'bold' }}>{moment(today).format('DD/MM/YYYY')}</Text></Text>
+					<TitleInfo>Informações de <Text style={{ fontWeight: 'bold' }}>{moment(lastWeek).format('DD/MM/YYYY')}</Text> à <Text style={{ fontWeight: 'bold' }}>{moment(today).format('DD/MM/YYYY')}</Text></TitleInfo>
 				</RowBar>
 
 				<ScrollView>
 					<Row>
 						<MediumBoxOrange>
-							<Row>
-								<CircleMedim>
-									<IconAnt name="linechart" color="#fff" size={35} />
-								</CircleMedim>
-								<Column>
-									<Text style={{ fontSize: 22, color: '#fff' }}>{cardData.quantityConversion}</Text>
-									<Text style={{ fontSize: 12, textTransform: "uppercase", color: '#fff' }}>conversões</Text>
-								</Column>
-							</Row>
+							<CircleMedim>
+								<IconAnt name="linechart" color="#fff" size={35} />
+							</CircleMedim>
+							<Column>
+								<TitleQuantity>{cardData.quantityConversion}</TitleQuantity>
+								<SubtitleQuantity>conversões</SubtitleQuantity>
+							</Column>
 						</MediumBoxOrange>
 						<MediumBoxOrange>
-							<Row>
-								<CircleMedim>
-									<IconAnt name="barschart" color="#fff" size={40} />
-								</CircleMedim>
-								<Column>
-									<Text style={{ fontSize: 22, color: '#fff' }}>{cardData.quantityMiracles}</Text>
-									<Text style={{ fontSize: 12, textTransform: "uppercase", color: '#fff' }}>milagres</Text>
-								</Column>
-							</Row>
+							<CircleMedim>
+								<IconAnt name="barschart" color="#fff" size={40} />
+							</CircleMedim>
+							<Column>
+								<TitleQuantity>{cardData.quantityMiracles}</TitleQuantity>
+								<SubtitleQuantity>milagres</SubtitleQuantity>
+							</Column>
 						</MediumBoxOrange>
 					</Row>
 					<Row>
 						<LargeBox>
 							<HeaderBox>
-								<Text style={{ fontSize: 14, textTransform: "uppercase", color: '#fff', fontWeight: 'bold' }}>N° de Frequentadores das Cap's</Text>
+								<TitleHeaderBox>N° de Frequentadores das Cap's</TitleHeaderBox>
 							</HeaderBox>
 							<View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
 								<Icon name="ios-people" color="#f68121" size={50} />
-								<Text style={{ fontSize: 22, textTransform: "uppercase", color: '#000', marginLeft: 10 }}>{cardData.quantityPeople} pessoas</Text>
+								<TitleBox>{cardData.quantityPeople} pessoas</TitleBox>
 							</View>
 						</LargeBox>
 					</Row>
@@ -135,13 +136,13 @@ export default class Dashboard extends Component {
 							<LeftBoxCard>
 								<Icon name="ios-images" size={30} color="#fff" />
 							</LeftBoxCard>
-							{this.state.cardData.images.length > 0 ?
+							{this.state.urlImages.length > 0 ?
 								<Gallery horizontal={true}>
-									{this.state.cardData.images.map((image, index) => {
-										if (image) {
-											return <Image key={index} style={{ width: 300, height: '100%', marginRight: 5 }} source={{ uri: image }} />
-										}
-									})}
+									{this.state.urlImages.map((image, index) =>
+										<TouchableOpacity key={index} onPress={() => this.setState({ indexImageVisible: index, isImageViewVisible: true })}>
+											<Image style={{ width: 300, height: '100%', marginRight: 5 }} source={{ uri: image.url }} />
+										</TouchableOpacity>
+									)}
 								</Gallery>
 								:
 								<BoxEmptyImage>
@@ -155,13 +156,6 @@ export default class Dashboard extends Component {
 					<Row>
 						<MediumBoxWhite />
 						<MediumBoxWhite />
-					</Row>
-					<Row>
-						<MediumBoxWhite />
-						<MediumBoxWhite />
-					</Row>
-					<Row>
-						<LargeBox />
 					</Row>
 					<Row>
 						<LargeBox />

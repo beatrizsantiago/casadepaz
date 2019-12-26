@@ -17,7 +17,7 @@ export default function FeedbackList(props) {
     }, [])
 
     const handlePress = feedback => {
-        props.navigation.navigate('FeedbackDetails', { feedback })
+        props.navigation.navigate('Detalhes do Feedback', { feedback })
     }
 
     return (

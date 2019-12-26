@@ -38,7 +38,7 @@ export default class Feedback extends Component {
         let filterFeedback = this.state.feedbacks
         let filterResult = filterFeedback.filter(filterFeedback => filterFeedback.idRefCap.includes(idCap))
 
-        this.props.navigation.navigate('FeedbackList', { feedbacks: filterResult })
+        this.props.navigation.navigate('Listar Feedbacks', { feedbacks: filterResult })
     }
 
     render() {

@@ -3,6 +3,8 @@ import { View, Picker, TimePickerAndroid, ScrollView, TouchableOpacity, Text, St
 import Icon from 'react-native-vector-icons/Ionicons'
 import IconSimple from 'react-native-vector-icons/SimpleLineIcons'
 import Autocomplete from 'react-native-autocomplete-input'
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
+import RNGooglePlaces from 'react-native-google-places'
 
 import CapService from '../services/CapService'
 import LeaderService from '../services/LeaderService'
@@ -27,6 +29,7 @@ export default function RegisterCap(props) {
 	const [textLoading, setTextLoading] = useState('')
 	const [capIdEdit, setCapIdEdit] = useState(null)
 	const [hideResults, setHideResults] = useState(true)
+	const [place, setPlace] = useState('')
 
 	useEffect(() => {
 		listDataEdit()
@@ -133,8 +136,67 @@ export default function RegisterCap(props) {
 
 	const dataLeaders = listLeaders.filter(filter => filter.name.includes(leader))
 
+	const openSearchModal = () => {
+		RNGooglePlaces.openAutocompleteModal({ useOverlay: true })
+			.then((place) => {
+				setPlace(place)
+
+				// this.setState({ place: place })
+				// this._map.fitToCoordinates([{ latitude: place.latitude, longitude: place.longitude }], {
+				// 	edgePadding: { top: 80, right: 80, bottom: 80, left: 80 },
+				// 	animated: true,
+				// });
+				console.warn(place)
+			})
+			.catch(error => console.warn(error.message));
+	}
+
 	return (
 		<ContainerGray>
+			{/* <Text numberOfLines={1} style={{ color: '#acbcbb', fontSize: 14 }} onPress={() => openSearchModal()}>
+				{place ? place.name : 'Press to pick a place'}
+			</Text>
+			<GooglePlacesAutocomplete
+				placeholder='Search'
+				minLength={2} // minimum length of text to search
+				autoFocus={true}
+				fetchDetails={true}
+				onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
+					console.warn(data);
+					console.warn(details);
+				}}
+				getDefaultValue={() => {
+					return ''; // text input default value
+				}}
+				query={{
+					key: 'AIzaSyDM2GFtFcYVci3s_P1UGOs8NLAnsQTbrZg',
+					language: 'en', // language of the results
+				}}
+				styles={{
+					description: {
+						fontWeight: 'bold',
+					},
+					predefinedPlacesDescription: {
+						color: '#1faadb',
+					},
+				}}
+
+				currentLocation={true} // Will add a 'Current location' button at the top of the predefined places list
+				currentLocationLabel="Current location"
+				nearbyPlacesAPI='GooglePlacesSearch' // Which API to use: GoogleReverseGeocoding or GooglePlacesSearch
+				GooglePlacesSearchQuery={{
+					rankby: 'distance',
+					types: 'food',
+				}}
+				GooglePlacesDetailsQuery={{
+					fields: 'formatted_address',
+				}}
+
+				filterReverseGeocodingByTypes={['locality', 'administrative_area_level_3']} // filter the reverse geocoding results by types - ['locality', 'administrative_area_level_3'] if you want to display only cities
+
+				predefinedPlacesAlwaysVisible={true}
+			/> */}
+
 			<ViewAutoComplete>
 				<Label>Líder <RedText>*</RedText></Label>
 			</ViewAutoComplete>
@@ -233,15 +295,15 @@ export default function RegisterCap(props) {
 }
 
 const styles = StyleSheet.create({
-	scroll: { 
-		flex: 1, 
-		width: '97%', 
-		position: 'absolute', 
-		top: 106, 
-		left: '1.5%', 
-		bottom: 0, 
-		right: 0, 
-		backgroundColor: '#fff' 
+	scroll: {
+		flex: 1,
+		width: '97%',
+		position: 'absolute',
+		top: 106,
+		left: '1.5%',
+		bottom: 0,
+		right: 0,
+		backgroundColor: '#fff'
 	},
 	inputMask: {
 		height: 40,

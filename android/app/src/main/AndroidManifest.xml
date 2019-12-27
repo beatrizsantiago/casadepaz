@@ -3,6 +3,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
       android:name=".MainApplication"
@@ -14,7 +15,7 @@
 
       <meta-data
         android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyC2P9t__1Hsyv0txUfy-euwAqTlVfZLrRk"/>
+        android:value="AIzaSyDM2GFtFcYVci3s_P1UGOs8NLAnsQTbrZg"/>
 
       <activity
         android:name=".MainActivity"

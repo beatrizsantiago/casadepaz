@@ -31,11 +31,7 @@ export default function FeedbackDetails(props) {
             />
         </Modal> : null
 
-    const toggleExpanded = () => {
-        console.warn(dataFeedback.dataLeader.name);
-        
-        setCollapsed(!collapsed)
-    }
+    const toggleExpanded = () => setCollapsed(!collapsed)
 
     return (
         <ContainerGray>
@@ -66,11 +62,11 @@ export default function FeedbackDetails(props) {
                                 <Circle>
                                     <IconFontAwesome name="smile-o" size={30} color="#f68121" />
                                 </Circle>
-                                <TextCard>{dataFeedback.quantityMiracles} milagres</TextCard>
+                                <TextCard>{dataFeedback.quantityMiracles} {dataFeedback.quantityMiracles == 1 ? 'milagre' : 'milagres'}</TextCard>
                             </LargeCard>
                             <SimpleCard>
                                 <HeaderCard onPress={() => toggleExpanded()}>
-                                    <Text style={{ fontSize: 14, textTransform: "uppercase", color: '#fff', fontWeight: 'bold' }}>Descrição dos Milagres</Text>
+                                    <Text style={{ fontSize: 14, textTransform: "uppercase", color: '#fff', fontWeight: 'bold' }}>Descrição do(s) Milagre(s)</Text>
                                     <IconIonicon name={collapsed ? "ios-arrow-down" : "ios-arrow-up"} size={22} color="#fff" />
                                 </HeaderCard>
                                 <Collapsible style={{ backgroundColor: '#fff' }} collapsed={collapsed} duration={500}>

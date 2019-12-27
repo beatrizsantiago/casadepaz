@@ -238,11 +238,11 @@ export default function RegisterCap(props) {
 						<Picker onValueChange={day => setDay(day)} selectedValue={day} style={{ marginLeft: 12, fontSize: 20 }}>
 							<Picker.Item label="Selecione" value="" />
 							<Picker.Item label="Segunda" value="Segunda" />
-							<Picker.Item label="Terça" value="Terca" />
+							<Picker.Item label="Terça" value="Terça" />
 							<Picker.Item label="Quarta" value="Quarta" />
 							<Picker.Item label="Quinta" value="Quinta" />
 							<Picker.Item label="Sexta" value="Sexta" />
-							<Picker.Item label="Sábado" value="Sabado" />
+							<Picker.Item label="Sábado" value="Sábado" />
 							<Picker.Item label="Domingo" value="Domingo" />
 						</Picker>
 					</ColMediumInput>

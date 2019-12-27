@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { View, Text, Picker, Animated, Easing, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, Picker, Animated, Easing, TouchableOpacity, StyleSheet, Platform, Linking, Share } from 'react-native'
 import MapView, { Marker, Callout } from 'react-native-maps'
 import Geolocation from '@react-native-community/geolocation';
 import Autocomplete from 'react-native-autocomplete-input';
@@ -65,6 +65,18 @@ export default class SearchCap extends Component {
                 longitudeDelta: longD ? longD : 0.03
             }
         })
+    }
+
+    goLocal = (latitudeCap, longitudeCap) => {
+        const scheme  = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' })
+        const latLng = `${latitudeCap}, ${longitudeCap}`
+        const label = 'Custom Label'
+        const url = Platform.select({
+            ios: `${scheme}${label}@${latLng}`,
+            android: `${scheme}${latLng}(${label})`
+        })
+
+        Linking.openURL(url)
     }
 
     callAnimation = (isUp, callback) => {
@@ -167,7 +179,6 @@ export default class SearchCap extends Component {
         this.setCurrentPosition(parseFloat(resultCap.latitude), parseFloat(resultCap.longitude), 0.002, 0.002)
     }
 
-
     render() {
         const dataCaps = this.state.listCaps.filter(filterCap => filterCap.local.includes(this.state.searchLocale))
         return (
@@ -222,11 +233,11 @@ export default class SearchCap extends Component {
                                 <Picker style={styles.select} selectedValue={this.state.searchDay} onValueChange={value => this.handleSearchDay(value)} >
                                     <Picker.Item label="Dia" value="" />
                                     <Picker.Item label="Segunda" value="Segunda" />
-                                    <Picker.Item label="Terça" value="Terca" />
+                                    <Picker.Item label="Terça" value="Terça" />
                                     <Picker.Item label="Quarta" value="Quarta" />
                                     <Picker.Item label="Quinta" value="Quinta" />
                                     <Picker.Item label="Sexta" value="Sexta" />
-                                    <Picker.Item label="Sábado" value="Sabado" />
+                                    <Picker.Item label="Sábado" value="Sábado" />
                                     <Picker.Item label="Domingo" value="Domingo" />
                                 </Picker>
                                 {this.state.searchDay ?
@@ -286,7 +297,7 @@ export default class SearchCap extends Component {
                         <TouchableOpacity onPress={() => this.props.navigation.push('Cadastrar Cap', { capId: this.state.dataCapSelected.id })}>
                             <Icon name="square-edit-outline" color="#f68121" size={30} />
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => this.goLocal(this.state.dataCapSelected.latitude, this.state.dataCapSelected.longitude)}>
                             <Icon name="home-map-marker" color="#f68121" size={30} />
                         </TouchableOpacity>
                         <TouchableOpacity>

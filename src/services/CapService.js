@@ -7,7 +7,7 @@ export function Register(local, latitude, longitude, day, hour, leader, subLeade
         firebase.firestore()
             .collection('caps').add(cap)
 
-        return true
+        return 'Success'
     } catch (error) {
         console.warn("Error Register: ", error);
         throw error

@@ -72,9 +72,9 @@ export default function LoginScreen(props) {
 					<Text style={{ fontSize: 20, color: '#fff' }}>LOGIN</Text>
 				</Button>
 
-				<Footer>
+				{/* <Footer>
 					<Text style={{ fontSize: 18 }}>Esqueceu a Senha?</Text>
-				</Footer>
+				</Footer> */}
 
 			</KeyboardAvoidingView>
 

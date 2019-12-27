@@ -18,16 +18,16 @@ export default function RegisterLeaderCap() {
     const [textLoading, setTextLoading] = useState('')
 
     const showMessage = message => {
-		Alert.alert('Atenção!', message, [{ text: 'Ok' }])
+        Alert.alert('Atenção!', message, [{ text: 'Ok' }])
     }
-    
+
     const clearData = () => {
-		setEmail('')
-		setPassword('')
-		setConfirmPassword('')
-		setName('')
-		setTelephone('')
-	}
+        setEmail('')
+        setPassword('')
+        setConfirmPassword('')
+        setName('')
+        setTelephone('')
+    }
 
     handlePressRegister = async () => {
         if (email == '') {
@@ -36,20 +36,31 @@ export default function RegisterLeaderCap() {
             return showMessage('Por favor, informe uma senha válida.')
         } else if (confirmPassword != password) {
             return showMessage('A confirmação da senha não coincide com a senha.')
-        } else if(name == '') {
+        } else if (name == '') {
             return showMessage('Por favor, informe o nome do(a) líder.')
-        } else if(telephone == '') {
+        } else if (telephone == '') {
             return showMessage('Por favor, informe o telefone do(a) líder.')
 
         } else {
             setTextLoading('Cadastrando líder....')
             setLoading(true)
-            let successRegister = await LeaderService.RegisterLeader(email, password, name, telephone)
-            if(successRegister) {
-                clearData()
-                setLoading(false)
-                return Alert.alert('Sucesso!', 'Líder cadastrado.', [{ text: 'Ok' }])
-            }
+            LeaderService.RegisterLeader(email, password, name, telephone)
+                .then(() => {
+                    clearData()
+                    setLoading(false)
+                    return Alert.alert('Sucesso!', 'Líder cadastrado.', [{ text: 'Ok' }])
+                })
+                .catch(error => {
+                    setLoading(false)
+
+                    if (error.code == "auth/invalid-email") {
+                        return Alert.alert('Falha!', 'O e-mail é inválido, certifique-se de que o digitou corretamente.', [{ text: 'Ok' }])
+
+                    } else if (error.code == "auth/email-already-in-use") {
+                        return Alert.alert('Falha!', 'O e-mail informado já está em uso.', [{ text: 'Ok' }])
+
+                    }
+                })
         }
     }
 
@@ -86,12 +97,12 @@ export default function RegisterLeaderCap() {
 }
 
 const styles = StyleSheet.create({
-	inputMask: {
-		height: 40,
-		marginHorizontal: 12,
-		padding: 1,
-		fontSize: 20,
-		borderBottomWidth: 2,
-		borderBottomColor: '#9c9c9c',
-	}
+    inputMask: {
+        height: 40,
+        marginHorizontal: 12,
+        padding: 1,
+        fontSize: 20,
+        borderBottomWidth: 2,
+        borderBottomColor: '#9c9c9c',
+    }
 })

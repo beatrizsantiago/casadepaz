@@ -83,20 +83,7 @@ export default function SubmitPreaching(props) {
                 <InputTextRadius onChangeText={title => setTitlePreaching(title)} value={titlePreaching} />
 
                 {/* <Label>URL do Vídeo</Label>
-                <InputTextRadius onChangeText={url => setUrlVideo(url)} value={urlVideo} />
-
-                <VideoPlayer
-                    source={{ uri: 'https://vjs.zencdn.net/v/oceans.mp4' }}
-                /> */}
-
-                {/* <Video source={{ uri: 'https://www.youtube.com/watch?v=wu-4smnuujI' }}
-                    ref={(ref) => {
-                        this.player = ref
-                    }}
-                    style={{ position: 'relative', width: 200, height: 100 }}
-                /> */}
-
-                {/* <Label>Palavra <RedText>*</RedText></Label> */}
+                <InputTextRadius onChangeText={url => setUrlVideo(url)} value={urlVideo} /> */}
 
                 <RowSelectFile>
                     <ButtonSelect onPress={() => selectDocument()}>

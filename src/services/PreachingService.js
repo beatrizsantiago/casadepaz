@@ -53,4 +53,17 @@ export async function UpdatePreaching(idPreaching, url) {
     }
 }
 
-export default { UploadFilePreaching, RegisterPreaching, UpdatePreaching }
+export function GetAllFiles(callback) {
+    try {
+        collectionPreachings.onSnapshot(snapshot => {
+            snapshot.forEach(info => {
+                callback({ id: info.id, ...info.data() })
+            })
+        })
+    } catch (error) {
+        console.warn("Error GetAllFiles: ", error);
+        throw error
+    }
+}
+
+export default { UploadFilePreaching, RegisterPreaching, UpdatePreaching, GetAllFiles }

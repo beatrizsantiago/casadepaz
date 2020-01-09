@@ -22,7 +22,7 @@ const TabBottom = createBottomTabNavigator (
             })
         },
     }, {
-        initialRouteName: 'Submit',
+        initialRouteName: 'Historic',
         defaultNavigationOptions: ({ navigation }) => ({
             tabBarIcon: ({ focused, horizontal, tintColor }) => {
                 const { routeName } = navigation.state

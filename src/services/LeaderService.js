@@ -22,6 +22,7 @@ export async function RegisterLeader(email, password, name, telephone) {
                 active: true,
                 email: email,
                 name: name,
+                photoProfile: '',
                 telephone: telephone
             })
 

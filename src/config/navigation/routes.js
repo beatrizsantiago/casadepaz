@@ -5,6 +5,7 @@ import SearchCap from '../../screens/SearchCap'
 import Cap from '../../screens/Cap'
 import ListCaps from '../../screens/ListCaps'
 import RegisterCap from '../../screens/RegisterCap'
+import PreachingWeek from '../../screens/PreachingWeek'
 import Feedback from '../../screens/Feedback'
 import FeedbackList from '../../screens/FeedbackList'
 import FeedbackDetails from '../../screens/FeedbackDetails'
@@ -13,6 +14,13 @@ import ListLeaderCap from '../../screens/ListLeaderCap'
 import RegisterLeaderCap from '../../screens/RegisterLeaderCap'
 
 const Routes = [
+    {
+        id: 'Palavra da Semana',
+        title: 'Palavra da Semana',
+        icon: 'file-document-outline',
+        screen: PreachingWeek,
+        hide: false,
+    },
     {
         id: 'Dashboard',
         title: 'Dashboard',

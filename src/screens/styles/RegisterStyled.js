@@ -17,6 +17,15 @@ export const InputText = styled.TextInput`
     font-size: 20px;
 `
 
+export const InputTextRadius = styled.TextInput`
+    height: 42px;
+    margin: 5px 12px 0 12px;
+    padding: 5px;
+    border: solid 1px #bfbfbf;
+    border-radius: 5px;
+    font-size: 20px;
+`
+
 export const ViewAutoComplete = styled.View`
     width: 97%;
     margin-top: 1.5%;

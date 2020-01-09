@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, Alert, ScrollView, TouchableOpacity } from "react-native"
 import DocumentPicker from 'react-native-document-picker'
+import Pdf from 'react-native-pdf'
 
 import { Container } from './styles/MainStyled'
 import { Label, InputText, InputTextRadius, RedText } from './styles/RegisterStyled'
@@ -50,6 +51,15 @@ export default function SubmitPreaching(props) {
                     </ButtonSelect>
                     <TextNameFile>{datasFile.name || 'Nenhum arquivo selecionado.'}</TextNameFile>
                 </RowSelectFile>
+
+                {
+                    datasFile.uri ?
+                        <RowSelectFile>
+                            <Pdf scale={1.6} source={{ uri: datasFile.uri || '' }} style={{ width: '100%', height: 280, marginTop: 3 }} />
+                        </RowSelectFile>
+                        : null
+                }
+
             </ScrollView>
         </Container>
     )

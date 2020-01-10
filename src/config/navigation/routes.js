@@ -15,13 +15,6 @@ import RegisterLeaderCap from '../../screens/RegisterLeaderCap'
 
 const Routes = [
     {
-        id: 'Palavra da Semana',
-        title: 'Palavra da Semana',
-        icon: 'file-document-outline',
-        screen: PreachingWeek,
-        hide: false,
-    },
-    {
         id: 'Dashboard',
         title: 'Dashboard',
         icon: 'view-dashboard-outline',
@@ -55,6 +48,13 @@ const Routes = [
         icon: 'pin-outline',
         screen: RegisterCap,
         hide: true,
+    },
+    {
+        id: 'Palavra da Semana',
+        title: 'Palavra da Semana',
+        icon: 'file-document-outline',
+        screen: PreachingWeek,
+        hide: false,
     },
     {
         id: 'Feedback',

@@ -55,7 +55,7 @@ export async function UpdatePreaching(idPreaching, url) {
 
 export function GetAllFiles(callback) {
     try {
-        collectionPreachings.onSnapshot(snapshot => {
+        collectionPreachings.orderBy("dateUpload", "desc").onSnapshot(snapshot => {
             snapshot.forEach(info => {
                 callback({ id: info.id, ...info.data() })
             })

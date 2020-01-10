@@ -28,3 +28,9 @@ export const TextBoxPdf = styled.Text`
     font-size: 12px;
     color: #616161;
 `
+
+export const CloseModal = styled.TouchableOpacity`
+    position: absolute;
+    top: 8px;
+    right: 8px;
+`

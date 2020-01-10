@@ -11,18 +11,34 @@ export const LeaderCard = styled.View`
     border-left-color: #f68121;
 `
 
+export const ViewImageProfile = styled.View`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 120px;
+    padding: 4px;
+    border: solid 1px #e3e3e3;
+    border-radius: 5px;
+`
+
+export const ViewInfo = styled.View`
+    width: 70%;
+    height: 120px;
+`
+
 export const LargeField = styled.View`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 3px 5px;
+    padding: 2px 5px;
 `
 
 export const TextField = styled.Text`
     width: 88%;
-    font-size: 18px;
+    font-size: 16px;
 `
 
 export const ViewButtons = styled.View`

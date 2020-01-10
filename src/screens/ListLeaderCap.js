@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { View, Text, ScrollView, ActivityIndicator, TouchableOpacity } from 'react-native'
+import { View, Text, ScrollView, ActivityIndicator, Image, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import LeaderService from '../services/LeaderService'
 
 import { ContainerGray } from './styles/MainStyled'
-import { LeaderCard, LargeField, TextField, ViewButtons, ButtonEnable, ButtonDisable } from './styles/ListLeaderStyled'
+import { LeaderCard, ViewImageProfile, ViewInfo, LargeField, TextField, ViewButtons, ButtonEnable, ButtonDisable } from './styles/ListLeaderStyled'
 
 export default class ListLeaderCap extends Component {
     state = {
@@ -47,18 +47,25 @@ export default class ListLeaderCap extends Component {
                             {
                                 this.state.leaders.map(leader => (
                                     <LeaderCard key={leader.UID}>
-                                        <LargeField>
-                                            <Icon name="account-circle" color="#f68121" size={30} />
-                                            <TextField>{leader.name}</TextField>
-                                        </LargeField>
-                                        <LargeField>
-                                            <Icon name="email" color="#f68121" size={30} />
-                                            <TextField>{leader.email}</TextField>
-                                        </LargeField>
-                                        <LargeField>
-                                            <Icon name="phone" color="#f68121" size={30} />
-                                            <TextField>{leader.telephone}</TextField>
-                                        </LargeField>
+                                        <View style={{ flexDirection: 'row' }}>
+                                            <ViewImageProfile>
+                                                <Image style={{ width: '100%', height: '100%' }} source={{ uri: leader.photoProfile || 'https://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png' }} />
+                                            </ViewImageProfile>
+                                            <ViewInfo>
+                                                <LargeField>
+                                                    <Icon name="account" color="#f68121" size={30} />
+                                                    <TextField>Ana {leader.name} dos Santos</TextField>
+                                                </LargeField>
+                                                <LargeField>
+                                                    <Icon name="email" color="#f68121" size={30} />
+                                                    <TextField>{leader.email}</TextField>
+                                                </LargeField>
+                                                <LargeField>
+                                                    <Icon name="phone" color="#f68121" size={30} />
+                                                    <TextField>{leader.telephone}</TextField>
+                                                </LargeField>
+                                            </ViewInfo>
+                                        </View>
                                         {leader.active ?
                                             <ViewButtons>
                                                 <ButtonDisable onPress={() => this.enableOrDisableLeader(leader.id, false)}>

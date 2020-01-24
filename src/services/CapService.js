@@ -14,7 +14,7 @@ export function Register(local, latitude, longitude, day, hour, leader, subLeade
     }
 }
 
-export function GetCaps(callback) {
+export function GetCapsRealTime(callback) {
     try {
         firebase.firestore().collection('caps').onSnapshot(snapshot => {
             snapshot.forEach(async cap => {
@@ -32,7 +32,7 @@ export function GetCaps(callback) {
     }
 }
 
-export function GetActiveCaps(callback) {
+export function GetActiveCapsRealTime(callback) {
     try {
         firebase.firestore().collection('caps').where('active', '==', true).onSnapshot(snapshot => {
             snapshot.forEach(async cap => {
@@ -44,6 +44,52 @@ export function GetActiveCaps(callback) {
                 callback({ id: cap.id, ...capData, leader: { id: idRefLeader, ...refLeader } })
             })
         })
+    } catch (error) {
+        console.warn("Error GetActiveCapsRealTime: ", error);
+        throw error
+    }
+}
+
+export async function GetCaps() {
+    try {
+        let listCaps = []
+        let caps = await firebase.firestore().collection('caps').get()
+        caps.docs.forEach(cap => listCaps.push({ id: cap.id, ...cap.data() }))
+
+        let allInfoCaps = []
+        let getLeaders = listCaps.map(async cap => {
+            let leader = await cap.leader.get()
+
+            allInfoCaps.push({ ...cap, leader: { id: leader.id, ...leader.data() } })
+        })
+
+        await Promise.all(getLeaders)
+
+        return allInfoCaps
+
+    } catch (error) {
+        console.warn("Error GetActiveCaps: ", error);
+        throw error
+    }
+}
+
+export async function GetActiveCaps() {
+    try {
+        let listCaps = []
+        let caps = await firebase.firestore().collection('caps').where('active', '==', true).get()
+        caps.docs.forEach(cap => listCaps.push({ id: cap.id, ...cap.data() }))
+
+        let allInfoCaps = []
+        let getLeaders = listCaps.map(async cap => {
+            let leader = await cap.leader.get()
+
+            allInfoCaps.push({ ...cap, leader: { id: leader.id, ...leader.data() } })
+        })
+
+        await Promise.all(getLeaders)
+
+        return allInfoCaps
+
     } catch (error) {
         console.warn("Error GetActiveCaps: ", error);
         throw error
@@ -116,4 +162,4 @@ export async function UpdateStateCap(idCap, bool) {
     }
 }
 
-export default { Register, GetCaps, GetActiveCaps, NumberCaps, NumberActiveCaps, GetDataCap, UpdateCap, UpdateStateCap }
+export default { Register, GetCapsRealTime, GetActiveCapsRealTime, GetCaps, GetActiveCaps, NumberCaps, NumberActiveCaps, GetDataCap, UpdateCap, UpdateStateCap }

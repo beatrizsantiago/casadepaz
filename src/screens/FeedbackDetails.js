@@ -16,8 +16,9 @@ export default function FeedbackDetails(props) {
     const [isImageViewVisible, setIsImageViewVisible] = useState(false)
     const [imageSource, setImageSource] = useState([])
 
+    const { capId, leader, subLeader, supervisor, feedback } = props.navigation.state.params
+
     useEffect(() => {
-        const { feedback } = props.navigation.state.params
         setDataFeedback(feedback)
         setImageSource([{ url: feedback.photoCap }])
     }, [])
@@ -30,8 +31,8 @@ export default function FeedbackDetails(props) {
                 onSwipeDown={() => setIsImageViewVisible(false)}
             />
             <ButtonCloseModal onPress={() => setIsImageViewVisible(false)}>
-				<IconIonicon name="ios-close-circle" size={32} color="#fff" />
-			</ButtonCloseModal>
+                <IconIonicon name="ios-close-circle" size={32} color="#fff" />
+            </ButtonCloseModal>
         </Modal> : null
 
     const toggleExpanded = () => setCollapsed(!collapsed)
@@ -39,11 +40,13 @@ export default function FeedbackDetails(props) {
     return (
         <ContainerGray>
             <ScrollView style={{ flex: 1, width: '100%' }}>
+                
                 <BigCard>
-                    <Text style={{ fontSize: 15 }}>Líder: <Text style={{ fontWeight: 'bold', textTransform: 'uppercase' }}>{dataFeedback.dataLeader ? dataFeedback.dataLeader.name : ''}</Text></Text>
-                    {dataFeedback.subLeader ? <Text style={{ fontSize: 15 }}>Sublíder: <Text style={{ fontWeight: 'bold', textTransform: 'uppercase' }}>{dataFeedback.subLeader}</Text></Text> : null}
-                    <Text style={{ fontSize: 15 }}>Supervisor: <Text style={{ fontWeight: 'bold', textTransform: 'uppercase' }}>{dataFeedback.supervisor}</Text></Text>
+                    <Text style={{ fontSize: 15 }}>Líder: <Text style={{ fontWeight: 'bold', textTransform: 'uppercase' }}>{leader}</Text></Text>
+                    {subLeader ? <Text style={{ fontSize: 15 }}>Sublíder: <Text style={{ fontWeight: 'bold', textTransform: 'uppercase' }}>{subLeader}</Text></Text> : null}
+                    <Text style={{ fontSize: 15 }}>Supervisor: <Text style={{ fontWeight: 'bold', textTransform: 'uppercase' }}>{supervisor}</Text></Text>
                 </BigCard>
+
                 <Row>
                     <CardLeft>
                         <ItemIcon>

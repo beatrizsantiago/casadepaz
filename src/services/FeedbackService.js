@@ -1,28 +1,18 @@
 import firebase from 'react-native-firebase'
 
-export function GetAllInformation(callback) {
+export async function GetAllInformation(idCap) {
     try {
-        firebase.firestore().collection('feedback').onSnapshot(snapshot => {
-            snapshot.forEach(async info => {
-                let feedbackData = info.data()
-                let snap = await feedbackData.idCap.get()
-                let refCap = snap.data()
-                let idRefCap = snap.id
+        let capRef = firebase.firestore().collection('caps').doc(idCap)
 
-                let dataLeader = {}
+        let listFeedbacks = []
+        let feedbacks = await firebase.firestore().collection('feedback').where('idCap', '==', capRef).get()
 
-                let cap = {idRefCap, ...refCap }
-                if(cap.leader) {
-                    let leader = await cap.leader.get()
-                    dataLeader = { id: leader.id, ...leader.data()  }
-                }
-                
-                let feedbackInfo = info.data()
-                delete feedbackInfo.idCap
-
-                callback({ id: info.id, ...feedbackInfo, idRefCap, ...refCap, dataLeader })
-            })
+        feedbacks.docs.forEach(feedback => {
+            listFeedbacks.push({ id: feedback.id, ...feedback.data() })
         })
+
+        return listFeedbacks
+
     } catch (error) {
         console.warn("Error GetAllInformation: ", error);
         throw error

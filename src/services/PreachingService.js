@@ -53,13 +53,16 @@ export async function UpdatePreaching(idPreaching, url) {
     }
 }
 
-export function GetAllFiles(callback) {
+export async function GetAllFiles() {
     try {
-        collectionPreachings.orderBy("dateUpload", "desc").onSnapshot(snapshot => {
-            snapshot.forEach(info => {
-                callback({ id: info.id, ...info.data() })
-            })
+        let listFiles = []
+        let files = await collectionPreachings.orderBy("dateUpload", "desc").get()
+
+        files.docs.forEach(file => {
+            listFiles.push({ id: file.id, ...file.data() })
         })
+
+        return listFiles
     } catch (error) {
         console.warn("Error GetAllFiles: ", error);
         throw error

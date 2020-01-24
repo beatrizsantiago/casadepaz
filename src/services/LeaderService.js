@@ -1,4 +1,5 @@
 import firebase from 'react-native-firebase'
+import CapService from './CapService'
 
 export async function CreateUser(email, password) {
     try {
@@ -45,9 +46,9 @@ export async function GetLeaderCap(idCap) {
         })
 
         let infoLeader = await dataCap.leader.get()
-        let leader = {id: infoLeader.id, ...infoLeader.data()}
+        let leader = { id: infoLeader.id, ...infoLeader.data() }
 
-        return leader        
+        return leader
     } catch (error) {
         console.warn("Error GetLeaderCap: ", error);
         throw error
@@ -59,9 +60,9 @@ export async function GetActiveLeaders() {
         let listLeaders = [];
 
         let leaders = await firebase.firestore().collection('leaders').where('active', '==', true).get()
-        
+
         leaders.docs.forEach(leader => {
-            listLeaders.push({id: leader.id, ...leader.data()})
+            listLeaders.push({ id: leader.id, ...leader.data() })
         })
 
         return listLeaders
@@ -74,7 +75,7 @@ export async function GetActiveLeaders() {
 export async function GetNumberActiveLeaders() {
     try {
         let leaders = await firebase.firestore().collection('leaders').where('active', '==', true).get()
-        
+
         let numberLeaders = leaders.size
 
         return numberLeaders
@@ -84,13 +85,17 @@ export async function GetNumberActiveLeaders() {
     }
 }
 
-export async function GetAllLeaders(callback) {
+export async function GetAllLeaders() {
     try {
-        firebase.firestore().collection('leaders').onSnapshot(snapshot => {
-            snapshot.forEach(async info => {
-                callback({id: info.id, ...info.data()})
-            })
+        let listLeaders = [];
+
+        let leaders = await firebase.firestore().collection('leaders').get()
+
+        leaders.docs.forEach(leader => {
+            listLeaders.push({ id: leader.id, ...leader.data() })
         })
+
+        return listLeaders
     } catch (error) {
         console.warn("Error GetAllLeaders: ", error);
         throw error
@@ -102,6 +107,14 @@ export async function UpdateStateLeader(idDoc, bool) {
         await firebase.firestore().collection('leaders').doc(idDoc).update({
             active: bool
         })
+
+        let leaderRef = firebase.firestore().collection('leaders').doc(idDoc)
+        let caps = await firebase.firestore().collection('caps').where('leader', '==', leaderRef).get()
+
+        caps.docs.forEach(cap => {
+            CapService.UpdateStateCap(cap.id, bool)
+        })
+
         return true
 
     } catch (error) {

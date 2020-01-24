@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { View, Text, ScrollView, ActivityIndicator, TouchableOpacity } from 'react-native'
+import React, { useEffect, useState, useCallback } from 'react'
+import { View, Text, ScrollView, ActivityIndicator, RefreshControl } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import CapService from '../services/CapService'
@@ -11,6 +11,7 @@ export default ListCaps = (props) => {
 
     const [caps, setCaps] = useState([])
     const [loading, setLoading] = useState(true)
+    const [refreshing, setRefreshing] = React.useState(false)
 
     useEffect(() => {
         listAllCaps()
@@ -33,6 +34,12 @@ export default ListCaps = (props) => {
             })
     }
 
+    const onRefresh = useCallback(() => {
+        setRefreshing(true)
+        listAllCaps()
+        setRefreshing(false)
+    }, [refreshing])
+
     return (
         <ContainerGray>
             {
@@ -41,7 +48,7 @@ export default ListCaps = (props) => {
                         <ActivityIndicator size="large" color="#f68121" />
                     </View>
                     :
-                    <ScrollView style={{ flex: 1, width: '100%' }}>
+                    <ScrollView style={{ flex: 1, width: '100%' }} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />} >
                         {
                             caps.map(cap => (
                                 <CapCard key={cap.id}>

@@ -15,13 +15,6 @@ import RegisterLeaderCap from '../../screens/RegisterLeaderCap'
 
 const Routes = [
     {
-        id: 'Casa de Paz',
-        title: 'Casa de Paz',
-        icon: 'home-outline',
-        screen: Cap,
-        hide: false,
-    },
-    {
         id: 'Dashboard',
         title: 'Dashboard',
         icon: 'view-dashboard-outline',
@@ -33,6 +26,13 @@ const Routes = [
         title: 'Pesquisar Cap',
         icon: 'map-search-outline',
         screen: SearchCap,
+        hide: false,
+    },
+    {
+        id: 'Casa de Paz',
+        title: 'Casa de Paz',
+        icon: 'home-outline',
+        screen: Cap,
         hide: false,
     },
     {

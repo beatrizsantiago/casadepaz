@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { View, Text, ScrollView, ActivityIndicator, Image } from 'react-native'
+import React, { useState, useEffect, useCallback } from 'react'
+import { View, Text, ScrollView, ActivityIndicator, Image, RefreshControl } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import LeaderService from '../services/LeaderService'
@@ -11,6 +11,7 @@ export default ListLeaderCap = () => {
 
     const [leaders, setLeaders] = useState([])
     const [loading, setLoading] = useState(true)
+    const [refreshing, setRefreshing] = React.useState(false)
 
     useEffect(() => {
         listLeader()
@@ -29,6 +30,12 @@ export default ListLeaderCap = () => {
             .then(() => listLeader())
     }
 
+    const onRefresh = useCallback(() => {
+        setRefreshing(true)
+        listLeader()
+        setRefreshing(false)
+    }, [refreshing])
+
     return (
         <ContainerGray>
             {
@@ -37,7 +44,7 @@ export default ListLeaderCap = () => {
                         <ActivityIndicator size="large" color="#f68121" />
                     </View>
                     :
-                    <ScrollView style={{ flex: 1, width: '100%' }}>
+                    <ScrollView style={{ flex: 1, width: '100%' }} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
                         {
                             leaders.map(leader => (
                                 <LeaderCard key={leader.UID}>

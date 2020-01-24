@@ -10,8 +10,7 @@ export async function UploadFilePreaching(pathFile, nameFile) {
         await file.put(pathFile)
         
         let url = await file.getDownloadURL()
-        console.warn(url);
-        
+        console.warn("URL: ", url);
 
         return url
 
@@ -42,6 +41,8 @@ export async function RegisterPreaching(title, urlVideo) {
 
 export async function UpdatePreaching(idPreaching, url) {
     try {
+        console.warn("UPDATE: " , idPreaching, url);
+        
         await collectionPreachings.doc(idPreaching).update({
             urlPdfPreaching: url
         })
@@ -69,4 +70,17 @@ export async function GetAllFiles() {
     }
 }
 
-export default { UploadFilePreaching, RegisterPreaching, UpdatePreaching, GetAllFiles }
+export async function Resend(idPreaching) {
+    try {
+        await collectionPreachings.doc(idPreaching).update({
+            dateUpload: new Date()
+        })
+        return true
+        
+    } catch (error) {
+        console.warn("Error Resend: ", error);
+        throw error
+    }
+}
+
+export default { UploadFilePreaching, RegisterPreaching, UpdatePreaching, GetAllFiles, Resend }

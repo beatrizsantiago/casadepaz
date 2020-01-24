@@ -34,3 +34,16 @@ export const CloseModal = styled.TouchableOpacity`
     top: 8px;
     right: 8px;
 `
+
+export const ButtonResend = styled.TouchableOpacity`
+    position: absolute;
+    top: 15px;
+    left: 8px;
+`
+
+export const TextResend = styled.Text`
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+`

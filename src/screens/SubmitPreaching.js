@@ -15,7 +15,7 @@ export default function SubmitPreaching(props) {
 
     const [titlePreaching, setTitlePreaching] = useState('')
     const [urlVideo, setUrlVideo] = useState('')
-    const [datasFile, setDatasFile] = useState({})
+    const [datasFile, setDatasFile] = useState('')
     const [loading, setLoading] = useState(false)
 
     const alertMessage = message => Alert.alert('Atenção!', message, [{ text: 'OK' }])
@@ -23,14 +23,15 @@ export default function SubmitPreaching(props) {
     const sendPreaching = async () => {
         setLoading(true)
         try {
-        	let idPreaching = await PreachingService.RegisterPreaching(titlePreaching, urlVideo)
+            let idPreaching = await PreachingService.RegisterPreaching(titlePreaching, urlVideo)
 
             let urlFile = await PreachingService.UploadFilePreaching(datasFile.uri, datasFile.name)
+            
             PreachingService.UpdatePreaching(idPreaching, urlFile)
                 .then(() => {
                     setTitlePreaching('')
                     setUrlVideo('')
-                    setDatasFile({})
+                    setDatasFile('')
                     return alertMessage('Palavra enviada com sucesso.')
                 })
                     

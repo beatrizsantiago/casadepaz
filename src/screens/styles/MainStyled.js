@@ -20,5 +20,12 @@ export const ViewModal = styled.View`
     flex: 1;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
+`
+
+export const ButtonCloseModal = styled.TouchableOpacity`
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 8px;
 `

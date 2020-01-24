@@ -34,7 +34,7 @@ export default function FeedbackList(props) {
                         {
                             feedbacksCap.map(feedback => (
                                 <DateFeedbackCard key={feedback.id} onPress={() => handlePress(feedback)}>
-                                    <Text style={{ fontSize: 16 }}>{moment(feedback.dateFeedback.seconds * 1000).format('DD/MM/YYYY [às] HH:MM')}</Text>
+                                    <Text style={{ fontSize: 16 }}>{moment(feedback.dateFeedback.seconds * 1000).format('DD/MM/YYYY [às] hh:mm')}</Text>
                                     <Icon name="arrow-right" size={16} color="#f68121" />
                                 </DateFeedbackCard>
                             ))

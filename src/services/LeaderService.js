@@ -71,6 +71,19 @@ export async function GetActiveLeaders() {
     }
 }
 
+export async function GetNumberActiveLeaders() {
+    try {
+        let leaders = await firebase.firestore().collection('leaders').where('active', '==', true).get()
+        
+        let numberLeaders = leaders.size
+
+        return numberLeaders
+    } catch (error) {
+        console.warn("Error GetNumberActiveLeaders: ", error);
+        throw error
+    }
+}
+
 export async function GetAllLeaders(callback) {
     try {
         firebase.firestore().collection('leaders').onSnapshot(snapshot => {
@@ -97,4 +110,4 @@ export async function UpdateStateLeader(idDoc, bool) {
     }
 }
 
-export default { CreateUser, RegisterLeader, GetLeaderCap, GetActiveLeaders, GetAllLeaders, UpdateStateLeader }
+export default { CreateUser, RegisterLeader, GetLeaderCap, GetActiveLeaders, GetNumberActiveLeaders, GetAllLeaders, UpdateStateLeader }

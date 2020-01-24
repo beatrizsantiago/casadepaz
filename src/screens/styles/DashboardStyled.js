@@ -19,7 +19,7 @@ export const RowBar = styled.View`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 95%;
+    width: 96%;
     height: 40px;
     border-bottom-width: 1px;
     border-bottom-color: #f68121;
@@ -31,7 +31,7 @@ export const BigBox = styled.View`
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    width: 95%;
+    width: 96%;
     height: 130px;
     padding: 10px;
     background-color: #fff;
@@ -59,9 +59,21 @@ export const CircleMedim = styled.View`
     background-color: rgba(0, 0, 0, 0.3);
 `
 
+export const CircleMediumOrange = styled.View`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    margin: 0 6px;
+    border-radius: 50px;
+    background-color: rgba(246, 129, 33, 0.2);
+`
+
 export const MediumBoxWhite = styled.View`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
     width: 46.5%;
     height: 90px;
     margin: 0px 6px;
@@ -142,6 +154,18 @@ export const SubtitleQuantity = styled.Text`
     font-size: 12px;
     text-transform: uppercase;
     color: #fff;
+`
+
+export const TitleQuantityOrange = styled.Text`
+    font-size: 22px;
+    color: #f68121;
+`
+
+export const SubtitleQuantityOrange = styled.Text`
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #f68121;
 `
 
 export const TitleHeaderBox = styled.Text`

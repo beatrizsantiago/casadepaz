@@ -8,11 +8,12 @@ import moment from 'moment'
 
 import CapService from '../services/CapService'
 import FeedbackService from '../services/FeedbackService'
+import LeaderService from '../services/LeaderService'
 
-import { ContainerGray } from './styles/MainStyled'
+import { ContainerGray, ButtonCloseModal } from './styles/MainStyled'
 import {
-	Row, Column, RowBar, BigBox, Circle, MediumBoxWhite, MediumBoxOrange, CircleMedim, LargeBox, HeaderBox, CardScroll, LeftBoxCard, Gallery,
-	BoxEmptyImage, TitleInfo, TitleQuantity, SubtitleQuantity, TitleHeaderBox, TitleBox
+	Row, Column, RowBar, BigBox, Circle, MediumBoxWhite, MediumBoxOrange, CircleMedim, CircleMediumOrange, LargeBox, HeaderBox, CardScroll,
+	LeftBoxCard, Gallery, BoxEmptyImage, TitleInfo, TitleQuantity, SubtitleQuantity, TitleQuantityOrange, SubtitleQuantityOrange, TitleHeaderBox, TitleBox
 } from './styles/DashboardStyled'
 
 export default class Dashboard extends Component {
@@ -26,11 +27,13 @@ export default class Dashboard extends Component {
 			quantityPeople: 0,
 			quantityConversion: 0,
 			quantityMiracles: 0,
-			images: []
+			images: [],
+			quantityFeedbacks: 0
 		},
 		urlImages: [],
 		indexImageVisible: 0,
 		isImageViewVisible: false,
+		numberActiveLeaders: 0,
 	}
 
 	componentDidMount() {
@@ -52,6 +55,9 @@ export default class Dashboard extends Component {
 			this.setState({ cardData: feedback })
 			this.createObjectUrlsImages()
 		})
+
+		LeaderService.GetNumberActiveLeaders()
+			.then(resp => this.setState({ numberActiveLeaders: resp  }))
 	}
 
 	createObjectUrlsImages = () => {
@@ -74,6 +80,9 @@ export default class Dashboard extends Component {
 				onSwipeDown={() => this.setState({ isImageViewVisible: false })}
 				index={this.state.indexImageVisible}
 			/>
+			<ButtonCloseModal onPress={() => this.setState({ isImageViewVisible: false })}>
+				<IconAnt name="closecircle" size={26} color="#fff" />
+			</ButtonCloseModal>
 		</Modal>
 
 	render() {
@@ -99,7 +108,7 @@ export default class Dashboard extends Component {
 					<TitleInfo>Informações de <Text style={{ fontWeight: 'bold' }}>{moment(lastWeek).format('DD/MM/YYYY')}</Text> à <Text style={{ fontWeight: 'bold' }}>{moment(today).format('DD/MM/YYYY')}</Text></TitleInfo>
 				</RowBar>
 
-				<ScrollView>
+				<ScrollView showsVerticalScrollIndicator={false}>
 					<Row>
 						<MediumBoxOrange>
 							<CircleMedim>
@@ -154,11 +163,24 @@ export default class Dashboard extends Component {
 						</CardScroll>
 					</Row>
 					<Row>
-						<MediumBoxWhite />
-						<MediumBoxWhite />
-					</Row>
-					<Row>
-						<LargeBox />
+						<MediumBoxWhite>
+							<CircleMediumOrange>
+								<IconAnt name="retweet" color="#f68121" size={35} />
+							</CircleMediumOrange>
+							<Column>
+								<TitleQuantityOrange>{cardData.quantityFeedbacks}</TitleQuantityOrange>
+								<SubtitleQuantityOrange>Feedbacks</SubtitleQuantityOrange>
+							</Column>
+						</MediumBoxWhite>
+						<MediumBoxWhite>
+							<CircleMediumOrange>
+								<IconAnt name="user" color="#f68121" size={35} />
+							</CircleMediumOrange>
+							<Column>
+								<TitleQuantityOrange>{this.state.numberActiveLeaders}</TitleQuantityOrange>
+								<SubtitleQuantityOrange>Líderes Ativos</SubtitleQuantityOrange>
+							</Column>
+						</MediumBoxWhite>
 					</Row>
 				</ScrollView>
 				{this.showImages()}

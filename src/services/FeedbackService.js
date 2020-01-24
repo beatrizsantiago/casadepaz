@@ -42,8 +42,8 @@ export function GetInformationPeriod(initialDate, finalDate, callback) {
                 quantityConversion += info.data().quantityConversion
                 images.push(info.data().photoCap)
             })
-            
-            callback({ quantityPeople, quantityConversion, quantityMiracles, images })
+
+            callback({ quantityPeople, quantityConversion, quantityMiracles, images, quantityFeedbacks: snapshot.size })
         })
     } catch (error) {
         console.warn("Error GetInformationPeriod: ", error);

@@ -6,7 +6,7 @@ import IconFontAwesome from 'react-native-vector-icons/FontAwesome'
 import Collapsible from 'react-native-collapsible'
 import ImageViewer from 'react-native-image-zoom-viewer'
 
-import { ContainerGray } from './styles/MainStyled'
+import { ContainerGray, ButtonCloseModal } from './styles/MainStyled'
 import { BigCard, Row, CardLeft, LargeCard, Circle, ItemIcon, TextCard, SimpleCard, HeaderCard, Description, ImgCard, ButtonClose } from './styles/FeedbackDetailsStyled'
 
 export default function FeedbackDetails(props) {
@@ -29,6 +29,9 @@ export default function FeedbackDetails(props) {
                 enableSwipeDown={true}
                 onSwipeDown={() => setIsImageViewVisible(false)}
             />
+            <ButtonCloseModal onPress={() => setIsImageViewVisible(false)}>
+				<IconIonicon name="ios-close-circle" size={32} color="#fff" />
+			</ButtonCloseModal>
         </Modal> : null
 
     const toggleExpanded = () => setCollapsed(!collapsed)

@@ -14,6 +14,24 @@ export async function Login(email, password) {
     }
 }
 
+export async function CheckAccount(email, password) {
+    try {
+        let user = await Login(email, password)
+        
+        let profile = await firebase.firestore().collection('leaders').where('UID', '==', user).get()
+
+        if (profile.size === 0) {
+            return user
+        } else {
+            return null
+        }
+
+    } catch (error) {
+        console.warn("Error CheckAccount: ", error);
+        throw error
+    }
+}
+
 export async function Logout() {
     try {
         await AsyncStorage.clear()
@@ -26,4 +44,4 @@ export async function Logout() {
     }
 }
 
-export default { Login, Logout }
+export default { Login, CheckAccount, Logout }

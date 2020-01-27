@@ -38,11 +38,16 @@ export default function LoginScreen(props) {
 				errorLogin()
 			} else {
 				setLoading(true)
-				UserService.Login(login, password)
+				UserService.CheckAccount(login, password)
 					.then(async uid => {
-						setLogin(false)
-						await AsyncStorage.setItem(StoreKeys.UidLogin, uid)
-						props.navigation.navigate('App')
+						setLoading(false)
+						if(uid == null) {
+							return Alert.alert('Atenção!', 'Este usuário não é um administrador.', [{ text: 'OK' }])
+
+						} else {
+							await AsyncStorage.setItem(StoreKeys.UidLogin, uid)
+							props.navigation.navigate('App')
+						}
 					})
 					.catch(() => {
 						setLoading(false)

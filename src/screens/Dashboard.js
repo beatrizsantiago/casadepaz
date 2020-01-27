@@ -178,7 +178,7 @@ export default class Dashboard extends Component {
 							</CircleMediumOrange>
 							<Column>
 								<TitleQuantityOrange>{this.state.numberActiveLeaders}</TitleQuantityOrange>
-								<SubtitleQuantityOrange>Líderes Ativos</SubtitleQuantityOrange>
+								<SubtitleQuantityOrange>Líderes</SubtitleQuantityOrange>
 							</Column>
 						</MediumBoxWhite>
 					</Row>
